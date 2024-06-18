@@ -45,6 +45,7 @@ trait TypeTrait
 
         $types = [
             "array",
+            "bool",
             "boolean",
             "double",
             "float",
@@ -70,6 +71,11 @@ trait TypeTrait
         // The PHP gettype() function returns "integer" when the variable type is "int"
         if ($type == "integer") {
             return "int";
+        }
+
+        // the \ReflectionProperty->getType returns 'bool' and gettype() returns 'boolean'
+        if ($type == "bool") {
+            return "boolean";
         }
 
         return $type;
