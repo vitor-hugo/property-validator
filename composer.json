@@ -8,6 +8,11 @@
       "Torugo\\PropertyValidator\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "authors": [
     {
       "name": "vitor-hugo",
