@@ -1,0 +1,22 @@
+{
+  "name": "vitor/property_validator",
+  "description": "Validators and Transformers for class properties",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Torugo\\PropertyValidator\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "vitor-hugo",
+      "email": "vitor83dev@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "11"
+  }
+}
