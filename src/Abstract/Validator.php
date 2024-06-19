@@ -7,7 +7,6 @@ use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 use Torugo\PropertyValidator\Interfaces\ValidatorInterface;
 use Torugo\PropertyValidator\Traits\PropertyTrait;
-use Torugo\PropertyValidator\Traits\TypeTrait;
 
 abstract class Validator implements ValidatorInterface
 {
