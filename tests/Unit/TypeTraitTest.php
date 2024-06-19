@@ -2,10 +2,14 @@
 
 namespace Tests\Unit;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 use Torugo\PropertyValidator\Traits\TypeTrait;
 
+#[Group('Unit')]
+#[Group('Traits')]
+#[TestDox('TypeTrait tests')]
 class TypeTraitTest extends TestCase
 {
     use TypeTrait;
