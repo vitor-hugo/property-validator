@@ -52,13 +52,21 @@ abstract class Validator implements ValidatorInterface
     {
         $isOptional = $this->isOptional();
         $isNullable = $this->isNullable();
+        $isUsingRequiredAttribute = $this->isUsingRequiredAttribute();
+        $isEmpty = $this->isValueEmpty($this->getValue());
 
+        // Optional properties must be nullable
         if ($isOptional == true && $isNullable == false) {
             throw new InvalidTypeException("The property '{$this->propertyName}' is defined as optional but is not nullable. Optional properties must be nullable.");
         }
 
-        // If property is optinal and it's value is empty/null, no validation required.
-        if ($this->isOptional && $this->isValueEmpty($this->getValue())) {
+        // Properties are considered required when not using IsOptional atrribute or it's type is not nullable
+        if (!$isUsingRequiredAttribute && !$isOptional && !$isNullable && $isEmpty) {
+            throw new ValidationException("The property '{$this->propertyName}' can't be empty.");
+        }
+
+        // If a property is optional or nullable and it's value is empty, no validation is necessary
+        if (!$isUsingRequiredAttribute && ($isOptional || $isNullable) && $isEmpty) {
             return false;
         }
 
