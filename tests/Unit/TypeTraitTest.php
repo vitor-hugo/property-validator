@@ -6,8 +6,7 @@ use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 use Torugo\PropertyValidator\Traits\TypeTrait;
 
-#[TestDox('Trait tests')]
-class TraitTest extends TestCase
+class TypeTraitTest extends TestCase
 {
     use TypeTrait;
 
