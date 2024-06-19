@@ -5,6 +5,7 @@ namespace Torugo\PropertyValidator\Traits;
 use Exception;
 use Torugo\PropertyValidator\Attributes\Validators\Common\IsOptional;
 use Torugo\PropertyValidator\Attributes\Validators\Common\IsRequired;
+use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 
 trait PropertyTrait
 {
@@ -174,5 +175,33 @@ trait PropertyTrait
         }
 
         return false;
+    }
+
+
+    /**
+     * Validates if the property type is the expected.
+     * @param array|string $expected array of type names or a single string type name
+     * @return void
+     */
+    protected function expectPropertyTypeToBe(array|string $expected): void
+    {
+        if (gettype($expected) == 'array') {
+            if (!in_array($this->propertyType, $expected)) {
+                $msg = $this->buildTypeMessageFromArray($expected);
+                throw new InvalidTypeException("Property '{$this->propertyName}' must be setted as $msg.");
+            }
+        } else {
+            if ($this->propertyType != $expected) {
+                throw new InvalidTypeException("Property '{$this->propertyName}' must be setted as $expected.");
+            }
+        }
+    }
+
+
+    private function buildTypeMessageFromArray(array $types)
+    {
+        $msg = implode(", ", $types);
+        $msg = strrev(implode(strrev(" or"), explode(strrev(","), strrev($msg), 2)));
+        return $msg;
     }
 }
