@@ -114,4 +114,15 @@ class TypeTraitTest extends TestCase
             }
         }
     }
+
+
+    #[TestDox("isValueEmtpy() method must return correct value")]
+    public function testIsValueEmpty()
+    {
+        $this->assertTrue($this->isValueEmpty(''));
+        $this->assertTrue($this->isValueEmpty([]));
+        $this->assertTrue($this->isValueEmpty(null));
+        $this->assertFalse($this->isValueEmpty(false));
+        $this->assertFalse($this->isValueEmpty(0));
+    }
 }
