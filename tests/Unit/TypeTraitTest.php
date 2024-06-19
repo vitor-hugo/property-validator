@@ -23,7 +23,7 @@ class TypeTraitTest extends TestCase
     private object $objectProp;
     private string $stringProp = 'string';
 
-    #[TestDox('TypeTrait: getType() must return the corret type')]
+    #[TestDox('Method getType() must return the corret type')]
     public function testTypeTraitGetType()
     {
         $expects = [
@@ -52,7 +52,7 @@ class TypeTraitTest extends TestCase
     }
 
 
-    #[TestDox('TypeTrait: normalizeTypeName() must normalize type names correctly')]
+    #[TestDox('Method normalizeTypeName() must normalize type names correctly')]
     public function testNormalizeTypeName()
     {
         $expects = [
@@ -88,7 +88,8 @@ class TypeTraitTest extends TestCase
         }
     }
 
-    #[TestDox('TypeTrait: getPropertyType() must return the corret type')]
+
+    #[TestDox('Method getPropertyType() must return the corret type')]
     public function testGetPropertyType()
     {
         $this->objectProp = new class {};
@@ -116,7 +117,7 @@ class TypeTraitTest extends TestCase
     }
 
 
-    #[TestDox("isValueEmtpy() method must return correct value")]
+    #[TestDox("Method isValueEmtpy() must return if a value is empty")]
     public function testIsValueEmpty()
     {
         $this->assertTrue($this->isValueEmpty(''));
