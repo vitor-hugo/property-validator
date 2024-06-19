@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Torugo\PropertyValidator\Attributes\Validators\Common\IsOptional;
+use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Traits\PropertyTrait;
 
 #[Group("Unit")]
@@ -107,5 +107,27 @@ class PropertyTraitTest extends TestCase
         $property = new \ReflectionProperty($this, "mixed");
         $this->initProperty($property, $this);
         $this->assertFalse($this->isRequired());
+    }
+
+
+    #[TestDox("Method expectPropertyTypeToBe() should throw InvalidTypeException when property type is not the expected (array param)")]
+    public function testExpectPropertyTypeToBeMethod1()
+    {
+        $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage("Property 'string' must be setted as int, float or mixed.");
+        $property = new \ReflectionProperty($this, "string");
+        $this->initProperty($property, $this);
+        $this->expectPropertyTypeToBe(["int", "float", "mixed"]);
+    }
+
+
+    #[TestDox("Method expectPropertyTypeToBe() should throw InvalidTypeException when property type is not the expected (string param)")]
+    public function testExpectPropertyTypeToBeMethod2()
+    {
+        $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage("Property 'mixed' must be setted as string.");
+        $property = new \ReflectionProperty($this, "mixed");
+        $this->initProperty($property, $this);
+        $this->expectPropertyTypeToBe("string");
     }
 }
