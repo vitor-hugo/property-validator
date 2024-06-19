@@ -6,8 +6,14 @@ use Torugo\PropertyValidator\PropertyValidator;
 
 abstract class BaseValidationTestClass
 {
-    public function validate()
+    public function validate(): bool
     {
-        PropertyValidator::validate($this);
+        try {
+            PropertyValidator::validate($this);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
+        return true;
     }
 }
