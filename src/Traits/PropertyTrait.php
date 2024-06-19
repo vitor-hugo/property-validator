@@ -128,17 +128,33 @@ trait PropertyTrait
      * - Using the attribute `#[IsRequired()]`.
      * - Not setting a property type as nullable. E.g. `protected string $name`
      *
+     * Properties type 'mixed' or nullable are considered optional.
+     *
      * @return bool
      */
     protected function isRequired(): bool
     {
         $this->checkIfIsInitialized();
 
-        if ($this->property->getAttributes(IsRequired::class, \ReflectionAttribute::IS_INSTANCEOF) != null) {
+        if ($this->isUsingRequiredAttribute()) {
             return true;
         }
 
         if ($this->isNullable() == false) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Checks if the property is using the #[IsRequried()] attribute.
+     * @return bool
+     */
+    protected function isUsingRequiredAttribute(): bool
+    {
+        if ($this->property->getAttributes(IsRequired::class, \ReflectionAttribute::IS_INSTANCEOF) != null) {
             return true;
         }
 
