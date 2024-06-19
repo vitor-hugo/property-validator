@@ -80,4 +80,24 @@ trait TypeTrait
 
         return $type;
     }
+
+    /**
+     * Checks wheter a value is empty
+     * We are not using `empty()` function from PHP because values like `0` or `false` are
+     * considered empty values, and we don't want this behavior.
+     * @param mixed $value Value to be checked
+     * @return bool
+     */
+    protected function isValueEmpty(mixed $value): bool
+    {
+        if ($value === '') {
+            return true;
+        } else if ($value === []) {
+            return true;
+        } else if ($value === null) {
+            return true;
+        }
+
+        return false;
+    }
 }
