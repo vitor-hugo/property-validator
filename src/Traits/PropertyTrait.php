@@ -110,7 +110,7 @@ trait PropertyTrait
     {
         $this->checkIfIsInitialized();
 
-        if ($this->property->getAttributes(IsOptional::class, \ReflectionAttribute::IS_INSTANCEOF) != null) {
+        if ($this->isUsingIsOptionalAttribute()) {
             return true;
         }
 
@@ -120,6 +120,21 @@ trait PropertyTrait
 
         return false;
     }
+
+
+    /**
+     * Returns if the property is using the #[IsOptional()] attribute.
+     * @return bool
+     */
+    protected function isUsingIsOptionalAttribute(): bool
+    {
+        if ($this->property->getAttributes(IsOptional::class, \ReflectionAttribute::IS_INSTANCEOF) != null) {
+            return true;
+        }
+
+        return false;
+    }
+
 
     /**
      * Checks wheter a property is defined as Required
