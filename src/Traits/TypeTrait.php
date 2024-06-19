@@ -7,7 +7,7 @@ trait TypeTrait
     /**
      * Returns the type of a value
      * @param mixed $value
-     * @return string "array", "boolean", "float", "integer", "null", "object", "string" or "unknown"
+     * @return string "array", "boolean", "float", "int", "null", "object", "string" or "unknown"
      */
     protected function getType(mixed $value): string
     {
@@ -19,7 +19,7 @@ trait TypeTrait
     /**
      * Returns the type of a property, if is not setted returns "mixed"
      * @param \ReflectionProperty $property
-     * @return string "array", "boolean", "float", "integer", "mixed", "object", "string" or "unknown"
+     * @return string "array", "boolean", "float", "int", "mixed", "object", "string" or "unknown"
      */
     protected function getPropertyType(\ReflectionProperty $property): string
     {
