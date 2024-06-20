@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Integration;
+namespace Tests\Integration\Validators;
 
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Tests\Integration\Contracts\InvalidIsBooleanContract;
-use Tests\Integration\Contracts\ValidIsBooleanContract;
+use Tests\Integration\Validators\Contracts\InvalidIsBooleanContract;
+use Tests\Integration\Validators\Contracts\ValidIsBooleanContract;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 

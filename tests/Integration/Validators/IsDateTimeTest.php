@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Integration;
+namespace Tests\Integration\Validators;
 
 use DateTime;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Tests\Integration\Contracts\InvalidIsDateTimeContract;
-use Tests\Integration\Contracts\ValidIsDateTimeContract;
+use Tests\Integration\Validators\Contracts\InvalidIsDateTimeContract;
+use Tests\Integration\Validators\Contracts\ValidIsDateTimeContract;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 

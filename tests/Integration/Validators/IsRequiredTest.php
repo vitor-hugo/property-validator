@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Integration;
+namespace Tests\Integration\Validators;
 
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Tests\Integration\Contracts\InvalidIsRequiredContract;
-use Tests\Integration\Contracts\ValidIsRequiredContract;
+use Tests\Integration\Validators\Contracts\InvalidIsRequiredContract;
+use Tests\Integration\Validators\Contracts\ValidIsRequiredContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
 #[Group("Validators")]

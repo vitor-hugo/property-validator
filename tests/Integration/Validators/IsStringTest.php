@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Integration;
+namespace Tests\Integration\Validators;
 
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Tests\Integration\Contracts\ValidIsStringContract;
+use Tests\Integration\Validators\Contracts\ValidIsStringContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
 #[Group("Validators")]

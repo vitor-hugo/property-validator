@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Integration\Contracts;
+namespace Tests\Integration\Validators\Contracts;
 
 use Tests\Common\BaseValidationTestClass;
 use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsBoolean;
