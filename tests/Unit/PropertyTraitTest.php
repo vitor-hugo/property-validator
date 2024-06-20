@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Traits\PropertyTrait;
 
-#[Group("Unit")]
 #[Group("Traits")]
+#[Group("PropertyTrait")]
 #[TestDox("PropertyTrait tests")]
 class PropertyTraitTest extends TestCase
 {
