@@ -74,8 +74,8 @@ trait TypeTrait
         }
 
         // the \ReflectionProperty->getType returns 'bool' and gettype() returns 'boolean'
-        if ($type == "bool") {
-            return "boolean";
+        if ($type == "boolean") {
+            return "bool";
         }
 
         return $type;

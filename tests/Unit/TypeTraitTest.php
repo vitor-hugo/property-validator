@@ -28,7 +28,7 @@ class TypeTraitTest extends TestCase
     {
         $expects = [
             'array',
-            'boolean',
+            'bool',
             'float',
             'int',
             'null',
@@ -57,7 +57,7 @@ class TypeTraitTest extends TestCase
     {
         $expects = [
             'array',
-            'boolean',
+            'bool',
             'float',
             'float',
             'int',
@@ -96,7 +96,7 @@ class TypeTraitTest extends TestCase
 
         $propertiesToTest = [
             'arrayProp' => 'array',
-            'booleanProp' => 'boolean',
+            'booleanProp' => 'bool',
             'floatProp' => 'float',
             'intProp' => 'int',
             'mixedProp' => 'mixed',
