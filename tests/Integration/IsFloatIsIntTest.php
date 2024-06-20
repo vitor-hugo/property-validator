@@ -6,7 +6,6 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 use Tests\Integration\Contracts\ValidIsFloatIsIntContract;
-use Tests\Integration\Contracts\ValidIsNumberContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
 #[Group("Validators")]
