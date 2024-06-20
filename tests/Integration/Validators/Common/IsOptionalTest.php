@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Integration\Validators;
+namespace Tests\Integration\Validators\Common;
 
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Tests\Integration\Validators\Contracts\InvalidIsOptionalContract1;
-use Tests\Integration\Validators\Contracts\InvalidIsOptionalContract2;
-use Tests\Integration\Validators\Contracts\ValidIsOptionalContract;
+use Tests\Integration\Validators\Common\Contracts\InvalidIsOptionalContract1;
+use Tests\Integration\Validators\Common\Contracts\InvalidIsOptionalContract2;
+use Tests\Integration\Validators\Common\Contracts\ValidIsOptionalContract;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Integration\Validators;
+namespace Tests\Integration\Validators\TypeCheckers;
 
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Tests\Integration\Validators\Contracts\ValidIsFloatIsIntContract;
+use Tests\Integration\Validators\TypeCheckers\Contracts\ValidIsFloatIsIntContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
 #[Group("Validators")]
