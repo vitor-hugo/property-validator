@@ -14,7 +14,7 @@ use Torugo\PropertyValidator\Exceptions\ValidationException;
 #[Group('Validators')]
 #[Group('Common')]
 #[TestDox('IsOptional Validator')]
-class OptionalTest extends TestCase
+class IsOptionalTest extends TestCase
 {
     #[TestDox("Optional properties should be valid")]
     public function testShouldBeValid()
