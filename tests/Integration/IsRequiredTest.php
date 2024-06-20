@@ -12,7 +12,7 @@ use Torugo\PropertyValidator\Exceptions\ValidationException;
 #[Group("Validators")]
 #[Group("Common")]
 #[TestDox("IsRequired Validator")]
-class RequiredTest extends TestCase
+class IsRequiredTest extends TestCase
 {
     private ValidIsRequiredContract $stub;
 
