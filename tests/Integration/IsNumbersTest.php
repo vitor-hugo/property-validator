@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Tests\Integration\Contracts\ValidIsNumberContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
+#[Group("Validators")]
 #[Group("TypeCheckers")]
 #[Group("IsNumber")]
 #[TestDox("IsNumber Validator")]

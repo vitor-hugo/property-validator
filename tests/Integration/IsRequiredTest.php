@@ -9,6 +9,7 @@ use Tests\Integration\Contracts\InvalidIsRequiredContract;
 use Tests\Integration\Contracts\ValidIsRequiredContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
+#[Group("Validators")]
 #[Group("Common")]
 #[Group("IsRequired")]
 #[TestDox("IsRequired Validator")]
