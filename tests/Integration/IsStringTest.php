@@ -12,7 +12,7 @@ use Torugo\PropertyValidator\Exceptions\ValidationException;
 #[Group("TypeCheckers")]
 #[Group("IsString")]
 #[TestDox("IsString Validator")]
-class StringTest extends TestCase
+class IsStringTest extends TestCase
 {
     private ValidIsStringContract $stub;
 
