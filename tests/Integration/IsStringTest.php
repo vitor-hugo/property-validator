@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use Tests\Integration\Contracts\ValidIsStringContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
-#[Group("Validators")]
 #[Group("TypeCheckers")]
 #[Group("IsString")]
 #[TestDox("IsString Validator")]

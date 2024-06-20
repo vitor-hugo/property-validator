@@ -11,9 +11,9 @@ use Tests\Integration\Contracts\ValidIsOptionalContract;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
-#[Group('Validators')]
-#[Group('Common')]
-#[TestDox('IsOptional Validator')]
+#[Group("Common")]
+#[Group("IsOptional")]
+#[TestDox("IsOptional Validator")]
 class IsOptionalTest extends TestCase
 {
     #[TestDox("Optional properties should be valid")]

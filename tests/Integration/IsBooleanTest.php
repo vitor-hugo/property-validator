@@ -10,7 +10,6 @@ use Tests\Integration\Contracts\ValidIsBooleanContract;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
-#[Group("Validators")]
 #[Group("TypeCheckers")]
 #[Group("IsBoolean")]
 #[TestDox("IsBoolean Validator")]
