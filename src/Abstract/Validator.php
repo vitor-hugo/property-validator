@@ -91,7 +91,8 @@ abstract class Validator implements ValidatorInterface
     public function throwValidationException(string $message, int $code = 0): never
     {
         if (empty($this->errorMessage)) {
-            throw new ValidationException($message);
+            $className = $this->getClassName(get_class($this));
+            throw new ValidationException("$className: $message");
         } else {
             throw new ValidationException($this->errorMessage);
         }
