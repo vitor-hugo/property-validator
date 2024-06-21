@@ -5,7 +5,6 @@ namespace Torugo\PropertyValidator\Attributes\Validators\TypeCheckers;
 use Attribute;
 use Torugo\PropertyValidator\Abstract\Validator;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
-use Torugo\PropertyValidator\Exceptions\ValidationException;
 
 /**
  * Validates wheter a property value is a valid boolean value
@@ -71,7 +70,7 @@ class IsBoolean extends Validator
         }
 
         if (array_key_exists($key, self::ACCEPTED_VALUES) == false) {
-            throw new ValidationException("Invalid value ('$value') for property '{$this->propertyName}'.");
+            $this->throwValidationException("Invalid value ('$value') for property '{$this->propertyName}'.");
         }
 
         if ($this->convertToBoolean) {
