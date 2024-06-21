@@ -34,7 +34,7 @@ class IsFloatIsIntTest extends TestCase
     public function testShouldThrowWhenValueIsNotAFloat()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'float3' must receive float values, array received.");
+        $this->expectExceptionMessage("Property 'float3' must receive float values, received array.");
         $this->stub->float3 = [9.99];
         $this->stub->validate();
     }
@@ -54,7 +54,7 @@ class IsFloatIsIntTest extends TestCase
     public function testShouldThrowWhenValueIsNotAInt()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'int3' must receive int values, float received.");
+        $this->expectExceptionMessage("Property 'int3' must receive int values, received float.");
         $this->stub->int3 = 9.99;
         $this->stub->validate();
     }

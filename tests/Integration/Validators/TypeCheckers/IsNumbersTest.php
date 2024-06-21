@@ -33,7 +33,7 @@ class IsNumbersTest extends TestCase
     public function testShouldThrowWhenValueIsNotANumber()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'num3' must receive integer or float values, string received.");
+        $this->expectExceptionMessage("Property 'num3' must receive integer or float values, received string.");
         $this->stub->num3 = "2017";
         $this->stub->validate();
     }

@@ -64,7 +64,7 @@ class IsDateTimeTest extends TestCase
     public function testShouldThrowWhenNonStringReceived()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'dt3' should receive a date/time string, 'int' received.");
+        $this->expectExceptionMessage("Property 'dt3' should receive a date/time string, received 'int'.");
         $this->stub->dt3 = 2024;
         $this->stub->validate();
     }

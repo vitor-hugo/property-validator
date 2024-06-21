@@ -58,7 +58,7 @@ class IsEnumTest extends TestCase
     public function testShouldThrowWhenValueTypeIsInvalid()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'var3' expects to receive a string or an int value, array received.");
+        $this->expectExceptionMessage("Property 'var3' expects to receive a string or an int value, received array.");
         $this->stub->var3 = ["array"];
         $this->stub->validate();
     }

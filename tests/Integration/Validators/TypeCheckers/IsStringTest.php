@@ -38,7 +38,7 @@ class IsStringTest extends TestCase
     public function testShouldThrowWhenNotAString()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'str3' must receive a string, array received.");
+        $this->expectExceptionMessage("Property 'str3' must receive a string, received array.");
         $this->stub->str3 = ["array"];
         $this->stub->validate();
     }
