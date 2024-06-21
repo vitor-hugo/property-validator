@@ -2,7 +2,6 @@
 
 namespace Tests\Integration\Validators\TypeCheckers;
 
-use DateTime;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
