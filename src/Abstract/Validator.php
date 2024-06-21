@@ -92,9 +92,14 @@ abstract class Validator implements ValidatorInterface
     {
         if (empty($this->errorMessage)) {
             $className = $this->getClassName(get_class($this));
-            throw new ValidationException("$className: $message");
+            $message = "$className: $message";
         } else {
-            throw new ValidationException($this->errorMessage);
+            $message = $this->errorMessage;
         }
+
+        $message = trim($message);
+        $message .= str_ends_with($message, ".") ? "" : ".";
+
+        throw new ValidationException($message);
     }
 }
