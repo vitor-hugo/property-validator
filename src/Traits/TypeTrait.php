@@ -100,4 +100,35 @@ trait TypeTrait
 
         return false;
     }
+
+
+    /**
+     * Checks if a value's type is the expected.
+     * @param mixed $value
+     * @param array|string $expected A type name string or an array of type names
+     * @return void
+     */
+    protected function expectValueTypeToBe(mixed $value, array|string $expected): bool
+    {
+        $type = $this->getType($value);
+        return $this->isTypeValid($type, $expected);
+    }
+
+
+    /**
+     * Compares a type name with another type name or is in a list of types
+     * @param string $type Type name
+     * @param array|string $expected A type name string or an array of type names
+     * @return bool
+     */
+    protected function isTypeValid(string $type, array|string $expected): bool
+    {
+        if ($this->getType($expected) == 'array' && in_array($type, $expected, true)) {
+            return true;
+        } else if ($type === $expected) {
+            return true;
+        }
+
+        return false;
+    }
 }
