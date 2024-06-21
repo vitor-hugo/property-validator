@@ -18,7 +18,7 @@ class IsInt extends Validator
         $type = $this->getType($value);
 
         if ($type !== "int") {
-            $this->throwValidationException("Property '{$this->propertyName}' must receive int values, $type received.");
+            $this->throwValidationException("Property '{$this->propertyName}' must receive int values, received $type.");
         }
     }
 }

@@ -47,7 +47,7 @@ class IsDateTime extends Validator
     {
         $type = $this->getType($value);
         if ($type !== "string") {
-            $this->throwValidationException("Property '{$this->propertyName}' should receive a date/time string, '$type' received.");
+            $this->throwValidationException("Property '{$this->propertyName}' should receive a date/time string, received '$type'.");
         }
     }
 

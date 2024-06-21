@@ -59,7 +59,7 @@ class IsEnum extends Validator
         $expected = ["string", "int"];
 
         if (!in_array($type, $expected, true)) {
-            $this->throwValidationException("Property '{$this->propertyName}' expects to receive a string or an int value, $type received.");
+            $this->throwValidationException("Property '{$this->propertyName}' expects to receive a string or an int value, received $type.");
         }
     }
 

@@ -20,7 +20,7 @@ class IsNumber extends Validator
         $type = $this->getType($value);
 
         if ($type !== 'float' && $type !== 'int') {
-            $this->throwValidationException("Property '{$this->propertyName}' must receive integer or float values, $type received.");
+            $this->throwValidationException("Property '{$this->propertyName}' must receive integer or float values, received $type.");
         }
     }
 }

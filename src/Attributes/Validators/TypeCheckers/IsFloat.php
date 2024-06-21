@@ -18,7 +18,7 @@ class IsFloat extends Validator
         $type = $this->getType($value);
 
         if ($type !== "float" && $type !== "int") {
-            $this->throwValidationException("Property '{$this->propertyName}' must receive float values, $type received.");
+            $this->throwValidationException("Property '{$this->propertyName}' must receive float values, received $type.");
         }
     }
 }
