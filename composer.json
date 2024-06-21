@@ -1,5 +1,5 @@
 {
-  "name": "vitor/property_validator",
+  "name": "torugo/property_validator",
   "description": "Validators and Transformers for class properties",
   "type": "library",
   "license": "MIT",
