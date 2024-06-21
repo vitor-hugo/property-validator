@@ -200,23 +200,21 @@ trait PropertyTrait
      */
     protected function expectPropertyTypeToBe(array|string $expected): void
     {
-        if (gettype($expected) == 'array') {
-            if (!in_array($this->propertyType, $expected)) {
-                $msg = $this->buildTypeMessageFromArray($expected);
-                throw new InvalidTypeException("Property '{$this->propertyName}' must be setted as $msg.");
-            }
-        } else {
-            if ($this->propertyType != $expected) {
-                throw new InvalidTypeException("Property '{$this->propertyName}' must be setted as $expected.");
-            }
+        if ($this->isTypeValid($this->propertyType, $expected) === false) {
+            throw new InvalidTypeException($this->buildInvalidTypeErrorMessage($expected));
         }
     }
 
 
-    private function buildTypeMessageFromArray(array $types)
+    private function buildInvalidTypeErrorMessage(array|string $types): string
     {
-        $msg = implode(", ", $types);
-        $msg = strrev(implode(strrev(" or"), explode(strrev(","), strrev($msg), 2)));
-        return $msg;
+        if ($this->getType($types) === "array") {
+            $interp = implode(", ", $types);
+            $interp = strrev(implode(strrev(" or"), explode(strrev(","), strrev($interp), 2)));
+        } else {
+            $interp = $types;
+        }
+
+        return "Property '{$this->propertyName}' must be setted as $interp.";
     }
 }
