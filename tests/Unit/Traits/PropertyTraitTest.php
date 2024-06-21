@@ -130,4 +130,18 @@ class PropertyTraitTest extends TestCase
         $this->initProperty($property, $this);
         $this->expectPropertyTypeToBe("string");
     }
+
+
+    #[TestDox("Method buildInvalidTypeErrorMessage() should build messages correctly")]
+    public function testBuildInvalidTypeErrorMessage()
+    {
+        $property = new \ReflectionProperty($this, "mixed");
+        $this->initProperty($property, $this);
+
+        $msg = $this->buildInvalidTypeErrorMessage("array");
+        $this->assertEquals("Property 'mixed' must be setted as array.", $msg);
+
+        $msg = $this->buildInvalidTypeErrorMessage(["int", "float", "string", "bool"]);
+        $this->assertEquals("Property 'mixed' must be setted as int, float, string or bool.", $msg);
+    }
 }
