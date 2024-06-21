@@ -98,7 +98,7 @@ abstract class Validator implements ValidatorInterface
         }
 
         $message = trim($message);
-        $message .= str_ends_with($message, ".") ? "" : ".";
+        $message .= preg_match("/.*[a-zA-Z0-9]$/", $message) ? "." : "";
 
         throw new ValidationException($message);
     }
