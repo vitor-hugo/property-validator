@@ -179,6 +179,21 @@ trait PropertyTrait
 
 
     /**
+     * Returns the object class name from a namespace
+     * @param string $classNamespace
+     * @return string
+     */
+    protected function getClassName(string $classNamespace): string
+    {
+        $arr = explode('\\', $classNamespace);
+        if ($arr == false) {
+            return "";
+        }
+        return end($arr);
+    }
+
+
+    /**
      * Validates if the property type is the expected.
      * @param array|string $expected array of type names or a single string type name
      * @return void
