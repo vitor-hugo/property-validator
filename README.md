@@ -311,7 +311,7 @@ IsDouble is just an alias to [IsFloat](#isfloat) validator.
 Validates if a value's type is FLOAT.
 
 ```php
-use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsDateTime;
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsFloat;
 ```
 
 #### Parameters <!-- omit in toc -->
