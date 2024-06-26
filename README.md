@@ -15,6 +15,44 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
 - [Instalation](#instalation)
 - [Usage](#usage)
   - [Validating the data](#validating-the-data)
+- [Validating Attributes](#validating-attributes)
+  - [Type Checkers](#type-checkers)
+    - [IsBoolean](#isboolean)
+    - [IsDateTime](#isdatetime)
+    - [IsDouble](#isdouble)
+    - [IsEnum](#isenum)
+    - [IsFloat](#isfloat)
+    - [IsInt](#isint)
+    - [IsInteger](#isinteger)
+    - [IsNumber](#isnumber)
+    - [IsString](#isstring)
+  - [Arrays](#arrays)
+    - [ArrayContains](#arraycontains)
+    - [ArrayNotContains](#arraynotcontains)
+  - [Common](#common)
+    - [IsOptional](#isoptional)
+    - [IsRequired](#isrequired)
+  - [Numbers](#numbers)
+    - [IsDivisibleBy](#isdivisibleby)
+    - [IsNegative](#isnegative)
+    - [IsPositive](#ispositive)
+    - [Max](#max)
+    - [Min](#min)
+  - [Strings](#strings)
+    - [Contains](#contains)
+    - [IsAlpha](#isalpha)
+    - [IsAlphanumeric](#isalphanumeric)
+    - [IsBase64](#isbase64)
+    - [IsCnpj](#iscnpj)
+    - [IsCpf](#iscpf)
+    - [IsEmail](#isemail)
+    - [IsNumeric](#isnumeric)
+    - [IsUrl](#isurl)
+    - [Length](#length)
+    - [MaxLength](#maxlength)
+    - [MinLength](#minlength)
+    - [NotContains](#notcontains)
+    - [MatchRegex](#matchregex)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -98,6 +136,60 @@ $signInDto->validate();
 // or passing the instantiated class
 PropertyValidator::validate($signInDto);
 ```
+
+
+# Validating Attributes
+
+## Type Checkers
+
+### IsBoolean
+### IsDateTime
+### IsDouble
+### IsEnum
+### IsFloat
+### IsInt
+### IsInteger
+### IsNumber
+### IsString
+
+
+## Arrays
+
+### ArrayContains
+### ArrayNotContains
+
+
+## Common
+
+### IsOptional
+### IsRequired
+
+
+## Numbers
+
+### IsDivisibleBy
+### IsNegative
+### IsPositive
+### Max
+### Min
+
+
+## Strings
+
+### Contains
+### IsAlpha
+### IsAlphanumeric
+### IsBase64
+### IsCnpj
+### IsCpf
+### IsEmail
+### IsNumeric
+### IsUrl
+### Length
+### MaxLength
+### MinLength
+### NotContains
+### MatchRegex
 
 
 # Contribute
