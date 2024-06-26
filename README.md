@@ -300,7 +300,7 @@ public string $prop = '2017-08-01'; // Throws InvalidTypeException, property typ
 
 ### IsDouble
 
-IsDouble is just an alias to [IsFloat](#isfloat) validator.
+IsDouble is just an alias to [`IsFloat`](#isfloat) validator.
 
 
 ### IsEnum
