@@ -220,6 +220,7 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsBoolean;
 ```
 
 #### Parameters <!-- omit in toc -->
+
 | Parameter          | Type   | Description                                             |
 | :----------------- | :----- | :------------------------------------------------------ |
 | `convertToBoolean` | bool   | Converts accepted values to boolean. (Default: `false`) |
@@ -264,6 +265,39 @@ Accepted values:
 
 
 ### IsDateTime
+
+Validates whether the property value is a valid date time string.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsDateTime;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                                                                                                   |
+| :------------- | :----- | :------------------------------------------------------------------------------------------------------------ |
+| `format`       | string | Valid PHP [`DateTime::format`](https://www.php.net/manual/en/datetime.format.php) (Default: `'Y-m-d H:i:s'`). |
+| `toDateTime`   | bool   | Converts date time string to PHP DateTime object (Default: `false`)                                           |
+| `errorMessage` | string | Custom error message.                                                                                         |
+
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsDateTime()]
+public string $dt = '2024-06-26 13:56:24'; // valid
+
+#[IsDateTime('M d Y', true)]
+public mixed $prop = 'Jun 26 2024'; // valid, will be converted to \DateTime object
+
+#[IsDateTime('m-d-Y')]
+public mixed $prop = '2017-08-01'; // Throws ValidationException due to icompatible date/time format
+
+#[IsDateTime('m-d-Y', true)]
+public string $prop = '2017-08-01'; // Throws InvalidTypeException, property type should be 'mixed'
+```
+
+
 ### IsDouble
 ### IsEnum
 ### IsFloat
