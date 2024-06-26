@@ -299,8 +299,41 @@ public string $prop = '2017-08-01'; // Throws InvalidTypeException, property typ
 
 
 ### IsDouble
+
+IsDouble is just an alias to [IsFloat](#isfloat) validator.
+
+
 ### IsEnum
+
+
 ### IsFloat
+
+Validates if a value's type is FLOAT.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsDateTime;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[isFloat()]
+public float $num = 3.1415; // valid
+
+#[isFloat()]
+public float $num = 124; // valid
+
+#[isFloat()]
+public mixed $num = "9.99"; // Invalid
+```
+
+
 ### IsInt
 ### IsInteger
 ### IsNumber
