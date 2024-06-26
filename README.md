@@ -205,12 +205,64 @@ class SignInDto
 }
 ```
 
+<!-- MARK: Validators -->
 
 # Validators
 
 ## Type Checkers
 
 ### IsBoolean
+
+Validates wheter a property data is a valid boolean value.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsBoolean;
+```
+
+#### Parameters <!-- omit in toc -->
+| Parameter          | Type   | Description                                             |
+| :----------------- | :----- | :------------------------------------------------------ |
+| `convertToBoolean` | bool   | Converts accepted values to boolean. (Default: `false`) |
+| `errorMessage`     | string | Custom error message.                                   |
+
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsBoolean()]
+public mixed $prop = true;
+
+#[IsBoolean()]
+public mixed $prop = 'no'; // Is evaluated as false, but not converted
+
+#[IsBoolean(true)]
+public mixed $prop = 'yes'; // Will convert to true
+```
+
+Accepted values:
+
+| Value     | Type   | Evaluate as |
+| :-------- | :----- | :---------- |
+| `1`       | int    | TRUE        |
+| `'1'`     | string | TRUE        |
+| `'true'`  | string | TRUE        |
+| `'t'`     | string | TRUE        |
+| `'ok'`    | string | TRUE        |
+| `'yes'`   | string | TRUE        |
+| `'y'`     | string | TRUE        |
+| `'sim'`   | string | TRUE        |
+| `'s'`     | string | TRUE        |
+| `0`       | int    | FALSE       |
+| `'0'`     | string | FALSE       |
+| `'false'` | string | FALSE       |
+| `'f'`     | string | FALSE       |
+| `'no'`    | string | FALSE       |
+| `'not'`   | string | FALSE       |
+| `'n'`     | string | FALSE       |
+| `'não'`   | string | FALSE       |
+| `'nao'`   | string | FALSE       |
+
+
 ### IsDateTime
 ### IsDouble
 ### IsEnum
