@@ -323,13 +323,13 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsFloat;
 #### Examples <!-- omit in toc -->
 
 ```php
-#[isFloat()]
+#[IsFloat()]
 public float $num = 3.1415; // valid
 
-#[isFloat()]
+#[IsFloat()]
 public float $num = 124; // valid
 
-#[isFloat()]
+#[IsFloat()]
 public mixed $num = "9.99"; // Invalid
 ```
 
