@@ -335,7 +335,38 @@ public mixed $num = "9.99"; // Invalid
 
 
 ### IsInt
+
+Validates whether the value of a property is of type integer.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsFloat;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsInt()]
+public int $num = 2048; // valid
+
+#[IsInt()]
+public mixed $num = 9.99; // invalid
+
+#[IsInt()]
+public mixed $num = "512"; // Invalid
+```
+
+
 ### IsInteger
+
+`IsInterger` is just an alias to [`IsInt`](#isint) validator.
+
+
 ### IsNumber
 ### IsString
 
