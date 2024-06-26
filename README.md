@@ -17,7 +17,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [Validating the data](#validating-the-data)
   - [Error Handling](#error-handling)
   - [Custom error message](#custom-error-message)
-- [Validating Attributes](#validating-attributes)
+- [Validators](#validators)
   - [Type Checkers](#type-checkers)
     - [IsBoolean](#isboolean)
     - [IsDateTime](#isdatetime)
@@ -206,7 +206,7 @@ class SignInDto
 ```
 
 
-# Validating Attributes
+# Validators
 
 ## Type Checkers
 
