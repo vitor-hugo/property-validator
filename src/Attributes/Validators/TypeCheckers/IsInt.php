@@ -6,7 +6,7 @@ use Attribute;
 use Torugo\PropertyValidator\Abstract\Validator;
 
 /**
- * Validates if a value's type is INT.
+ * Validates whether the value of a property is of type integer.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class IsInt extends Validator
