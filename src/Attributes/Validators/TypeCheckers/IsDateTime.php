@@ -14,12 +14,12 @@ class IsDateTime extends Validator
 {
     /**
      * @param string $format Valid PHP `DateTime::format`, default is `'Y-m-d H:i:s'`. [(documentation)](https://www.php.net/manual/en/datetime.format.php)
-     * @param mixed $convertToDateTimeObject Converts a date/time string to PHP DateTime object (default: `false`). If `true` the property type must be setted to `mixed`.
+     * @param mixed $toDateTime Converts a date/time string to PHP DateTime object (default: `false`). If `true` the property type must be setted to `mixed`.
      * @param string|null $errorMessage Message to be displayed in case of validation error.
      */
     public function __construct(
         private string $format = "Y-m-d H:i:s",
-        private $convertToDateTimeObject = false,
+        private $toDateTime = false,
         string|null $errorMessage = null
     ) {
         parent::__construct($errorMessage);
@@ -31,13 +31,13 @@ class IsDateTime extends Validator
         $this->expectPropertyTypeToBe(["string", "mixed"]);
         $this->validateReceivedValue($value);
 
-        if ($this->convertToDateTimeObject && $this->propertyType !== "mixed") {
+        if ($this->toDateTime && $this->propertyType !== "mixed") {
             throw new InvalidTypeException("Property '{$this->propertyName}' must be setted to 'mixed' in order to convert do DateTime object.");
         }
 
         $dateTime = $this->validateDateTimeString($value);
 
-        if ($this->convertToDateTimeObject) {
+        if ($this->toDateTime) {
             $this->setValue($dateTime);
         }
     }

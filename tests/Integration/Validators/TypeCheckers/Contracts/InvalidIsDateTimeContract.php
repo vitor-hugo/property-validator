@@ -7,6 +7,6 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsDateTime;
 
 class InvalidIsDateTimeContract extends BaseValidationTestClass
 {
-    #[IsDateTime(convertToDateTimeObject: true)]
+    #[IsDateTime(toDateTime: true)]
     public string $dt1 = "2017-08-01 14:45:00";
 }

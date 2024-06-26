@@ -13,7 +13,7 @@ class ValidIsDateTimeContract extends BaseValidationTestClass
     #[IsDateTime(format: "m/d/Y")]
     public string $dt2 = "01/03/1892";
 
-    #[IsDateTime(convertToDateTimeObject: true)]
+    #[IsDateTime(toDateTime: true)]
     public mixed $dt3 = "2024-06-20 14:54:37";
 
     #[IsDateTime("d/m/Y H:i", true, errorMessage: "Invalid Date/Time String!!!!")]

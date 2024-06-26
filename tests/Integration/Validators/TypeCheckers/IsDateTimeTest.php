@@ -32,7 +32,7 @@ class IsDateTimeTest extends TestCase
 
 
     #[TestDox("Should convert a string date/time to PHP DateTime object")]
-    public function testShouldConvertToDateTimeObject()
+    public function testShouldtoDateTime()
     {
         $this->assertTrue($this->stub->validate());
         $this->assertTrue(is_a($this->stub->dt3, "DateTime"));
