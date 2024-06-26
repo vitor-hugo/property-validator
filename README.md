@@ -15,6 +15,8 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
 - [Instalation](#instalation)
 - [Usage](#usage)
   - [Validating the data](#validating-the-data)
+  - [Error Handling](#error-handling)
+  - [Custom error message](#custom-error-message)
 - [Validating Attributes](#validating-attributes)
   - [Type Checkers](#type-checkers)
     - [IsBoolean](#isboolean)
@@ -135,6 +137,72 @@ $signInDto->validate();
 
 // or passing the instantiated class
 PropertyValidator::validate($signInDto);
+```
+
+
+## Error Handling
+
+Validators can throw:
+
+**`ValidationException`:**  
+Throwed on validation errors.
+
+**`InvalidTypeException`:**  
+Throwed when the property is declared with invalid type,
+or the received data has invalid type.
+
+So you can wrap the validation in a `try/catch` block.
+
+### Examples <!-- omit in toc -->
+
+```php
+try {
+    $signInDto->validate();
+} catch (\Throwable $th) {
+    // Handle the error
+}
+```
+
+or
+
+```php
+use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
+use Torugo\PropertyValidator\Exceptions\ValidationException;
+
+try {
+    PropertyValidator::validate($signInDto);
+} catch (ValidationException $ex) {
+    // Handle the error
+} catch (InvalidTypeException $ex) {
+    // Handle the error
+} catch (\Throwable $th) {
+    // Handle the error
+}
+```
+
+
+## Custom error message
+
+All [**VALIDATING ATTRIBUTES**](#validating-attributes) have an argument
+called `$errorMessage`, where you can define a custom error message.
+If not defined, the default error messages from each validator will be thrown.
+
+Consult each validator's documentation to see the position of the argument,
+or use PHP's named arguments feature.
+
+### Example <!-- omit in toc -->
+
+```php
+class SignInDto
+{
+    #[IsRequired('Email is required')]
+    #[MaxLenth(100, 'Email can have up to 100 characters')]
+    #[IsEmail(errorMessage: 'Invalid email')] // named argument
+    #[ToLowerCase()]
+    public $email = '';
+    
+    //...
+}
 ```
 
 
