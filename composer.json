@@ -1,6 +1,6 @@
 {
-  "name": "torugo/property_validator",
-  "description": "Validators and Transformers for class properties",
+  "name": "torugo/property-validator",
+  "description": "Validators and Handlers for class properties.",
   "type": "library",
   "license": "MIT",
   "autoload": {
