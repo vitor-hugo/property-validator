@@ -559,17 +559,17 @@ use Torugo\PropertyValidator\Attributes\Validators\Strings\Contains;
 > This validator requires the property to be set to `mixed`
 
 ```php
-#[IsString()]
-public string $prop = "I'll be back"; // valid
+#[Contains('Approved')]
+public string $prop = "Approved"; // valid
 
-#[IsString()]
-public mixed $prop = "R$ 3.547,61"; // valid
+#[Contains('Approved')]
+public mixed $prop = "Refused"; // invalid
 
-#[IsString()]
-public $prop = ["A", "B", "C"]; // invalid
+#[Contains('Approved', false)] // case sensitiveness disabled
+public $prop = 'APPROVED'; // valid
 
-#[IsString()]
-public $prop = 898; // invalid
+#[Contains('Approved')] // case sensitiveness enalbed
+public $prop = 'APPROVED'; // invalid
 ```
 
 ---
