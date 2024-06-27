@@ -398,18 +398,18 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsEnum;
 
 <table>
 <tr>
-<th style="text-align: center; color: limegreen">Valid: String enum</th>
-<th style="text-align: center; color: limegreen">Valid: Int enum</th>
-<th style="text-align: center; color: red">Invalid: Not backed enum</th>
+<th>Valid<br>String enum</th>
+<th>Valid<br>Int enum</th>
+<th>Invalid<br>Not backed enum</th>
 </tr>
 <tr>
 <td>
 <pre lang="php">
-enum DesktopOS: string
+enum DeskOS: string
 {
-    case Linux = "L";
-    case MacOS = "M";
-    case Windows = "W";
+  case Linux = "L";
+  case MacOS = "M";
+  case Windows = "W";
 }
 </pre>
 </td>
@@ -417,9 +417,9 @@ enum DesktopOS: string
 <pre lang="php">
 enum Database: int 
 {
-    case MySql = 0;
-    case Postgres = 1;
-    case Mongo = 2;
+  case MySql = 0;
+  case Postgres = 1;
+  case Mongo = 2;
 }
 </pre>
 </td>
@@ -427,9 +427,9 @@ enum Database: int
 <pre lang="php">
 enum MobileOS
 {
-    case Android;
-    case iOS;
-    case iPadOS;
+  case Android;
+  case iOS;
+  case iPadOS;
 }
 </pre>
 </td>
@@ -438,7 +438,7 @@ enum MobileOS
 
 
 ```php
-#[IsEnum(DesktopOS::class)]
+#[IsEnum(DeskOS::class)]
 public string $desktopOS = "L"; // valid
 
 #[IsFloat(Database:class)]
