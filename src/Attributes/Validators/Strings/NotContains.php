@@ -8,7 +8,8 @@ use Torugo\PropertyValidator\Exceptions\ValidationException;
 use Torugo\TString\Traits\Validators\TStringContains;
 
 /**
- * Checks if a substring is contained in another string.
+ * Checks whether a substring is contained in the received value,
+ * if so, throws an exception.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class NotContains extends IsString
