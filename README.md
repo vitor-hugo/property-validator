@@ -18,6 +18,9 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [Error Handling](#error-handling)
   - [Custom error message](#custom-error-message)
 - [Validators](#validators)
+  - [Common](#common)
+    - [IsOptional](#isoptional)
+    - [IsRequired](#isrequired)
   - [Type Checkers](#type-checkers)
     - [IsBoolean](#isboolean)
     - [IsDateTime](#isdatetime)
@@ -31,9 +34,6 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [Arrays](#arrays)
     - [ArrayContains](#arraycontains)
     - [ArrayNotContains](#arraynotcontains)
-  - [Common](#common)
-    - [IsOptional](#isoptional)
-    - [IsRequired](#isrequired)
   - [Numbers](#numbers)
     - [IsDivisibleBy](#isdivisibleby)
     - [IsNegative](#isnegative)
@@ -208,6 +208,73 @@ class SignInDto
 <!-- MARK: Validators -->
 
 # Validators
+
+## Common
+
+### IsOptional
+
+Defines a property as optional, so its value can be empty or null.
+
+> [!NOTE]
+> By default, all properties of a class that use any of the attributes
+> of this library are treated as required.
+
+```php
+use Torugo\PropertyValidator\Attributes\Common\IsOptional;
+```
+
+#### Examples <!-- omit in toc -->
+
+> [!IMPORTANT]
+> When setting the type of a property other than 'mixed', you must set the
+> type to optional as well by placing a question mark a the beggining.  
+> E.g. `?string`, `?int`, `?array`, ...
+
+```php
+#[IsOptional()]
+public mixed $prop = null; // valid
+
+#[IsOptional()]
+public ?string $prop = ''; // valid, string can be emtpy
+
+#[IsOptional()]
+public ?array $prop = []; // valid, array can be empty
+
+#[IsOptional()]
+public string $prop = null; // invalid, should be setted as ?string
+```
+
+
+### IsRequired
+
+Defines a property as required, so that the value cannot be null or empty.
+
+By default, all properties of a class that use any of the attributes in this
+library are treated as required, so using this attribute is only for defining
+a custom error message when necessary.
+
+```php
+use Torugo\PropertyValidator\Attributes\Common\IsRequired;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsRequired('Password cannot be empty')]
+public string $password = ''; // invalid
+
+#[IsRequired('My prop cannot be empty')]
+public array $prop = []; // invalid
+
+#[IsRequired("Prop can't be empty or null")]
+public mixed $prop = null; // invalid
+```
 
 ## Type Checkers
 
@@ -443,12 +510,6 @@ public $prop = 898; // invalid
 
 ### ArrayContains
 ### ArrayNotContains
-
-
-## Common
-
-### IsOptional
-### IsRequired
 
 
 ## Numbers
