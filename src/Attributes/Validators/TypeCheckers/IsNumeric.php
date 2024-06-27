@@ -9,6 +9,7 @@ use Torugo\TString\Traits\Validators\TStringIsNumeric;
 /**
  * Validates whether the value of a property is numeric.
  * Only float, int or numeric string types are allowed.
+ * Requires the property to be set to `mixed`
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class IsNumeric extends Validator
@@ -17,7 +18,7 @@ class IsNumeric extends Validator
 
     public function validation(mixed $value): void
     {
-        $this->expectPropertyTypeToBe(["int", "float", "string", "mixed"]);
+        $this->expectPropertyTypeToBe(["mixed"]);
 
         $type = $this->getType($value);
 

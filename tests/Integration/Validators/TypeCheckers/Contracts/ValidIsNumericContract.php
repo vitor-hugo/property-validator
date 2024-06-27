@@ -8,10 +8,10 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsNumeric;
 class ValidIsNumericContract extends BaseValidationTestClass
 {
     #[IsNumeric()]
-    public int $num1 = 2048;
+    public $num1 = 2048;
 
     #[IsNumeric()]
-    public float $num2 = 3.1415;
+    public $num2 = 3.1415;
 
     #[IsNumeric()]
     public mixed $num3 = "1,999.99";

@@ -5,7 +5,9 @@ namespace Tests\Integration\Validators\TypeCheckers;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
+use Tests\Integration\Validators\TypeCheckers\Contracts\InvalidIsNumericContract;
 use Tests\Integration\Validators\TypeCheckers\Contracts\ValidIsNumericContract;
+use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
 #[Group("Validators")]
@@ -60,5 +62,15 @@ class IsNumericTest extends TestCase
         $this->expectExceptionMessage("Not a number!!!");
         $this->stub->num4 = ["array"];
         $this->stub->validate();
+    }
+
+
+    #[TestDox("Should throw InvalidTypeException when the property\'s type is not mixed")]
+    public function testShouldThrowInvalidTypeExceptionWhenPropertyTypeIsNotMixed()
+    {
+        $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage("Property 'num1' must be setted as mixed.");
+        $stub = new InvalidIsNumericContract;
+        $stub->validate();
     }
 }
