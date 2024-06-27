@@ -498,9 +498,6 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsString;
 
 #### Examples <!-- omit in toc -->
 
-> [!IMPORTANT]
-> This validator requires the property to be set to `mixed`
-
 ```php
 #[IsString()]
 public string $prop = "I'll be back"; // valid
@@ -554,9 +551,6 @@ use Torugo\PropertyValidator\Attributes\Validators\Strings\Contains;
 | `errorMessage`  | string | Custom error message.                                |
 
 #### Examples <!-- omit in toc -->
-
-> [!IMPORTANT]
-> This validator requires the property to be set to `mixed`
 
 ```php
 #[Contains('Approved')]
