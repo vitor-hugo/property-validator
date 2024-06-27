@@ -8,7 +8,7 @@ use Torugo\PropertyValidator\Exceptions\ValidationException;
 use Torugo\TString\Traits\Validators\TStringContains;
 
 /**
- * Checks if a substring is contained in another string.
+ * Validates whether a substring is contained in the value of a property.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class Contains extends IsString
@@ -18,7 +18,7 @@ class Contains extends IsString
     /**
      * @param string $substring The substring to search for in the property's value
      * @param bool $caseSensitive Should be case sensitive? default `true`
-     * @param string|null $errorMessage
+     * @param string|null $errorMessage Custom error message
      */
     public function __construct(
         private string $substring,
