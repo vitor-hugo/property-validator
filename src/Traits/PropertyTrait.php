@@ -22,7 +22,7 @@ trait PropertyTrait
     /** The type of the property, if not declared it will be considered 'mixed' */
     protected string $propertyType;
 
-    /** The type of the property, if not declared it will be considered 'mixed' */
+    /** The value of the property */
     protected mixed $propertyValue;
 
     /** Indicates if the property was initialized */
