@@ -404,34 +404,28 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsEnum;
 </tr>
 <tr>
 <td>
-<pre lang="php">
-enum DeskOS: string
+<pre lang="php">enum DeskOS: string
 {
   case Linux = "L";
   case MacOS = "M";
   case Windows = "W";
-}
-</pre>
+}</pre>
 </td>
 <td>
-<pre lang="php">
-enum Database: int 
+<pre lang="php">enum Database: int 
 {
   case MySql = 0;
   case Postgres = 1;
   case Mongo = 2;
-}
-</pre>
+}</pre>
 </td>
 <td>
-<pre lang="php">
-enum MobileOS
+<pre lang="php">enum MobileOS
 {
   case Android;
   case iOS;
   case iPadOS;
-}
-</pre>
+}</pre>
 </td>
 </tr>
 </table>
