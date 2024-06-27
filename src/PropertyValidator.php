@@ -5,7 +5,7 @@ namespace Torugo\PropertyValidator;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
-use Torugo\PropertyValidator\Interfaces\TransformerInterface;
+use Torugo\PropertyValidator\Interfaces\HandlerInterface;
 use Torugo\PropertyValidator\Interfaces\ValidatorInterface;
 
 class PropertyValidator
@@ -57,8 +57,8 @@ class PropertyValidator
 
             if ($instance instanceof ValidatorInterface) {
                 $instance->validate($property, $class);
-            } else if ($instance instanceof TransformerInterface) {
-                $instance->transform($property, $class);
+            } else if ($instance instanceof HandlerInterface) {
+                $instance->handle($property, $class);
             }
         }
     }
