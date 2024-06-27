@@ -533,7 +533,47 @@ public $prop = 898; // invalid
 
 ## Strings
 
+> [!IMPORTANT]
+> All string validators in this section extend the `IsString` validator,
+> so you don't need to use it.
+
 ### Contains
+
+Validates whether a substring is contained in the property's value.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\Contains;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter       | Type   | Description                                          |
+| :-------------- | :----- | :--------------------------------------------------- |
+| `substring`     | string | The substring to search for in the property's value. |
+| `caseSensitive` | bool   | Case sensitiveness. (Default: `true`)                |
+| `errorMessage`  | string | Custom error message.                                |
+
+#### Examples <!-- omit in toc -->
+
+> [!IMPORTANT]
+> This validator requires the property to be set to `mixed`
+
+```php
+#[IsString()]
+public string $prop = "I'll be back"; // valid
+
+#[IsString()]
+public mixed $prop = "R$ 3.547,61"; // valid
+
+#[IsString()]
+public $prop = ["A", "B", "C"]; // invalid
+
+#[IsString()]
+public $prop = 898; // invalid
+```
+
+---
+
 ### IsAlpha
 ### IsAlphanumeric
 ### IsBase64
