@@ -277,6 +277,7 @@ public array $prop = []; // invalid
 public mixed $prop = null; // invalid
 ```
 
+
 ## Type Checkers
 
 ### IsBoolean
@@ -331,6 +332,7 @@ Accepted values:
 | `'não'`   | string | FALSE       |
 | `'nao'`   | string | FALSE       |
 
+---
 
 ### IsDateTime
 
@@ -365,14 +367,17 @@ public mixed $prop = '2017-08-01'; // Throws ValidationException due to icompati
 public string $prop = '2017-08-01'; // Throws InvalidTypeException, property type should be 'mixed'
 ```
 
+---
 
 ### IsDouble
 
 IsDouble is just an alias to [`IsFloat`](#isfloat) validator.
 
+---
 
 ### IsEnum
 
+---
 
 ### IsFloat
 
@@ -401,6 +406,7 @@ public float $num = 124; // valid
 public mixed $num = "9.99"; // Invalid
 ```
 
+---
 
 ### IsInt
 
@@ -429,11 +435,13 @@ public mixed $num = 9.99; // invalid
 public mixed $num = "512"; // Invalid
 ```
 
+---
 
 ### IsInteger
 
 `IsInterger` is just an alias to [`IsInt`](#isint) validator.
 
+---
 
 ### IsNumberic
 
@@ -472,6 +480,7 @@ public mixed $num = "USD 9.99" ; // Invalid
 public int $num = 1983; // Invalid, property must be declared as mixed
 ```
 
+---
 
 ### IsString
 
