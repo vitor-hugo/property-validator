@@ -22,6 +22,9 @@ trait PropertyTrait
     /** The type of the property, if not declared it will be considered 'mixed' */
     protected string $propertyType;
 
+    /** The type of the property, if not declared it will be considered 'mixed' */
+    protected mixed $propertyValue;
+
     /** Indicates if the property was initialized */
     private $isInitialized = false;
 
@@ -51,6 +54,7 @@ trait PropertyTrait
         $this->propertyName = $property->getName();
         $this->propertyType = $this->getPropertyType($property);
         $this->isInitialized = true;
+        $this->propertyValue = $this->getValue();
     }
 
 
@@ -76,6 +80,7 @@ trait PropertyTrait
         $this->checkIfIsInitialized();
 
         $this->property->setValue($this->class, $value);
+        $this->propertyValue = $value;
     }
 
 
