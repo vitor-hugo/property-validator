@@ -26,7 +26,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsFloat](#isfloat)
     - [IsInt](#isint)
     - [IsInteger](#isinteger)
-    - [IsNumber](#isnumber)
+    - [IsNumberic](#isnumberic)
     - [IsString](#isstring)
   - [Arrays](#arrays)
     - [ArrayContains](#arraycontains)
@@ -367,7 +367,44 @@ public mixed $num = "512"; // Invalid
 `IsInterger` is just an alias to [`IsInt`](#isint) validator.
 
 
-### IsNumber
+### IsNumberic
+
+Validates whether the value of a property is numeric.
+Only float, int or numeric string types are allowed.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsNumeric;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+> [!IMPORTANT]
+> This validator requires the property to be set to `mixed`
+
+```php
+#[IsNumeric()]
+public $num = 2048; // valid
+
+#[IsNumeric()]
+public mixed $num = 9.99; // valid
+
+#[IsNumeric()]
+public mixed $num = "512.256.128,64"; // valid
+
+#[IsNumeric()]
+public mixed $num = "USD 9.99" ; // Invalid
+
+#[IsNumeric()]
+public int $num = 1983; // Invalid, property must be declared as mixed
+```
+
+
 ### IsString
 
 
