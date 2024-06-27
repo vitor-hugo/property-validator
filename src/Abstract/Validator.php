@@ -20,6 +20,8 @@ abstract class Validator implements ValidatorInterface
 
     /**
      * Performs property value validation
+     *
+     * @throws \Torugo\PropertyValidator\Exceptions\ValidationException
      * @return void
      */
     public abstract function validation(mixed $value): void;
