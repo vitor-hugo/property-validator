@@ -206,20 +206,37 @@ trait PropertyTrait
     protected function expectPropertyTypeToBe(array|string $expected): void
     {
         if ($this->isTypeValid($this->propertyType, $expected) === false) {
-            throw new InvalidTypeException($this->buildInvalidTypeErrorMessage($expected));
+            $types = $this->writeListOfTypes($expected);
+            throw new InvalidTypeException("Property '{$this->propertyName}' must be setted as $types.");
         }
     }
 
 
-    private function buildInvalidTypeErrorMessage(array|string $types): string
+    /**
+     * Validates if the property value type is the expected.
+     * @param array|string $expected array of type names or a single string type name
+     * @return void
+     */
+    protected function expectPropertyValueToBe(array|string $expected): void
+    {
+        $valueType = $this->getType($this->propertyValue);
+
+        if ($this->isTypeValid($valueType, $expected) === false) {
+            $types = $this->writeListOfTypes($expected);
+            throw new InvalidTypeException("The value type of '{$this->propertyName}' must be setted as $types, $valueType received.");
+        }
+    }
+
+
+    private function writeListOfTypes(array|string $types): string
     {
         if ($this->getType($types) === "array") {
-            $interp = implode(", ", $types);
-            $interp = strrev(implode(strrev(" or"), explode(strrev(","), strrev($interp), 2)));
+            $interpolation = implode(", ", $types);
+            $interpolation = strrev(implode(strrev(" or"), explode(strrev(","), strrev($interpolation), 2)));
         } else {
-            $interp = $types;
+            $interpolation = $types;
         }
 
-        return "Property '{$this->propertyName}' must be setted as $interp.";
+        return $interpolation;
     }
 }
