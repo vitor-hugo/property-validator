@@ -579,7 +579,42 @@ public $prop = 'APPROVED'; // invalid
 ### Length
 ### MaxLength
 ### MinLength
+
+---
+
 ### NotContains
+
+Checks whether a substring is contained in the received value,
+if so, throws an exception.
+
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\NotContains;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter       | Type   | Description                                          |
+| :-------------- | :----- | :--------------------------------------------------- |
+| `substring`     | string | The substring to search for in the property's value. |
+| `caseSensitive` | bool   | Case sensitiveness. (Default: `true`)                |
+| `errorMessage`  | string | Custom error message.                                |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[NotContains('Break')]
+public string $prop = "Break a leg"; // throws ValidationException
+
+#[NotContains('CUT')]
+public mixed $prop = "To cut corners"; // not throws, case sensitiveness enabled
+
+#[NotContains('BULLET', false)] // Case sensitiveness enabled
+public $prop = 'Bite the bullet'; // throws ValidationException
+```
+
+---
+
 ### MatchRegex
 
 
