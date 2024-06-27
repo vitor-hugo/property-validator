@@ -398,9 +398,9 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsEnum;
 
 <table>
 <tr>
-<th style="text-align: center; color: limegreen">VALID: STRING ENUM</th>
-<th style="text-align: center; color: limegreen">VALID: INT ENUM</th>
-<th style="text-align: center; color: red">INVALID: NOT BACKED ENUM</th>
+<th style="text-align: center; color: limegreen">Valid: String enum</th>
+<th style="text-align: center; color: limegreen">Valid: Int enum</th>
+<th style="text-align: center; color: red">Invalid: Not backed enum</th>
 </tr>
 <tr>
 <td>
@@ -425,7 +425,7 @@ enum Database: int
 </td>
 <td>
 <pre lang="php">
-enum MobileOS        
+enum MobileOS
 {
     case Android;
     case iOS;
