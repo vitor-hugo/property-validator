@@ -407,6 +407,37 @@ public int $num = 1983; // Invalid, property must be declared as mixed
 
 ### IsString
 
+Validates whether the type of a value is string.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsString;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+> [!IMPORTANT]
+> This validator requires the property to be set to `mixed`
+
+```php
+#[IsString()]
+public string $prop = "I'll be back"; // valid
+
+#[IsString()]
+public mixed $prop = "R$ 3.547,61"; // valid
+
+#[IsString()]
+public $prop = ["A", "B", "C"]; // invalid
+
+#[IsString()]
+public $prop = 898; // invalid
+```
+
 
 ## Arrays
 
