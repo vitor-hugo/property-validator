@@ -377,6 +377,80 @@ IsDouble is just an alias to [`IsFloat`](#isfloat) validator.
 
 ### IsEnum
 
+Validates if the property's value is a member of a given [backed enum](https://www.php.net/manual/en/language.enumerations.backed.php).
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsEnum;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `enum`         | string | The enum name.        |
+| `errorMessage` | string | Custom error message. |
+
+
+#### Examples <!-- omit in toc -->
+
+> [!IMPORTANT]
+> The ENUM used to validate the data must be [BACKED](https://www.php.net/manual/en/language.enumerations.backed.php).
+
+<table>
+<tr>
+<th style="text-align: center; color: limegreen">VALID: STRING ENUM</th>
+<th style="text-align: center; color: limegreen">VALID: INT ENUM</th>
+<th style="text-align: center; color: red">INVALID: NOT BACKED ENUM</th>
+</tr>
+<tr>
+<td>
+<pre lang="php">
+enum DesktopOS: string
+{
+    case Linux = "L";
+    case MacOS = "M";
+    case Windows = "W";
+}
+</pre>
+</td>
+<td>
+<pre lang="php">
+enum Database: int 
+{
+    case MySql = 0;
+    case Postgres = 1;
+    case Mongo = 2;
+}
+</pre>
+</td>
+<td>
+<pre lang="php">
+enum MobileOS        
+{
+    case Android;
+    case iOS;
+    case iPadOS;
+}
+</pre>
+</td>
+</tr>
+</table>
+
+
+```php
+#[IsEnum(DesktopOS::class)]
+public string $desktopOS = "L"; // valid
+
+#[IsFloat(Database:class)]
+public int $database = 1; // valid
+
+#[IsFloat(Database:class)]
+public int $database = 3; // Invalid, not exists
+
+#[IsFloat(MobileOS:class)]
+public mixed $num = "Android"; // Invalid, not backed enum
+```
+
 ---
 
 ### IsFloat
@@ -394,7 +468,7 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsFloat;
 | `errorMessage` | string | Custom error message. |
 
 #### Examples <!-- omit in toc -->
-
+ 
 ```php
 #[IsFloat()]
 public float $num = 3.1415; // valid
