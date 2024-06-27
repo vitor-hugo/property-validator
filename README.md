@@ -244,6 +244,7 @@ public ?array $prop = []; // valid, array can be empty
 public string $prop = null; // invalid, should be setted as ?string
 ```
 
+---
 
 ### IsRequired
 
