@@ -45,7 +45,7 @@ abstract class Validator implements ValidatorInterface
         $this->initProperty($property, $class);
 
         if ($this->isValidationNecessary()) {
-            $this->validation($this->getValue());
+            $this->validation($this->propertyValue);
         }
     }
 
