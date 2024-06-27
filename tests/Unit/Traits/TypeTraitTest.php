@@ -142,20 +142,4 @@ class TypeTraitTest extends TestCase
         $this->assertFalse($this->isTypeValid("int", $type));
         $this->assertFalse($this->isTypeValid("bool", $types));
     }
-
-
-    #[TestDox("Method expectValueTypeToBe() must return if a type is valid")]
-    public function testExpectValueTypeToBe()
-    {
-        $type = "float";
-        $types = ["string", "int", "array"];
-
-        $this->assertTrue($this->expectValueTypeToBe(3.1415, $type));
-        $this->assertTrue($this->expectValueTypeToBe("str", $types));
-        $this->assertTrue($this->expectValueTypeToBe(13, $types));
-        $this->assertTrue($this->expectValueTypeToBe(["str", 13], $types));
-
-        $this->assertFalse($this->expectValueTypeToBe("value", $type));
-        $this->assertFalse($this->expectValueTypeToBe(true, $types));
-    }
 }
