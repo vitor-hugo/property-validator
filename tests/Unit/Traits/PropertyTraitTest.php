@@ -132,16 +132,16 @@ class PropertyTraitTest extends TestCase
     }
 
 
-    #[TestDox("Method buildInvalidTypeErrorMessage() should build messages correctly")]
+    #[TestDox("Method writeListOfTypes() should build a list of types separated by 'comma' and a final 'or'")]
     public function testBuildInvalidTypeErrorMessage()
     {
         $property = new \ReflectionProperty($this, "mixed");
         $this->initProperty($property, $this);
 
-        $msg = $this->buildInvalidTypeErrorMessage("array");
-        $this->assertEquals("Property 'mixed' must be setted as array.", $msg);
+        $msg = $this->writeListOfTypes("array");
+        $this->assertEquals("array", $msg);
 
-        $msg = $this->buildInvalidTypeErrorMessage(["int", "float", "string", "bool"]);
-        $this->assertEquals("Property 'mixed' must be setted as int, float, string or bool.", $msg);
+        $msg = $this->writeListOfTypes(["int", "float", "string", "bool"]);
+        $this->assertEquals("int, float, string or bool", $msg);
     }
 }
