@@ -6,7 +6,7 @@ use Attribute;
 use Torugo\PropertyValidator\Abstract\Validator;
 
 /**
- * Defines a property as optional, so it's nullable
+ * Defines a property as optional, so its value can be empty or null.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class IsOptional extends Validator

@@ -6,7 +6,11 @@ use Attribute;
 use Torugo\PropertyValidator\Abstract\Validator;
 
 /**
- * Defines a property as required, therefore it is not nullable
+ * Defines a property as required, so that the value cannot be null or empty.
+ *
+ * By default, all properties of a class that use any of the attributes in this
+ * library are treated as required, so using this attribute is only for defining
+ * a custom error message when necessary.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class IsRequired extends Validator
