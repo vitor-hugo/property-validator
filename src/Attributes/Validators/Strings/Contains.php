@@ -34,7 +34,7 @@ class Contains extends IsString
         parent::validation($value);
 
         if (self::contains($value, $this->substring, $this->caseSensitive) == false) {
-            throw new ValidationException("Property '{$this->propertyName}' not contains '{$this->substring}'.");
+            $this->throwValidationException("Property '{$this->propertyName}' not contains '{$this->substring}'.");
         }
     }
 }

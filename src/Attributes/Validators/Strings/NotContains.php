@@ -35,7 +35,7 @@ class NotContains extends IsString
         parent::validation($value);
 
         if (self::contains($value, $this->substring, $this->caseSensitive)) {
-            throw new ValidationException("Property '{$this->propertyName}' cannot contains '{$this->substring}'.");
+            $this->throwValidationException("Property '{$this->propertyName}' cannot contains '{$this->substring}'.");
         }
     }
 }
