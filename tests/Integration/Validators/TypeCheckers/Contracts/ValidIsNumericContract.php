@@ -16,6 +16,6 @@ class ValidIsNumericContract extends BaseValidationTestClass
     #[IsNumeric()]
     public mixed $num3 = "1,999.99";
 
-    #[IsNumeric('Not a number!!!')]
+    #[IsNumeric("Not a number!!!")]
     public mixed $num4 = 9.99;
 }

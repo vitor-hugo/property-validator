@@ -57,7 +57,7 @@ class IsStringTest extends TestCase
     #[TestDox("Should be valid when optional string is EMPTY")]
     public function testShouldBeValidWhenOptionalIsEmpty()
     {
-        $this->stub->str2 = '';
+        $this->stub->str2 = "";
         $this->stub->validate();
         $this->assertEmpty($this->stub->str2);
     }

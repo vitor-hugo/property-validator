@@ -36,7 +36,7 @@ class IsRequiredTest extends TestCase
     {
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage("The property 'string' is required.");
-        $this->stub->string = '';
+        $this->stub->string = "";
         $this->stub->validate();
     }
 
@@ -66,7 +66,7 @@ class IsRequiredTest extends TestCase
     {
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage("Password is required!");
-        $this->stub->password = '';
+        $this->stub->password = "";
         $this->stub->validate();
     }
 }

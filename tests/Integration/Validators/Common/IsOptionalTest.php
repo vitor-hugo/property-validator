@@ -28,7 +28,7 @@ class IsOptionalTest extends TestCase
     }
 
 
-    #[TestDox('Should be invalid when the property is not nullable')]
+    #[TestDox("Should be invalid when the property is not nullable")]
     public function testShouldBeInvalidWhenThePropertyIsNotNullable()
     {
         $this->expectException(InvalidTypeException::class);

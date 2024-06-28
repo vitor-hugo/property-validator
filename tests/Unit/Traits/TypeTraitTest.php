@@ -18,12 +18,12 @@ class TypeTraitTest extends TestCase
     private bool $booleanProp = true;
     private float $floatProp = 3.1415;
     private int $intProp = 2048;
-    private mixed $mixedProp = 'xyz';
+    private mixed $mixedProp = "xyz";
     private null $nullProp = null;
     private object $objectProp;
-    private string $stringProp = 'string';
+    private string $stringProp = "string";
 
-    #[TestDox('Method getType() must return the corret type')]
+    #[TestDox("Method getType() must return the corret type")]
     public function testTypeTraitGetType()
     {
         $expects = [
@@ -52,7 +52,7 @@ class TypeTraitTest extends TestCase
     }
 
 
-    #[TestDox('Method normalizeTypeName() must normalize type names correctly')]
+    #[TestDox("Method normalizeTypeName() must normalize type names correctly")]
     public function testNormalizeTypeName()
     {
         $expects = [
@@ -89,7 +89,7 @@ class TypeTraitTest extends TestCase
     }
 
 
-    #[TestDox('Method getPropertyType() must return the corret type')]
+    #[TestDox("Method getPropertyType() must return the corret type")]
     public function testGetPropertyType()
     {
         $this->objectProp = new class {};
@@ -120,7 +120,7 @@ class TypeTraitTest extends TestCase
     #[TestDox("Method isValueEmtpy() must return if a value is empty")]
     public function testIsValueEmpty()
     {
-        $this->assertTrue($this->isValueEmpty(''));
+        $this->assertTrue($this->isValueEmpty(""));
         $this->assertTrue($this->isValueEmpty([]));
         $this->assertTrue($this->isValueEmpty(null));
         $this->assertFalse($this->isValueEmpty(false));

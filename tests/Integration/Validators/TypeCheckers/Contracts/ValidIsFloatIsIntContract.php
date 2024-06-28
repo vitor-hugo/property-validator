@@ -19,7 +19,7 @@ class ValidIsFloatIsIntContract extends BaseValidationTestClass
     #[IsInt()]
     public mixed $int3 = 13;
 
-    #[IsInt('Invalid integer number!!!')]
+    #[IsInt("Invalid integer number!!!")]
     public mixed $int4 = PHP_INT_MAX;
 
     #[IsFloat()]
@@ -31,6 +31,6 @@ class ValidIsFloatIsIntContract extends BaseValidationTestClass
     #[IsFloat()]
     public mixed $float3 = 2.7182;
 
-    #[IsFloat('Invalid float number!!!')]
+    #[IsFloat("Invalid float number!!!")]
     public mixed $float4 = PHP_FLOAT_MAX;
 }
