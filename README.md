@@ -676,6 +676,41 @@ public $password = "9a2f534"; // invalid
 ---
 
 ### MaxLength
+
+Validates if the length of a string is lesser than or equal to a maximum parameter.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\MaxLength;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                               |
+| :------------- | :----- | :---------------------------------------- |
+| `max`          | int    | Maximum acceptable length. (must be >= 1) |
+| `errorMessage` | string | Custom error message.                     |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[MaxLength(60)]
+public $text = "They may take our lives, but they'll never take our freedom!"; // valid
+
+#[MaxLength(64)]
+public $password = "9a2f534"; // invalid
+
+// In order to accept empty strings you
+// will have to use IsOptional attribute
+#[IsOptional()]
+#[MaxLength(10)]
+public $prop1 = ""; // valid
+
+#[MaxLength(10)]
+public $prop2 = ""; // invalid
+```
+
+---
+
 ### MinLength
 
 ---
