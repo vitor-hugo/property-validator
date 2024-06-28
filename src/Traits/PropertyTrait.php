@@ -264,4 +264,28 @@ trait PropertyTrait
         throw new ValidationException($message);
     }
 
+
+    /**
+     * Throws InvalidTypeException using the validator's default message or
+     * the custom error message defined on constructor.
+     * @param string $message Message to be thrown
+     * @param int $code Optional error code
+     * @throws \Torugo\PropertyValidator\Exceptions\ValidationException
+     * @return never
+     */
+    public function throwInvalidTypeException(string $message, int $code = 0): never
+    {
+        if (empty($this->errorMessage)) {
+            $className = $this->getClassName(get_class($this));
+            $message = "$className: $message";
+        } else {
+            $message = $this->errorMessage;
+        }
+
+        // adds final period
+        $message = trim($message);
+        $message .= substr($message, -1) == "." ? "" : ".";
+
+        throw new InvalidTypeException($message);
+    }
 }
