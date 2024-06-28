@@ -714,6 +714,24 @@ public $prop2 = ""; // invalid
 
 ### MinLength
 
+| Parameter      | Type   | Description                               |
+| :------------- | :----- | :---------------------------------------- |
+| `min`          | int    | Minimum acceptable length. (must be >= 1) |
+| `errorMessage` | string | Custom error message.                     |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[MinLength(12)]
+public $text = "Nunc placerat a turpis vitae."; // valid
+
+#[MinLength(10)]
+public $prop = "My Prop"; // invalid, lesser than min arg
+
+#[MinLength(0)]
+public $prop = ""; // valid, makes no sense, but is valid. Why not use only 'IsString()'?
+```
+
 ---
 
 ### NotContains
