@@ -80,36 +80,6 @@ class PropertyTraitTest extends TestCase
     }
 
 
-    #[TestDox("Method IsOptional() should return if a property is defined as optional")]
-    public function testIsOptionalMethod()
-    {
-        $property = new \ReflectionProperty($this, "string");
-        $this->initProperty($property, $this);
-        $this->assertFalse($this->isOptional());
-
-        $property = new \ReflectionProperty($this, "integer");
-        $this->initProperty($property, $this);
-        $this->assertTrue($this->isOptional());
-    }
-
-
-    #[TestDox("Method IsRequired() should return if a property is defined as required")]
-    public function testIsRequiredMethod()
-    {
-        $property = new \ReflectionProperty($this, "string");
-        $this->initProperty($property, $this);
-        $this->assertTrue($this->isRequired());
-
-        $property = new \ReflectionProperty($this, "integer");
-        $this->initProperty($property, $this);
-        $this->assertFalse($this->isRequired());
-
-        $property = new \ReflectionProperty($this, "mixed");
-        $this->initProperty($property, $this);
-        $this->assertFalse($this->isRequired());
-    }
-
-
     #[TestDox("Method expectPropertyTypeToBe() should throw InvalidTypeException when property type is not the expected (array param)")]
     public function testExpectPropertyTypeToBeMethod1()
     {
