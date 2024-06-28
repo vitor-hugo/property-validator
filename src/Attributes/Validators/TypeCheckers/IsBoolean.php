@@ -67,7 +67,7 @@ class IsBoolean extends Validator
     {
         $key = $value;
 
-        if ($this->getType($value) == 'string') {
+        if ($this->getType($value) == "string") {
             $key = mb_strtolower($value);
         }
 

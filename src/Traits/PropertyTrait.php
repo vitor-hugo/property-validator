@@ -19,7 +19,7 @@ trait PropertyTrait
     /** The name of the property */
     protected string $propertyName;
 
-    /** The type of the property, if not declared it will be considered 'mixed' */
+    /** The type of the property, if not declared it will be considered "mixed" */
     protected string $propertyType;
 
     /** The value of the property */
@@ -149,7 +149,7 @@ trait PropertyTrait
      * - Using the attribute `#[IsRequired()]`.
      * - Not setting a property type as nullable. E.g. `protected string $name`
      *
-     * Properties type 'mixed' or nullable are considered optional.
+     * Properties type "mixed" or nullable are considered optional.
      *
      * @return bool
      */

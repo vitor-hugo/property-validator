@@ -62,8 +62,8 @@ trait TypeTrait
         }
 
         // According to PHP documentation of gettype() function:
-        // "For historical reasons 'double' is returned in case of a float, and not simply 'float'."
-        // But when defining a type you can't use 'double' as a type.
+        // "For historical reasons "double" is returned in case of a float, and not simply 'float'."
+        // But when defining a type you can't use "double" as a type.
         if ($type == "double") {
             return "float";
         }
@@ -73,7 +73,7 @@ trait TypeTrait
             return "int";
         }
 
-        // the \ReflectionProperty->getType returns 'bool' and gettype() returns 'boolean'
+        // the \ReflectionProperty->getType returns "bool" and gettype() returns 'boolean'
         if ($type == "boolean") {
             return "bool";
         }
@@ -90,7 +90,7 @@ trait TypeTrait
      */
     protected function isValueEmpty(mixed $value): bool
     {
-        if ($value === '') {
+        if ($value === "") {
             return true;
         } else if ($value === []) {
             return true;
@@ -110,7 +110,7 @@ trait TypeTrait
      */
     protected function isTypeValid(string $type, array|string $expected): bool
     {
-        if ($this->getType($expected) == 'array' && in_array($type, $expected, true)) {
+        if ($this->getType($expected) == "array" && in_array($type, $expected, true)) {
             return true;
         } else if ($type === $expected) {
             return true;

@@ -14,7 +14,7 @@ class IsString extends Validator
 
         $type = $this->getType($value);
 
-        if ($type !== 'string') {
+        if ($type !== "string") {
             $this->throwValidationException("Property '{$this->propertyName}' must receive a string, received $type.");
         }
     }

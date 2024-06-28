@@ -23,12 +23,12 @@ class IsRequired extends Validator
             $this->throwValidationException("The property '{$this->propertyName}' cannot be REQUIRED and OPTIONAL at the same time.", 1);
         }
 
-        if ($this->isNullable() && $this->propertyType !== 'mixed') {
+        if ($this->isNullable() && $this->propertyType !== "mixed") {
             $this->throwValidationException("The property '{$this->propertyName}' cannot be REQUIRED and NULLABLE at the same time.", 2);
         }
 
         if ($this->isValueEmpty($value)) {
-            $this->throwValidationException("The property '{$this->propertyName}' is required.'");
+            $this->throwValidationException("The property '{$this->propertyName}' is required.");
         }
     }
 }

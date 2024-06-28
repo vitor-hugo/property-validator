@@ -22,11 +22,11 @@ class IsNumeric extends Validator
 
         $type = $this->getType($value);
 
-        if ($type === 'float' || $type === 'int') {
+        if ($type === "float" || $type === "int") {
             return;
         }
 
-        if ($type !== 'string') {
+        if ($type !== "string") {
             $this->throwValidationException("Property '{$this->propertyName}' must receive values of type float, int or numeric string, received '$type'.");
         }
 
