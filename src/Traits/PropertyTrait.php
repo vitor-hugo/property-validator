@@ -104,65 +104,12 @@ trait PropertyTrait
 
 
     /**
-     * Checks wheter a property is defined as Optional
-     *
-     * A property can be defined as optional in two ways:
-     * - Using the attribute `#[IsOptional()]`.
-     * - Setting a property type as nullable. E.g. `protected ?string $name` or `protected mixed $name`
-     * Otherwise the property will be considered required.
-     *
-     * @return bool
-     */
-    protected function isOptional(): bool
-    {
-        $this->checkIfIsInitialized();
-
-        if ($this->isUsingIsOptionalAttribute()) {
-            return true;
-        }
-
-        if ($this->isNullable()) {
-            return true;
-        }
-
-        return false;
-    }
-
-
-    /**
      * Returns if the property is using the #[IsOptional()] attribute.
      * @return bool
      */
     protected function isUsingIsOptionalAttribute(): bool
     {
         if ($this->property->getAttributes(IsOptional::class, \ReflectionAttribute::IS_INSTANCEOF) != null) {
-            return true;
-        }
-
-        return false;
-    }
-
-
-    /**
-     * Checks wheter a property is defined as Required
-     *
-     * A property can be defined as required in two ways:
-     * - Using the attribute `#[IsRequired()]`.
-     * - Not setting a property type as nullable. E.g. `protected string $name`
-     *
-     * Properties type "mixed" or nullable are considered optional.
-     *
-     * @return bool
-     */
-    protected function isRequired(): bool
-    {
-        $this->checkIfIsInitialized();
-
-        if ($this->isUsingRequiredAttribute()) {
-            return true;
-        }
-
-        if ($this->isNullable() == false) {
             return true;
         }
 
