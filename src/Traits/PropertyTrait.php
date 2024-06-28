@@ -6,6 +6,7 @@ use Exception;
 use Torugo\PropertyValidator\Attributes\Validators\Common\IsOptional;
 use Torugo\PropertyValidator\Attributes\Validators\Common\IsRequired;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
+use Torugo\PropertyValidator\Exceptions\ValidationException;
 
 trait PropertyTrait
 {
@@ -223,7 +224,7 @@ trait PropertyTrait
 
         if ($this->isTypeValid($valueType, $expected) === false) {
             $types = $this->writeListOfTypes($expected);
-            throw new InvalidTypeException("The value type of '{$this->propertyName}' must be setted as $types, $valueType received.");
+            $this->throwInvalidTypeException("The value type of '{$this->propertyName}' must be setted as $types, $valueType received.");
         }
     }
 
