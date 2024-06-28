@@ -81,27 +81,4 @@ abstract class Validator implements ValidatorInterface
 
         return true;
     }
-
-
-    /**
-     * Throws ValidationException using the validator's default message or the custom error message defined on constructor.
-     * @param string $message Message to be thrown
-     * @param int $code Optional error code
-     * @throws \Torugo\PropertyValidator\Exceptions\ValidationException
-     * @return never
-     */
-    public function throwValidationException(string $message, int $code = 0): never
-    {
-        if (empty($this->errorMessage)) {
-            $className = $this->getClassName(get_class($this));
-            $message = "$className: $message";
-        } else {
-            $message = $this->errorMessage;
-        }
-
-        $message = trim($message);
-        $message .= preg_match("/.*[a-zA-Z0-9]$/", $message) ? "." : "";
-
-        throw new ValidationException($message);
-    }
 }
