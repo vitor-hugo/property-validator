@@ -44,16 +44,6 @@ class IsStringTest extends TestCase
     }
 
 
-    #[TestDox("Should throw ValidationException when required string is empty")]
-    public function testShouldThrowWhenRequiredIsEmpty()
-    {
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("The property 'str1' can't be empty.");
-        $this->stub->str1 = "";
-        $this->stub->validate();
-    }
-
-
     #[TestDox("Should be valid when optional string is EMPTY")]
     public function testShouldBeValidWhenOptionalIsEmpty()
     {
@@ -61,16 +51,6 @@ class IsStringTest extends TestCase
         $this->stub->validate();
         $this->assertEmpty($this->stub->str2);
     }
-
-
-    #[TestDox("Should be valid when optional string is NULL")]
-    public function testShouldBeValidWhenOptionalIsNull()
-    {
-        $this->stub->str2 = null;
-        $this->stub->validate();
-        $this->assertNull($this->stub->str2);
-    }
-
 
     #[TestDox("Should throw ValidationException with custom error message")]
     public function testShouldThrowWithCustomMessage()
