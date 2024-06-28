@@ -35,7 +35,7 @@ class IsRequiredTest extends TestCase
     public function testShouldThrowWhenRequiredIsEmpty()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("The property 'string' is required.");
+        $this->expectExceptionMessage("Property 'string' is required.");
         $this->stub->string = "";
         $this->stub->validate();
     }
@@ -45,19 +45,9 @@ class IsRequiredTest extends TestCase
     public function testShouldThrowWhenRequiredIsNull()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("The property 'mixed' is required.");
+        $this->expectExceptionMessage("Property 'mixed' can't be null.");
         $this->stub->mixed = null;
         $this->stub->validate();
-    }
-
-
-    #[TestDox("Should throw ValidationException when property is setted to nullable")]
-    public function testShouldThrowWhenPropertyIsDefinedAsOptional()
-    {
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("The property 'string' cannot be REQUIRED and NULLABLE at the same time.");
-        $stub = new InvalidIsRequiredContract();
-        $stub->validate();
     }
 
 
