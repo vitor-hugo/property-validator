@@ -16,7 +16,7 @@ class MinLength extends Validator
     use TStringMinLength;
 
     /**
-     * @param int $min Minimum acceptable length. Must be >= 0.
+     * @param int $min Minimum acceptable length. Must be >= 1.
      * @param string|null $errorMessage Custom error message.
      */
     public function __construct(
@@ -29,8 +29,8 @@ class MinLength extends Validator
 
     public function validation(mixed $value): void
     {
-        if ($this->min < 0) {
-            throw new ValidationException("The MIN argument on '{$this->propertyName}' must be greater than or equal to zero.");
+        if ($this->min < 1) {
+            throw new ValidationException("The MIN argument on '{$this->propertyName}' must be greater than zero.");
         }
 
         $this->expectPropertyTypeToBe(["string", "mixed"]);
