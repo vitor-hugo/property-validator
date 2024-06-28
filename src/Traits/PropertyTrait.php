@@ -253,8 +253,7 @@ trait PropertyTrait
     public function throwValidationException(string $message, int $code = 0): never
     {
         if (empty($this->errorMessage)) {
-            $className = $this->getClassName(get_class($this));
-            $message = "$className: $message";
+            $message = "$message";
         } else {
             $message = $this->errorMessage;
         }
@@ -277,8 +276,7 @@ trait PropertyTrait
     public function throwInvalidTypeException(string $message, int $code = 0): never
     {
         if (empty($this->errorMessage)) {
-            $className = $this->getClassName(get_class($this));
-            $message = "$className: $message";
+            $message = "$message";
         } else {
             $message = $this->errorMessage;
         }
