@@ -42,7 +42,7 @@ class MaxLengthTest extends TestCase
     public function testShouldThrowValidationExceptionOnMaxArg()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("MaxLength: The length of 'str1' can be at most 30, 32 received.");
+        $this->expectExceptionMessage("The length of 'str1' can be at most 30, 32 received.");
         $this->stub->str1 = "2b6e36c2931b1d1103ff505fd139a2ac";
         $this->stub->validate();
     }

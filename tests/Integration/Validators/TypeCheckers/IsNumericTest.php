@@ -39,7 +39,7 @@ class IsNumericTest extends TestCase
     public function testShouldThrowWhenValueIsNotANumber()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("IsNumeric: 'USD 9.99' on 'num3' is not a valid numeric value.");
+        $this->expectExceptionMessage("'USD 9.99' on 'num3' is not a valid numeric value.");
         $this->stub->num3 = "USD 9.99";
         $this->stub->validate();
     }
@@ -49,7 +49,7 @@ class IsNumericTest extends TestCase
     public function testShouldThrowWhenValueTypeIsNotValid()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("IsNumeric: Property 'num3' must receive values of type float, int or numeric string, received 'array'.");
+        $this->expectExceptionMessage("Property 'num3' must receive values of type float, int or numeric string, received 'array'.");
         $this->stub->num3 = [2017];
         $this->stub->validate();
     }

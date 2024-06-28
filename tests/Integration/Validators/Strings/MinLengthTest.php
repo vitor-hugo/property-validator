@@ -43,7 +43,7 @@ class MinLengthTest extends TestCase
     public function testShouldThrowValidationExceptionOnMaxArg()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("MinLength: The length of 'str1' must be at least 10, 8 received.");
+        $this->expectExceptionMessage("The length of 'str1' must be at least 10, 8 received.");
         $this->stub->str1 = "75bc24b5";
         $this->stub->validate();
     }

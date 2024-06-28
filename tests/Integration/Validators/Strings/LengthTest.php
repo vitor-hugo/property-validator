@@ -50,7 +50,7 @@ class LengthTest extends TestCase
     public function testShouldThrowValidationExceptionOnMinArg()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Length: The length of 'str1' must be at least 10 and at most 20.");
+        $this->expectExceptionMessage("The length of 'str1' must be at least 10 and at most 20.");
         $this->stub->str1 = "da9388";
         $this->stub->validate();
     }
@@ -60,7 +60,7 @@ class LengthTest extends TestCase
     public function testShouldThrowValidationExceptionOnMaxArg()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Length: The length of 'str1' must be at least 10 and at most 20.");
+        $this->expectExceptionMessage("The length of 'str1' must be at least 10 and at most 20.");
         $this->stub->str1 = "431ed6851a456cf86c37e";
         $this->stub->validate();
     }
