@@ -95,12 +95,12 @@ class SignInDto
     #[MaxLenth(100)]
     #[IsEmail()]
     #[ToLowerCase()]
-    public $email = '';
+    public $email = "";
 
     #[IsRequired()]
     #[IsString()]
     #[Length(8, 100)]
-    public $password = '';
+    public $password = "";
 
     #[IsOptional()]
     #[IsBoolean()]
@@ -128,8 +128,8 @@ Using the class `SignInDto` from [usage example](#usage) above.
 use Torugo\PropertyValidator\PropertyValidator;
 
 $signInDto = new SignInDto;
-$signInDto->email = 'email@host.com';
-$signInDto->password = 'MySuperStrongPassword!';
+$signInDto->email = "email@host.com";
+$signInDto->password = "MySuperStrongPassword!";
 $signInDto->keepConnected = true;
 
 // Using method inside the class
@@ -195,11 +195,11 @@ or use PHP's named arguments feature.
 ```php
 class SignInDto
 {
-    #[IsRequired('Email is required')]
-    #[MaxLenth(100, 'Email can have up to 100 characters')]
-    #[IsEmail(errorMessage: 'Invalid email')] // named argument
+    #[IsRequired("Email is required")]
+    #[MaxLenth(100, "Email can have up to 100 characters")]
+    #[IsEmail(errorMessage: "Invalid email")] // named argument
     #[ToLowerCase()]
-    public $email = '';
+    public $email = "";
     
     //...
 }
@@ -226,7 +226,7 @@ use Torugo\PropertyValidator\Attributes\Common\IsOptional;
 #### Examples <!-- omit in toc -->
 
 > [!IMPORTANT]
-> When setting the type of a property other than 'mixed', you must set the
+> When setting the type of a property other than "mixed", you must set the
 > type to optional as well by placing a question mark a the beggining.  
 > E.g. `?string`, `?int`, `?array`, ...
 
@@ -235,7 +235,7 @@ use Torugo\PropertyValidator\Attributes\Common\IsOptional;
 public mixed $prop = null; // valid
 
 #[IsOptional()]
-public ?string $prop = ''; // valid, string can be emtpy
+public ?string $prop = ""; // valid, string can be emtpy
 
 #[IsOptional()]
 public ?array $prop = []; // valid, array can be empty
@@ -267,10 +267,10 @@ use Torugo\PropertyValidator\Attributes\Common\IsRequired;
 #### Examples <!-- omit in toc -->
 
 ```php
-#[IsRequired('Password cannot be empty')]
-public string $password = ''; // invalid
+#[IsRequired("Password cannot be empty")]
+public string $password = ""; // invalid
 
-#[IsRequired('My prop cannot be empty')]
+#[IsRequired("My prop cannot be empty")]
 public array $prop = []; // invalid
 
 #[IsRequired("Prop can't be empty or null")]
@@ -303,10 +303,10 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsBoolean;
 public mixed $prop = true;
 
 #[IsBoolean()]
-public mixed $prop = 'no'; // Is evaluated as false, but not converted
+public mixed $prop = "no"; // Is evaluated as false, but not converted
 
 #[IsBoolean(true)]
-public mixed $prop = 'yes'; // Will convert to true
+public mixed $prop = "yes"; // Will convert to true
 ```
 
 Accepted values:
@@ -314,23 +314,23 @@ Accepted values:
 | Value     | Type   | Evaluate as |
 | :-------- | :----- | :---------- |
 | `1`       | int    | TRUE        |
-| `'1'`     | string | TRUE        |
-| `'true'`  | string | TRUE        |
-| `'t'`     | string | TRUE        |
-| `'ok'`    | string | TRUE        |
-| `'yes'`   | string | TRUE        |
-| `'y'`     | string | TRUE        |
-| `'sim'`   | string | TRUE        |
-| `'s'`     | string | TRUE        |
+| `"1"`     | string | TRUE        |
+| `"true"`  | string | TRUE        |
+| `"t"`     | string | TRUE        |
+| `"ok"`    | string | TRUE        |
+| `"yes"`   | string | TRUE        |
+| `"y"`     | string | TRUE        |
+| `"sim"`   | string | TRUE        |
+| `"s"`     | string | TRUE        |
 | `0`       | int    | FALSE       |
-| `'0'`     | string | FALSE       |
-| `'false'` | string | FALSE       |
-| `'f'`     | string | FALSE       |
-| `'no'`    | string | FALSE       |
-| `'not'`   | string | FALSE       |
-| `'n'`     | string | FALSE       |
-| `'não'`   | string | FALSE       |
-| `'nao'`   | string | FALSE       |
+| `"0"`     | string | FALSE       |
+| `"false"` | string | FALSE       |
+| `"f"`     | string | FALSE       |
+| `"no"`    | string | FALSE       |
+| `"not"`   | string | FALSE       |
+| `"n"`     | string | FALSE       |
+| `"não"`   | string | FALSE       |
+| `"nao"`   | string | FALSE       |
 
 ---
 
@@ -346,7 +346,7 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsDateTime;
 
 | Parameter      | Type   | Description                                                                                                   |
 | :------------- | :----- | :------------------------------------------------------------------------------------------------------------ |
-| `format`       | string | Valid PHP [`DateTime::format`](https://www.php.net/manual/en/datetime.format.php) (Default: `'Y-m-d H:i:s'`). |
+| `format`       | string | Valid PHP [`DateTime::format`](https://www.php.net/manual/en/datetime.format.php) (Default: `"Y-m-d H:i:s"`). |
 | `toDateTime`   | bool   | Converts date time string to PHP DateTime object (Default: `false`)                                           |
 | `errorMessage` | string | Custom error message.                                                                                         |
 
@@ -355,16 +355,16 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsDateTime;
 
 ```php
 #[IsDateTime()]
-public string $dt = '2024-06-26 13:56:24'; // valid
+public string $dt = "2024-06-26 13:56:24"; // valid
 
-#[IsDateTime('M d Y', true)]
-public mixed $prop = 'Jun 26 2024'; // valid, will be converted to \DateTime object
+#[IsDateTime("M d Y", true)]
+public mixed $prop = "Jun 26 2024"; // valid, will be converted to \DateTime object
 
-#[IsDateTime('m-d-Y')]
-public mixed $prop = '2017-08-01'; // Throws ValidationException due to icompatible date/time format
+#[IsDateTime("m-d-Y")]
+public mixed $prop = "2017-08-01"; // Throws ValidationException due to icompatible date/time format
 
-#[IsDateTime('m-d-Y', true)]
-public string $prop = '2017-08-01'; // Throws InvalidTypeException, property type should be 'mixed'
+#[IsDateTime("m-d-Y", true)]
+public string $prop = "2017-08-01'; // Throws InvalidTypeException, property type should be 'mixed"
 ```
 
 ---
@@ -621,17 +621,17 @@ use Torugo\PropertyValidator\Attributes\Validators\Strings\Contains;
 #### Examples <!-- omit in toc -->
 
 ```php
-#[Contains('Approved')]
+#[Contains("Approved")]
 public string $prop = "Approved"; // valid
 
-#[Contains('Approved')]
+#[Contains("Approved")]
 public mixed $prop = "Refused"; // invalid
 
-#[Contains('Approved', false)] // case sensitiveness disabled
-public $prop = 'APPROVED'; // valid
+#[Contains("Approved", false)] // case sensitiveness disabled
+public $prop = "APPROVED"; // valid
 
-#[Contains('Approved')] // case sensitiveness enalbed
-public $prop = 'APPROVED'; // invalid
+#[Contains("Approved")] // case sensitiveness enalbed
+public $prop = "APPROVED"; // invalid
 ```
 
 ---
@@ -671,14 +671,14 @@ use Torugo\PropertyValidator\Attributes\Validators\Strings\NotContains;
 #### Examples <!-- omit in toc -->
 
 ```php
-#[NotContains('Break')]
+#[NotContains("Break")]
 public string $prop = "Break a leg"; // throws ValidationException
 
-#[NotContains('CUT')]
+#[NotContains("CUT")]
 public mixed $prop = "To cut corners"; // not throws, case sensitiveness enabled
 
-#[NotContains('BULLET', false)] // Case sensitiveness enabled
-public $prop = 'Bite the bullet'; // throws ValidationException
+#[NotContains("BULLET", false)] // Case sensitiveness enabled
+public $prop = "Bite the bullet"; // throws ValidationException
 ```
 
 ---
