@@ -4,7 +4,6 @@ namespace Torugo\PropertyValidator\Attributes\Validators\Strings;
 
 use Attribute;
 use Torugo\PropertyValidator\Abstract\Validator;
-use Torugo\PropertyValidator\Exceptions\ValidationException;
 use Torugo\TString\Traits\Validators\TStringMaxLength;
 
 /**
@@ -16,7 +15,7 @@ class MaxLength extends Validator
     use TStringMaxLength;
 
     /**
-     * @param int $max Maximum accpetable length. Must be >= 1.
+     * @param int $max Maximum accpetable length. Must be >= 1, if lesser will be setted to 1.
      * @param string|null $errorMessage Custom error message.
      */
     public function __construct(
@@ -28,10 +27,6 @@ class MaxLength extends Validator
 
     public function validation(mixed $value): void
     {
-        if ($this->max < 1) {
-            throw new ValidationException("The MAX argument on '{$this->propertyName}' must be greater than zero.");
-        }
-
         $this->expectPropertyTypeToBe(["string", "mixed"]);
         $this->expectPropertyValueToBe("string");
 
