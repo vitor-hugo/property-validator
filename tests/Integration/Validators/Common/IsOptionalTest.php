@@ -32,7 +32,7 @@ class IsOptionalTest extends TestCase
     public function testShouldBeInvalidWhenThePropertyIsNotNullable()
     {
         $this->expectException(InvalidTypeException::class);
-        $this->expectExceptionMessage("The property 'name' is defined as optional but is not nullable. Optional properties must be nullable.");
+        $this->expectExceptionMessage("Property 'name' must be nullable.");
         $stub = new InvalidIsOptionalContract1;
         $stub->validate();
     }
@@ -42,7 +42,7 @@ class IsOptionalTest extends TestCase
     public function testShouldBeInvalidWhenThePropertyIsRequired()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("The property 'name' cannot be REQUIRED and OPTIONAL at the same time.");
+        $this->expectExceptionMessage("Property 'name' can't use 'IsOptional' and 'IsRequired' side by side.");
         $stub = new InvalidIsOptionalContract2;
         $stub->validate();
     }
