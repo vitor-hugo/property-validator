@@ -644,7 +644,37 @@ public $prop = "APPROVED"; // invalid
 ### IsEmail
 ### IsNumeric
 ### IsUrl
+
+---
+
 ### Length
+
+Validates if the length of a string is between a minimum and maximum parameters.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\Length;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                                |
+| :------------- | :----- | :----------------------------------------- |
+| `min`          | int    | Minimum acceptable length. (must be >= 0). |
+| `max`          | int    | Maximum acceptable length. (must be >= 1)  |
+| `errorMessage` | string | Custom error message.                      |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Length(1, 60)]
+public $text = "They may take our lives, but they'll never take our freedom!"; // valid
+
+#[Length(8, 64)]
+public $password = "9a2f534"; // invalid
+```
+
+---
+
 ### MaxLength
 ### MinLength
 
