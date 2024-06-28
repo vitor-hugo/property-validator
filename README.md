@@ -217,7 +217,8 @@ Defines a property as optional, so its value can be empty or null.
 
 > [!NOTE]
 > By default, all properties of a class that use any of the attributes
-> of this library are treated as required.
+> of this library are treated as NON NULLABLE, but their values can be
+> empty.
 
 ```php
 use Torugo\PropertyValidator\Attributes\Common\IsOptional;
@@ -251,8 +252,8 @@ public string $prop = null; // invalid, should be setted as ?string
 Defines a property as required, so that the value cannot be null or empty.
 
 By default, all properties of a class that use any of the attributes in this
-library are treated as required, so using this attribute is only for defining
-a custom error message when necessary.
+library are treated as NON NULLABLE, so using this attribute their values cannot
+be empty as well.
 
 ```php
 use Torugo\PropertyValidator\Attributes\Common\IsRequired;
