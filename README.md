@@ -638,6 +638,38 @@ public $prop = "APPROVED"; // invalid
 ---
 
 ### IsAlpha
+
+Validates if a string have only alphabetical characters.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsAlpha;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter        | Type   | Description                                                                      |
+| :--------------- | :----- | :------------------------------------------------------------------------------- |
+| `includeUnicode` | bool   | Includes some Unicode alphabetic chars like accented letters. (Default: `false`) |
+| `errorMessage`   | string | Custom error message.                                                            |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsAlpha()]
+public string $prop = "UZoljlNxrCYJUpDgmDmCA"; // valid
+
+#[IsAlpha()]
+public mixed $prop = "No spaces allowed"; // invalid
+
+#[IsAlpha()]
+public mixed $prop = "Wdj6Ab0pkhkS3HqUwTza"; // invalid, numbers are invalid
+
+#[IsAlpha()]
+public mixed $prop = "email@hots.com.br"; // invalid, symbols or ponctuation
+```
+
+---
+
 ### IsAlphanumeric
 ### IsBase64
 ### IsCnpj
