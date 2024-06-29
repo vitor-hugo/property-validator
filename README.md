@@ -674,6 +674,38 @@ public mixed $prop = "email@hots.com.br"; // invalid, symbols or ponctuation
 ---
 
 ### IsAlphanumeric
+
+Validates if a string have only alphanumeric characters.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsAlphanumeric;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter        | Type   | Description                                                                      |
+| :--------------- | :----- | :------------------------------------------------------------------------------- |
+| `includeUnicode` | bool   | Includes some Unicode alphabetic chars like accented letters. (Default: `false`) |
+| `errorMessage`   | string | Custom error message.                                                            |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsAlphanumeric()]
+public string $prop = "mSfPq4Tc9ipPgX5487NG"; // valid
+
+#[IsAlphanumeric(true)] // unicode enabled
+public string $prop = "çeY4â2e4SÇ8ÂdiÀÏKTLÊ"; // valid
+
+#[IsAlphanumeric()]
+public mixed $prop = "No spaces allowed"; // invalid
+
+#[IsAlphanumeric(true)]
+public mixed $prop = "email@hots.com.br"; // invalid, symbols or ponctuation
+```
+
+---
+
 ### IsBase64
 ### IsCnpj
 ### IsCpf
