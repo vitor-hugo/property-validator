@@ -658,13 +658,16 @@ use Torugo\PropertyValidator\Attributes\Validators\Strings\IsAlpha;
 #[IsAlpha()]
 public string $prop = "UZoljlNxrCYJUpDgmDmCA"; // valid
 
+#[IsAlpha(true)] // unicode enabled
+public string $prop = "XOÄfsàugKjLcpGEJÄwbvàX"; // valid
+
 #[IsAlpha()]
 public mixed $prop = "No spaces allowed"; // invalid
 
 #[IsAlpha()]
-public mixed $prop = "Wdj6Ab0pkhkS3HqUwTza"; // invalid, numbers are invalid
+public mixed $prop = "Wdj6Ab0pkhkS3HqUwTza"; // numbers are invalid
 
-#[IsAlpha()]
+#[IsAlpha(true)]
 public mixed $prop = "email@hots.com.br"; // invalid, symbols or ponctuation
 ```
 
