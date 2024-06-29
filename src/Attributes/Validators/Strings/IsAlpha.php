@@ -15,7 +15,7 @@ class IsAlpha extends IsString
     use TStringIsAlpha;
 
     /**
-     * @param bool $includeUnicode Includes some unicode alphabet chars like accented letters. (default false)
+     * @param bool $includeUnicode Includes some Unicode alphabetic chars like accented letters.. (default false)
      * @param string|null $errorMessage Custom error message
      */
     public function __construct(
