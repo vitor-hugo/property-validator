@@ -3,14 +3,14 @@
 namespace Torugo\PropertyValidator\Attributes\Validators\Strings;
 
 use Attribute;
-use Torugo\PropertyValidator\Abstract\Validator;
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsString;
 use Torugo\TString\Traits\Validators\TStringMaxLength;
 
 /**
  * Validates if the length of a string is lesser than or equal to a maximum parameter.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class MaxLength extends Validator
+class MaxLength extends IsString
 {
     use TStringMaxLength;
 
@@ -27,8 +27,7 @@ class MaxLength extends Validator
 
     public function validation(mixed $value): void
     {
-        $this->expectPropertyTypeToBe(["string", "mixed"]);
-        $this->expectPropertyValueToBe("string");
+        parent::validation($value);
 
         if (self::maxLength($value, $this->max) === false) {
             $len = mb_strlen($value);
