@@ -3,15 +3,14 @@
 namespace Torugo\PropertyValidator\Attributes\Validators\Strings;
 
 use Attribute;
-use Torugo\PropertyValidator\Abstract\Validator;
-use Torugo\PropertyValidator\Exceptions\ValidationException;
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsString;
 use Torugo\TString\Traits\Validators\TStringMinLength;
 
 /**
  * Validates if the length of a string is greater than or equal to a minimum parameter.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class MinLength extends Validator
+class MinLength extends IsString
 {
     use TStringMinLength;
 
@@ -29,8 +28,7 @@ class MinLength extends Validator
 
     public function validation(mixed $value): void
     {
-        $this->expectPropertyTypeToBe(["string", "mixed"]);
-        $this->expectPropertyValueToBe("string");
+        parent::validation($value);
 
         if (self::minLength($value, $this->min) === false) {
             $len = mb_strlen($value);
