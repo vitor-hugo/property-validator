@@ -3,7 +3,7 @@
 namespace Torugo\PropertyValidator\Attributes\Validators\Strings;
 
 use Attribute;
-use Torugo\PropertyValidator\Abstract\Validator;
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsString;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 use Torugo\TString\Traits\Validators\TStringIsLength;
 
@@ -11,7 +11,7 @@ use Torugo\TString\Traits\Validators\TStringIsLength;
  * Validates if the length of a string is between a minimum and maximum parameters.
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class Length extends Validator
+class Length extends IsString
 {
     use TStringIsLength;
 
@@ -32,6 +32,8 @@ class Length extends Validator
 
     public function validation(mixed $value): void
     {
+        parent::validation($value);
+
         if ($this->min < 0) {
             throw new ValidationException("The MIN argument on '{$this->propertyName}' must be greater than or equal to zero.");
         }
@@ -39,9 +41,6 @@ class Length extends Validator
         if ($this->max < 1) {
             throw new ValidationException("The MAX argument on '{$this->propertyName}' must be greater than zero.");
         }
-
-        $this->expectPropertyTypeToBe(["string", "mixed"]);
-        $this->expectPropertyValueToBe("string");
 
         if (self::isLength($value, $this->min, $this->max) === false) {
             $this->throwValidationException("The length of '{$this->propertyName}' must be at least {$this->min} and at most {$this->max}");
