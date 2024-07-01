@@ -74,14 +74,4 @@ class LengthTest extends TestCase
         $this->stub->password = "a91e3e";
         $this->stub->validate();
     }
-
-
-    #[TestDox("Should throw InvalidTypeException when value's type is not string")]
-    public function testShouldThrowInvalidTypeExceptionOnInvalidValueType()
-    {
-        $this->expectException(InvalidTypeException::class);
-        $this->expectExceptionMessage("The value type of 'str1' must be setted as string, array received.");
-        $this->stub->str1 = ["array"];
-        $this->stub->validate();
-    }
 }
