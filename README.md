@@ -707,6 +707,41 @@ public mixed $prop = "email@hots.com.br"; // invalid, symbols or ponctuation
 ---
 
 ### IsBase64
+
+Validates whether a string is in Base64 format.  
+Works with **url safe** base64 strings.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsBase64;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsBase64()]
+public string $b64 = "7d+n67ptfj/J+Q+O0cQ1+w=="; // valid
+
+#[IsBase64()]
+public string $b64 = "7d-n67ptfj_J-Q-O0cQ1-w"; // valid, url safe
+
+#[IsBase64()]
+public string $b64 = "7d+n67ptfj/J+Q+O0cQ1+w"; // valid, '=' right padding
+
+#[IsBase64()]
+public mixed $b64 = "FKgLuXN\qsxYnEgtyzKyxQ=="; // invalid
+
+#[IsBase64()]
+public mixed $b64 = "=HAMYja0H18A"; // invalid
+```
+
+---
+
 ### IsCnpj
 ### IsCpf
 ### IsEmail
