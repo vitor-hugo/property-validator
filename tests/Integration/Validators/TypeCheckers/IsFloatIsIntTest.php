@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 use Tests\Integration\Validators\TypeCheckers\Contracts\ValidIsFloatIsIntContract;
-use Torugo\PropertyValidator\Exceptions\ValidationException;
+use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 
 #[Group("Validators")]
 #[Group("TypeCheckers")]
@@ -30,40 +30,40 @@ class IsFloatIsIntTest extends TestCase
     }
 
 
-    #[TestDox("IsFloat(): Should throw ValidationException when value is not a FLOAT")]
+    #[TestDox("IsFloat(): Should throw InvalidTypeException when value is not a FLOAT")]
     public function testShouldThrowWhenValueIsNotAFloat()
     {
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'float3' must receive float values, received array.");
+        $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage("Property 'float3' must receive float or int values, received array.");
         $this->stub->float3 = [9.99];
         $this->stub->validate();
     }
 
 
-    #[TestDox("IsFloat(): Should throw ValidationException with a custom message")]
+    #[TestDox("IsFloat(): Should throw InvalidTypeException with a custom message")]
     public function testIsFloatShouldThroWithCustomMessage()
     {
-        $this->expectException(ValidationException::class);
+        $this->expectException(InvalidTypeException::class);
         $this->expectExceptionMessage("Invalid float number!!!");
         $this->stub->float4 = ["array"];
         $this->stub->validate();
     }
 
 
-    #[TestDox("IsInt(): Should throw ValidationException when value is not a INT")]
+    #[TestDox("IsInt(): Should throw InvalidTypeException when value is not a INT")]
     public function testShouldThrowWhenValueIsNotAInt()
     {
-        $this->expectException(ValidationException::class);
+        $this->expectException(InvalidTypeException::class);
         $this->expectExceptionMessage("Property 'int3' must receive int values, received float.");
         $this->stub->int3 = 9.99;
         $this->stub->validate();
     }
 
 
-    #[TestDox("IsInt(): Should throw ValidationException with a custom message")]
+    #[TestDox("IsInt(): Should throw InvalidTypeException with a custom message")]
     public function testIsIntShouldThroWithCustomMessage()
     {
-        $this->expectException(ValidationException::class);
+        $this->expectException(InvalidTypeException::class);
         $this->expectExceptionMessage("Invalid integer number!!!");
         $this->stub->int4 = ["array"];
         $this->stub->validate();
