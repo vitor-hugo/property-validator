@@ -9,10 +9,10 @@ use Tests\Integration\Validators\Strings\Contracts\ValidLengthContract;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
-#[Group("Validators")]
-#[Group("Strings")]
-#[Group("Length")]
-#[TestDox("Length")]
+#[Group('Validators')]
+#[Group('Strings')]
+#[Group('Length')]
+#[TestDox('Length - String Validator')]
 class LengthTest extends TestCase
 {
     private ValidLengthContract $stub;

@@ -8,8 +8,10 @@ use PHPUnit\Framework\TestCase;
 use Tests\Integration\Validators\Strings\Contracts\ValidIsAlphaContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
-#[Group("IsAlpha")]
-#[TestDox("IsAlpha")]
+#[Group('Validators')]
+#[Group('Strings')]
+#[Group('IsAlpha')]
+#[TestDox('IsAlpha - String Validator')]
 class IsAlphaTest extends TestCase
 {
     public ValidIsAlphaContract $stub;

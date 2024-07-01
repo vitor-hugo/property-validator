@@ -6,13 +6,12 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 use Tests\Integration\Validators\Strings\Contracts\ValidMinLengthContract;
-use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
-#[Group("Validators")]
-#[Group("Strings")]
-#[Group("MinLength")]
-#[TestDox("MinLength")]
+#[Group('Validators')]
+#[Group('Strings')]
+#[Group('MinLength')]
+#[TestDox('MinLength - String Validator')]
 class MinLengthTest extends TestCase
 {
     private ValidMinLengthContract $stub;

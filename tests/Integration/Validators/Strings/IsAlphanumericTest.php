@@ -8,8 +8,10 @@ use PHPUnit\Framework\TestCase;
 use Tests\Integration\Validators\Strings\Contracts\ValidIsAlphanumericContract;
 use Torugo\PropertyValidator\Exceptions\ValidationException;
 
-#[Group("IsAlphanumeric")]
-#[TestDox("IsAlphanumeric")]
+#[Group('Validators')]
+#[Group('Strings')]
+#[Group('IsAlphanumeric')]
+#[TestDox('IsAlphanumeric - String Validator')]
 class IsAlphanumericTest extends TestCase
 {
     public ValidIsAlphanumericContract $stub;
