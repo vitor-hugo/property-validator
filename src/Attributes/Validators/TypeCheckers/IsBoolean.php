@@ -72,7 +72,7 @@ class IsBoolean extends Validator
         }
 
         if (array_key_exists($key, self::ACCEPTED_VALUES) == false) {
-            $this->throwValidationException("Invalid value ('$value') for property '{$this->propertyName}'.");
+            $this->throwValidationException("Invalid boolean value ('$value') for property '{$this->propertyName}'.");
         }
 
         if ($this->convertToBoolean) {
