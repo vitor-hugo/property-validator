@@ -109,7 +109,7 @@ class IsBooleanTest extends TestCase
     public function testShouldThrowWhenReceiveInvalidBooleanValue()
     {
         $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Invalid value ('corret') for property 'var2'.");
+        $this->expectExceptionMessage("Invalid boolean value ('corret') for property 'var2'.");
         $this->stub->var2 = "corret";
         $this->stub->validate();
     }
