@@ -144,12 +144,13 @@ PropertyValidator::validate($signInDto);
 
 Validators can throw:
 
-**`ValidationException`:**  
-Throwed on validation errors.
-
 **`InvalidTypeException`:**  
-Throwed when the property is declared with invalid type,
-or the received data has invalid type.
+Thrown when the property type is incorrect,
+or when the type of the received value is invalid.
+
+**`ValidationException`:**  
+Thrown on validation errors, the value type is correct but,
+its content is invalid.
 
 So you can wrap the validation in a `try/catch` block.
 
