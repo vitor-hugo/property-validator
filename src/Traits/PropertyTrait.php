@@ -165,7 +165,7 @@ trait PropertyTrait
      * @param array|string $expected array of type names or a single string type name
      * @return void
      */
-    protected function expectPropertyValueToBe(array|string $expected): void
+    protected function expectValueTypeToBe(array|string $expected): void
     {
         $valueType = $this->getType($this->propertyValue);
 

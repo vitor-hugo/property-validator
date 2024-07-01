@@ -14,6 +14,6 @@ class IsFloat extends Validator
     public function validation(mixed $value): void
     {
         $this->expectPropertyTypeToBe(["float", "mixed"]);
-        $this->expectPropertyValueToBe(["float", "int"]);
+        $this->expectValueTypeToBe(["float", "int"]);
     }
 }
