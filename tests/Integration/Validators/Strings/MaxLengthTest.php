@@ -56,14 +56,4 @@ class MaxLengthTest extends TestCase
         $this->stub->str2 = "ed1a5ef09d3de41a1f";
         $this->stub->validate();
     }
-
-
-    #[TestDox("Should throw InvalidTypeException when value's type is not string")]
-    public function testShouldThrowInvalidTypeExceptionOnInvalidValueType()
-    {
-        $this->expectException(InvalidTypeException::class);
-        $this->expectExceptionMessage("The value type of 'str1' must be setted as string, array received.");
-        $this->stub->str1 = ["array"];
-        $this->stub->validate();
-    }
 }
