@@ -171,7 +171,7 @@ trait PropertyTrait
 
         if ($this->isTypeValid($valueType, $expected) === false) {
             $types = $this->writeListOfTypes($expected);
-            $this->throwInvalidTypeException("The value type of '{$this->propertyName}' must be setted as $types, $valueType received.");
+            $this->throwInvalidTypeException("Property '{$this->propertyName}' must receive $types values, received $valueType.");
         }
     }
 
