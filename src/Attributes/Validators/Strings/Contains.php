@@ -4,7 +4,6 @@ namespace Torugo\PropertyValidator\Attributes\Validators\Strings;
 
 use Attribute;
 use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsString;
-use Torugo\PropertyValidator\Exceptions\ValidationException;
 use Torugo\TString\Traits\Validators\TStringContains;
 
 /**
