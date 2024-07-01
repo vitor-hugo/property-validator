@@ -11,11 +11,6 @@ class IsString extends Validator
     public function validation(mixed $value): void
     {
         $this->expectPropertyTypeToBe(["string", "mixed"]);
-
-        $type = $this->getType($value);
-
-        if ($type !== "string") {
-            $this->throwValidationException("Property '{$this->propertyName}' must receive a string, received $type.");
-        }
+        $this->expectPropertyValueToBe("string");
     }
 }
