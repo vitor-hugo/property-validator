@@ -106,7 +106,7 @@ class PropertyTraitTest extends TestCase
     public function testExpectValueTypeToBe()
     {
         $this->expectException(InvalidTypeException::class);
-        $this->expectExceptionMessage("The value type of 'mixed' must be setted as int, float or string, array received.");
+        $this->expectExceptionMessage("Property 'mixed' must receive int, float or string values, received array.");
         $property = new \ReflectionProperty($this, "mixed");
         $this->initProperty($property, $this);
         $this->expectValueTypeToBe(["int", "float", "string"]);
