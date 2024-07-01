@@ -48,7 +48,6 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsCnpj](#iscnpj)
     - [IsCpf](#iscpf)
     - [IsEmail](#isemail)
-    - [IsNumeric](#isnumeric)
     - [IsUrl](#isurl)
     - [Length](#length)
     - [MaxLength](#maxlength)
@@ -711,7 +710,40 @@ public mixed $prop = "email@hots.com.br"; // invalid, symbols or ponctuation
 ### IsCnpj
 ### IsCpf
 ### IsEmail
-### IsNumeric
+
+Validates whether a string has a valid email structure.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsEmail;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsEmail()]
+public string $email = "foo@bar.com"; // valid
+
+#[IsEmail()]
+public string $email = "foo+bar@bar.com"; // valid
+
+#[IsEmail()]
+public mixed $email = "hans@m端ller.com"; // invalid
+
+#[IsEmail()]
+public mixed $email = "wrong()[],:;<>@@gmail.com"; // invalid
+```
+
+> [!TIP]
+> Take a look at the [tests](./tests/Integration/Validators/Strings/IsEmailTest.php) to see more of valid or invalid emails.
+
+---
+
 ### IsUrl
 
 ---
