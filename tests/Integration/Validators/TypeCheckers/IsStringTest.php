@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 use Tests\Integration\Validators\TypeCheckers\Contracts\ValidIsStringContract;
-use Torugo\PropertyValidator\Exceptions\ValidationException;
+use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 
 #[Group("Validators")]
 #[Group("TypeCheckers")]
@@ -34,11 +34,11 @@ class IsStringTest extends TestCase
     }
 
 
-    #[TestDox("Should throw ValidationException when value is not a string")]
+    #[TestDox("Should throw InvalidTypeException when value is not a string")]
     public function testShouldThrowWhenNotAString()
     {
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'str3' must receive a string, received array.");
+        $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage("Property 'str3' must receive string values, received array.");
         $this->stub->str3 = ["array"];
         $this->stub->validate();
     }
@@ -52,10 +52,10 @@ class IsStringTest extends TestCase
         $this->assertEmpty($this->stub->str2);
     }
 
-    #[TestDox("Should throw ValidationException with custom error message")]
+    #[TestDox("Should throw InvalidTypeException with custom error message")]
     public function testShouldThrowWithCustomMessage()
     {
-        $this->expectException(ValidationException::class);
+        $this->expectException(InvalidTypeException::class);
         $this->expectExceptionMessage("Not a String!!!");
         $this->stub->str4 = 1000;
         $this->stub->validate();
