@@ -14,11 +14,6 @@ class IsInt extends Validator
     public function validation(mixed $value): void
     {
         $this->expectPropertyTypeToBe(["int", "mixed"]);
-
-        $type = $this->getType($value);
-
-        if ($type !== "int") {
-            $this->throwValidationException("Property '{$this->propertyName}' must receive int values, received $type.");
-        }
+        $this->expectPropertyValueToBe("int");
     }
 }
