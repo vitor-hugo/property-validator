@@ -833,6 +833,37 @@ public $num1 = 12; // invalid
 ---
 
 ### IsPositive
+
+Validates if a number is positive (greater than zero).
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Numbers\IsPositive;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsPositive()]
+public $num1 = 512; // valid
+
+#[IsPositive()]
+public $num1 = 3.1415; // valid
+
+#[IsPositive()]
+public $num1 = 0; // invalid
+
+#[IsPositive()]
+public $num1 = -19.99; // invalid
+```
+
+---
+
 ### Max
 ### Min
 
