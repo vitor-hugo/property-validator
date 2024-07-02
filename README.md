@@ -22,6 +22,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsOptional](#isoptional)
     - [IsRequired](#isrequired)
   - [Type Checkers](#type-checkers)
+    - [IsArray](#isarray)
     - [IsBoolean](#isboolean)
     - [IsDateTime](#isdatetime)
     - [IsDouble](#isdouble)
@@ -280,6 +281,41 @@ public mixed $prop = null; // invalid
 
 
 ## Type Checkers
+
+### IsArray
+
+Validates whether the value of a property is an array.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsArray;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+ 
+```php
+#[IsArray()]
+public array $arr1 = ["A", "B", "C"]; // valid
+
+#[IsArray()]
+public array $arr2 = ["name" => "Han Solo", "ship" => "Millennium Falcon"]; // valid
+
+#[IsArray()]
+public mixed $arr3 = [[10, 29], [30, 43], [60, 92]]; // valid
+
+#[IsArray()]
+public mixed $arr4 = "A, B, C"; // invalid
+
+#[IsArray()]
+public $arr5 = "[{'name': 'Han Solo', 'ship': 'Millennium Falcon'}]"; // invalid
+```
+
+---
 
 ### IsBoolean
 
