@@ -53,11 +53,11 @@ class MaxTest extends TestCase
     }
 
 
-    #[TestDox("Should throw ValidationException when value's type is invalid")]
+    #[TestDox("Should throw InvalidTypeException when value's type is invalid")]
     public function testShouldThrowWhenReceiveAnInvalidValueType()
     {
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'num3' must receive float or int values, received string.");
+        $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage("Property 'num3' must receive int or float values, received string.");
         $this->stub->num3 = "3000";
         $this->stub->validate();
     }
