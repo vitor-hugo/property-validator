@@ -675,6 +675,59 @@ public $arr = ["10", "20", ["30", "40"]];
 ---
 
 ### ArrayNotContains
+
+Works in the opposite direction to [ArrayContains](#arraycontains).  
+Throws `ValidationException` when a certain value is found in an array.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Arrays\ArrayNotContains;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                                                   |
+| :------------- | :----- | :------------------------------------------------------------ |
+| `search`       | mixed  | If string, the comparison is done in a case-sensitive manner. |
+| `strict`       | bool   | The type of searched value should match. (Default: `true`).   |
+| `errorMessage` | string | Custom error message.                                         |
+
+#### Examples <!-- omit in toc -->
+
+```php
+// Valid
+#[ArrayNotContains("pineapple")]
+public $arr = ["apple", "banana", "grapes", "orange"];
+
+// Invalid
+#[ArrayNotContains("orange")]
+public $arr = ["apple", "banana", "grapes", "orange"];
+
+// Invalid
+#[ArrayNotContains(30)]
+public $arr = [10, 20, 30, 40];
+
+// Valid, strict type enabled
+#[ArrayNotContains("30")]
+public $arr = [10, 20, 30, 40];
+
+// Invalid, strict type disabled
+#[ArrayNotContains(30, false)]
+public $arr = ["10", "20", "30", "40"];
+
+// Valid
+#[ArrayNotContains("Luke")]
+public $arr = ["firstName" => "Han", "lasName" => "Solo"];
+
+// Invalid
+#[ArrayNotContains(["30", "40"])]
+public $arr = ["10", "20", ["30", "40"]];
+```
+
+> **TODO:**  
+> Implements case insensitive string search.
+
+---
+
 ### ArrayKeyExists
 
 
