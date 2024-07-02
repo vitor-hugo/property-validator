@@ -49,6 +49,16 @@ class ArrayContainsTest extends TestCase
     }
 
 
+    #[TestDox("Should throw ValidationException when string not found because case sensitiveness")]
+    public function testShouldThrowWhenNotFound3()
+    {
+        $this->expectException(ValidationException::class);
+        $this->expectExceptionMessage("Property 'arr1' does not contains string('banana').");
+        $this->stub->arr1 = ["Apple", "Banana", "Grapes", "Orange"];
+        $this->stub->validate();
+    }
+
+
     #[TestDox("Should throw ValidationException when strictType is enabled")]
     public function testShouldThrowWhenStringType()
     {
