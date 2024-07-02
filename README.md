@@ -771,6 +771,35 @@ public $arr = ["foo" => "bar", "bar" => "foo", 100 => 100];
 ## Numbers
 
 ### IsDivisibleBy
+
+Validates whether a number (int or float) is divisible by a given one.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Numbers\IsDibisibleBy;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type         | Description           |
+| :------------- | :----------- | :-------------------- |
+| `divisor`      | int or float | The divisor number.   |
+| `errorMessage` | string       | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsDivisibleBy(2)]
+public $num1 = 10; // valid
+
+#[IsDivisibleBy(2.5)]
+public $num1 = 7.5; // valid
+
+#[IsDivisibleBy(3)]
+public $num1 = 11; // invalid
+```
+
+---
+
 ### IsNegative
 ### IsPositive
 ### Max
