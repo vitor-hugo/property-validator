@@ -795,6 +795,57 @@ public $cnpj = '999.453.669/0001-04';
 ---
 
 ### IsCpf
+
+Validates if a given string has a valid CPF identification.
+
+CPF Stands for “Cadastro de Pessoas Físicas” or “Registry of Individuals”.
+It is similar to the “Social Security” number adopted in the US, and it is
+used as a type of universal identifier in Brazil.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsCpf;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsCpf()]
+public $cpf = '88479747048';
+// Valid
+
+#[IsCpf()]
+public $cpf = '532.625.750-54';
+// Valid, this is the default format
+
+#[IsCpf()]
+public $cpf = '532 625 750 (54)';
+// Valid, it removes non numerical characters
+
+#[IsCpf()]
+public $cpf = '532.625.750-55';
+// Invalid verification digit
+
+#[IsCpf()]
+public $cpf = '53.625.750-54';
+// Invalid length
+
+#[IsCpf()]
+public $cpf = '532.625.750-541';
+// Invalid length
+```
+
+> [!IMPORTANT]
+> The CPF numbers above were generated randomly using [this tool](https://www.4devs.com.br/gerador_de_cpf).  
+> If one of them belongs to you, please send me a request and I will remove it immediately.
+
+---
+
 ### IsEmail
 
 Validates whether a string has a valid email structure.
