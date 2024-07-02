@@ -35,6 +35,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [Arrays](#arrays)
     - [ArrayContains](#arraycontains)
     - [ArrayNotContains](#arraynotcontains)
+    - [ArrayKeyExists](#arraykeyexists)
   - [Numbers](#numbers)
     - [IsDivisibleBy](#isdivisibleby)
     - [IsNegative](#isnegative)
@@ -621,7 +622,53 @@ public $prop = 898; // invalid
 ## Arrays
 
 ### ArrayContains
+
+Validates whether an array contains a given value.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Arrays\ArrayContains;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                                                   |
+| :------------- | :----- | :------------------------------------------------------------ |
+| `search`       | mixed  | If string, the comparison is done in a case-sensitive manner. |
+| `strict`       | bool   | The type of searched value should match. (Default: `true`).   |
+| `errorMessage` | string | Custom error message.                                         |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[ArrayContains("banana")]
+public $arr = ["apple", "banana", "grapes", "orange"];
+// Valid
+
+#[ArrayContains(20)]
+public $arr = [10, 20, 30, 40];
+// Valid
+
+#[ArrayContains("20")]
+public $arr = [10, 20, 30, 40];
+// Invalid, strict type enabled
+
+#[ArrayContains(20, false)]
+public $arr = ["10", "20", "30", "40"];
+// Valid, strict type disabled
+
+#[ArrayContains("Appleseed")]
+public $arr = ["firstName" => "Jhon", "lasName" => "Appleseed"];
+// Valid
+
+#[ArrayContains(["30", "40"])]
+public $arr = ["10", "20", ["30", "40"]];
+// Valid
+```
+
+---
+
 ### ArrayNotContains
+### ArrayKeyExists
 
 
 ## Numbers
