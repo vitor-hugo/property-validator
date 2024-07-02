@@ -743,6 +743,57 @@ public mixed $b64 = "=HAMYja0H18A"; // invalid
 ---
 
 ### IsCnpj
+
+Validates if a given string has a valid CNPJ registration.
+
+The Brazil National Registry of Legal Entities number (CNPJ) is a company identification number
+that must be obtained from the Department of Federal Revenue(Secretaria da Receita Federal do Brasil)
+prior to the start of any business activities.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsCnpj;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsCnpj()]
+public $cnpj = '60391682000132';
+// Valid
+
+#[IsCnpj()]
+public $cnpj = '99.453.669/0001-04';
+// Valid, this is the default format
+
+#[IsCnpj()]
+public $cnpj = '99 453 669 / 0001 (04)';
+// Valid, it removes non numerical characters
+
+#[IsCnpj()]
+public $cnpj = '99.453.669/0001-05';
+// Invalid verification digit
+
+#[IsCnpj()]
+public $cnpj = '9953669000105';
+// Invalid length
+
+#[IsCnpj()]
+public $cnpj = '999.453.669/0001-04';
+// Invalid length
+```
+
+> [!IMPORTANT]
+> The cnpj numbers above were generated randomly using [this tool](https://www.4devs.com.br/gerador_de_cnpj).  
+> If one of them belongs to you, please send me a request to remove.
+
+---
+
 ### IsCpf
 ### IsEmail
 
