@@ -21,6 +21,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [Common](#common)
     - [IsOptional](#isoptional)
     - [IsRequired](#isrequired)
+    - [SameAs](#sameas)
   - [Type Checkers](#type-checkers)
     - [IsArray](#isarray)
     - [IsBoolean](#isboolean)
@@ -281,6 +282,59 @@ public array $prop = []; // invalid
 public mixed $prop = null; // invalid
 ```
 
+---
+
+### SameAs
+
+Validates whether the value of a property
+is strictly equal to another in the same class
+
+```php
+use Torugo\PropertyValidator\Attributes\Common\SameAs;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                          |
+| :------------- | :----- | :----------------------------------- |
+| `target`       | string | Name of the property to be compared. |
+| `errorMessage` | string | Custom error message.                |
+
+#### Examples <!-- omit in toc -->
+
+```php
+// VALID
+public $password = "MySuperStrongPassword!";
+
+#[SameAs("password")]
+public $repeat = "MySuperStrongPassword!";
+```
+
+```php
+//INVALID - Property name is case sensitive
+public $password = "MySuperStrongPassword!";
+
+#[SameAs("Password")]
+public $repeat = "MySuperStrongPassword!";
+```
+
+```php
+// INVALID - Values must have the same type
+public $number1 = 512;
+
+#[SameAs("number1")]
+public $number2 = "512";
+```
+
+```php
+// INVALID - If target property does not exist
+public $propA = "My Prop";
+
+#[SameAs("propC")]
+public $propB = "My Prop";
+```
+
+---
 
 ## Type Checkers
 
