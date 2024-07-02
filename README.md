@@ -801,6 +801,37 @@ public $num1 = 11; // invalid
 ---
 
 ### IsNegative
+
+Validates if property's value is negative (lesser than zero).
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Numbers\IsNegative;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsNegative()]
+public $num1 = -13; // valid
+
+#[IsNegative()]
+public $num1 = -3.14; // valid
+
+#[IsNegative()]
+public $num1 = 0; // invalid
+
+#[IsNegative()]
+public $num1 = 12; // invalid
+```
+
+---
+
 ### IsPositive
 ### Max
 ### Min
