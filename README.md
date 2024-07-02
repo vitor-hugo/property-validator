@@ -821,7 +821,7 @@ use Torugo\PropertyValidator\Attributes\Validators\Numbers\IsNegative;
 public $num1 = -13; // valid
 
 #[IsNegative()]
-public $num1 = -3.14; // valid
+public $num1 = -9.99; // valid
 
 #[IsNegative()]
 public $num1 = 0; // invalid
@@ -865,6 +865,41 @@ public $num1 = -19.99; // invalid
 ---
 
 ### Max
+
+Validates whether a number is less than or equal to a given number.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Numbers\Max;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type         | Description                |
+| :------------- | :----------- | :------------------------- |
+| `max`          | int or float | Maximum acceptable number. |
+| `errorMessage` | string       | Custom error message.      |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Max(1024)]
+public $num1 = 512; // valid
+
+#[Max(999.99)]
+public $num1 = 999.99; // valid
+
+#[Max(-10)]
+public $num1 = -11; // valid
+
+#[Max(10)]
+public $num1 = 11; // invalid
+
+#[Max(0)]
+public $num1 = 1; // invalid
+```
+
+---
+
 ### Min
 
 
