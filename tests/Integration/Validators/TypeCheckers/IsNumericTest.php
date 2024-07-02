@@ -45,11 +45,11 @@ class IsNumericTest extends TestCase
     }
 
 
-    #[TestDox("Should throw ValidationException when value's type is not valid")]
+    #[TestDox("Should throw InvalidTypeException when value's type is not valid")]
     public function testShouldThrowWhenValueTypeIsNotValid()
     {
-        $this->expectException(ValidationException::class);
-        $this->expectExceptionMessage("Property 'num3' must receive values of type float, int or numeric string, received 'array'.");
+        $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage("Property 'num3' must receive int, float or string values, received array.");
         $this->stub->num3 = [2017];
         $this->stub->validate();
     }
@@ -60,16 +60,16 @@ class IsNumericTest extends TestCase
     {
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage("Not a number!!!");
-        $this->stub->num4 = ["array"];
+        $this->stub->num4 = "array";
         $this->stub->validate();
     }
 
 
-    #[TestDox("Should throw InvalidTypeException when the property\'s type is not mixed")]
+    #[TestDox("Should throw InvalidTypeException when the property\'s type is not valid")]
     public function testShouldThrowInvalidTypeExceptionWhenPropertyTypeIsNotMixed()
     {
         $this->expectException(InvalidTypeException::class);
-        $this->expectExceptionMessage("Property 'num1' must be setted as mixed.");
+        $this->expectExceptionMessage("Property 'num1' must be setted as int, float, string or mixed.");
         $stub = new InvalidIsNumericContract;
         $stub->validate();
     }

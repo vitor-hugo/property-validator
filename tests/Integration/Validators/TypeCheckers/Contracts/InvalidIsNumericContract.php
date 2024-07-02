@@ -8,5 +8,5 @@ use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsNumeric;
 class InvalidIsNumericContract extends BaseValidationTestClass
 {
     #[IsNumeric()]
-    public int $num1 = 2048;
+    public array $num1 = [2048];
 }
