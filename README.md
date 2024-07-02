@@ -940,8 +940,8 @@ public $num1 = 0; // invalid
 ## Strings
 
 > [!IMPORTANT]
-> All string validators in this section extend the `IsString` validator,
-> so you don't need to use it.
+> All string validators in this section extend the [`IsString`](#isstring) validator,
+> so its use is unnecessary.
 
 ### Contains
 
