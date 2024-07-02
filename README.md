@@ -644,6 +644,10 @@ use Torugo\PropertyValidator\Attributes\Validators\Arrays\ArrayContains;
 public $arr = ["apple", "banana", "grapes", "orange"];
 // Valid
 
+#[ArrayContains("BANANA")]
+public $arr = ["apple", "banana", "grapes", "orange"];
+// Invalid, string search is case sensitive
+
 #[ArrayContains(20)]
 public $arr = [10, 20, 30, 40];
 // Valid
@@ -664,6 +668,9 @@ public $arr = ["firstName" => "Jhon", "lasName" => "Appleseed"];
 public $arr = ["10", "20", ["30", "40"]];
 // Valid
 ```
+
+> **TODO:**  
+> Implements case insensitive string search.
 
 ---
 
