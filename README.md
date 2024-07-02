@@ -48,7 +48,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsCnpj](#iscnpj)
     - [IsCpf](#iscpf)
     - [IsEmail](#isemail)
-    - [IsUrl](#isurl)
+    - [IsURL](#isurl)
     - [Length](#length)
     - [MaxLength](#maxlength)
     - [MinLength](#minlength)
@@ -779,7 +779,91 @@ public mixed $email = "wrong()[],:;<>@@gmail.com"; // invalid
 
 ---
 
-### IsUrl
+### IsURL
+
+Validates whether a string has a valid URL structure.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsURL;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type                              | Description           |
+| :------------- | :-------------------------------- | :-------------------- |
+| `options`      | Torugo\TString\Options\UrlOptions | Validation options.   |
+| `errorMessage` | string                            | Custom error message. |
+
+#### Validation Options <!-- omit in toc -->
+
+Default values:
+
+```php
+new UrlOptions(
+    requireTld: true,
+    requireProtocol: false, // expects the protocol to be present in the url
+    requireValidProtocol: true, // requires one of the protocols bellow
+    protocols: ["http", "https", "ftp"], // required protocols
+    requireHost: true,
+    requirePort: false,
+    allowUnderscores: false,
+    allowTrailingDot: false,
+    allowProtocolRelativeUrls: false,
+    allowFragments: true,
+    allowQueryComponents: true,
+    allowAuth: true,
+    allowNumericTld: false,
+    allowWildcard: false,
+    validateLength: true,
+);
+```
+
+#### Examples <!-- omit in toc -->
+
+```php
+
+///
+/// VALID
+///
+#[IsUrl()]
+public $url = 'foobar.com';
+
+#[IsUrl()]
+public $url = 'www.foobar.com';
+
+#[IsUrl()]
+public $url = 'http://www.foobar.com/';
+
+#[IsUrl()]
+public $url = 'http://127.0.0.1/';
+
+#[IsUrl()]
+public $url = 'http://10.0.0.0/';
+
+#[IsUrl()]
+public $url = 'http://189.123.14.13/';
+
+#[IsUrl()]
+public $url = 'http://duckduckgo.com/?q=%2F';
+
+///
+/// INVALID
+///
+#[IsUrl()]
+public $url = 'http://www.foobar.com:0/';
+
+#[IsUrl()]
+public $url = 'http://www.foobar.com:70000/';
+
+#[IsUrl()]
+public $url = 'http://www.foobar.com:99999/';
+
+#[IsUrl()]
+public $url = 'http://www.-foobar.com/';
+
+#[IsUrl()]
+public $url = 'http://www.foobar-.com/';
+```
 
 ---
 
