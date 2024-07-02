@@ -29,6 +29,8 @@ class ArrayContains extends IsArray
     {
         parent::validation($value);
 
+        // TODO: Implement a case insensitive string search
+
         if (!in_array($this->search, $value, $this->strict)) {
             $searchType = $this->getType($this->search);
 
