@@ -730,6 +730,43 @@ public $arr = ["10", "20", ["30", "40"]];
 
 ### ArrayKeyExists
 
+Validates whether an array has one or more keys.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Arrays\ArrayNotContains;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter       | Type   | Description                                                                  |
+| :-------------- | :----- | :--------------------------------------------------------------------------- |
+| `keys`          | array  | Keys that must be present in the array.                                      |
+| `caseSensitive` | bool   | The search for keys should or should not be case sensitive. (Default `true`) |
+| `errorMessage`  | string | Custom error message.                                                        |
+
+#### Examples <!-- omit in toc -->
+
+```php
+// Valid
+#[ArrayKeyExists(["fistName", "lastName"])]
+public $arr = ["firstName" => "Luke", "lastName" => "Skywalker"];
+
+// Invalid, case sensitiveness enabled by default
+#[ArrayKeyExists(["fistName", "lastName"])]
+public $arr = ["FIRSTNAME" => "Luke", "LASTNAME" => "Skywalker"];
+
+// Valid, case sensitiveness disabled
+#[ArrayKeyExists(["fistName", "lastName"], false)]
+public $arr = ["FIRSTNAME" => "Luke", "LASTNAME" => "Skywalker"];
+
+// Valid
+#[ArrayKeyExists(["foo", 100])]
+public $arr = ["foo" => "bar", "bar" => "foo", 100 => 100];
+
+// Invalid, 100 != "100"
+#[ArrayKeyExists(["100"], false, "Custom error message")]
+public $arr = ["foo" => "bar", "bar" => "foo", 100 => 100];
+```
 
 ## Numbers
 
