@@ -11,7 +11,7 @@ use Torugo\PropertyValidator\Exceptions\ValidationException;
 
 #[Group("Arrays")]
 #[Group("ArrayContains")]
-#[TestDox("ArrayContains(): ValidIsOptionalContract")]
+#[TestDox("ArrayContains(): Validator")]
 class ArrayContainsTest extends TestCase
 {
     public ValidArrayContainsContract $stub;
