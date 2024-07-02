@@ -42,6 +42,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsPositive](#ispositive)
     - [Max](#max)
     - [Min](#min)
+    - [Range](#range)
   - [Strings](#strings)
     - [Contains](#contains)
     - [IsAlpha](#isalpha)
@@ -936,6 +937,45 @@ public $num1 = 0; // invalid
 
 ---
 
+### Range
+
+Validates whether a number falls within a given inclusive range.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Numbers\Range;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type         | Description                |
+| :------------- | :----------- | :------------------------- |
+| `min`          | int or float | Minimum acceptable number. |
+| `max`          | int or float | Maximum acceptable number. |
+| `errorMessage` | string       | Custom error message.      |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Range(0, 16)]
+public $number = 9; // valid
+
+#[Range(1, 9.99)]
+public $number = "8.72"; // valid
+
+#[Range(-10, 0)]
+public $number = -4; // valid
+
+#[Range(20, 0)] // will be swapped
+public $number = 19; // valid
+
+#[Range(0, 100)]
+public $number = 101; // invalid
+
+#[Range(1, 9.99)]
+public $number = 10; // invalid
+```
+
+---
 
 ## Strings
 
