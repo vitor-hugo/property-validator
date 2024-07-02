@@ -866,7 +866,7 @@ public $num1 = -19.99; // invalid
 
 ### Max
 
-Validates whether a number is less than or equal to a given number.
+Validates whether a number (int or float) is less than or equal to a given number.
 
 ```php
 use Torugo\PropertyValidator\Attributes\Validators\Numbers\Max;
@@ -901,6 +901,40 @@ public $num1 = 1; // invalid
 ---
 
 ### Min
+
+Validates whether a number (int or float) is greater than or equal to a given number.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Numbers\Min;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type         | Description                |
+| :------------- | :----------- | :------------------------- |
+| `min`          | int or float | Minimum acceptable number. |
+| `errorMessage` | string       | Custom error message.      |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Min(256)]
+public $num1 = 256; // valid
+
+#[Min(9.99)]
+public $num1 = 12.99; // valid
+
+#[Min(-5)]
+public $num1 = -4; // valid
+
+#[Min(10)]
+public $num1 = 9; // invalid
+
+#[Min(1)]
+public $num1 = 0; // invalid
+```
+
+---
 
 
 ## Strings
