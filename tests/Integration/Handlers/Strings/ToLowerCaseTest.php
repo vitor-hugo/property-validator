@@ -6,7 +6,6 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 use Tests\Integration\Handlers\Strings\Contracts\ValidToLowerCaseContract;
-use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 
 #[Group("Handlers")]
 #[Group("Strings")]
