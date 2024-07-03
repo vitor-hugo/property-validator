@@ -1579,7 +1579,7 @@ so they normally do not throw any exceptions.
 
 ### Append
 
-Adds a string to the end of property's value.
+Concatenates a string at the end of the property value.
 
 ```php
 use Torugo\PropertyValidator\Attributes\Handlers\Strings\Append;
@@ -1587,9 +1587,9 @@ use Torugo\PropertyValidator\Attributes\Handlers\Strings\Append;
 
 #### Parameters <!-- omit in toc -->
 
-| Parameter | Type   | Description                     |
-| :-------- | :----- | :------------------------------ |
-| `append`  | string | String to be placed at the end. |
+| Parameter | Type   | Description               |
+| :-------- | :----- | :------------------------ |
+| `append`  | string | String to be concatenated |
 
 #### Examples <!-- omit in toc -->
 
@@ -1614,9 +1614,9 @@ use Torugo\PropertyValidator\Attributes\Handlers\Strings\Prepend;
 
 #### Parameters <!-- omit in toc -->
 
-| Parameter | Type   | Description                     |
-| :-------- | :----- | :------------------------------ |
-| `prepend` | string | String to be placed at the end. |
+| Parameter | Type   | Description               |
+| :-------- | :----- | :------------------------ |
+| `prepend` | string | String to be concatenated |
 
 #### Examples <!-- omit in toc -->
 
