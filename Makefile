@@ -23,8 +23,8 @@ integration:
 validators:
 	${PHPUNIT} --testsuite=default --group=Validators
 
-transformers:
-	${PHPUNIT} --testsuite=default --group=Transformers
+handlers:
+	${PHPUNIT} --testsuite=default --group=Handlers
 
 clear:
 	rm -rf tests/cache
