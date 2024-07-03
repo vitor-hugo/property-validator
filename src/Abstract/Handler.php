@@ -36,16 +36,25 @@ abstract class Handler implements HandlerInterface
 
     /**
      * Validates if the property type is the expected.
+     *
      * @param array|string $expected array of type names or a single string type name
-     * @return void
-     * @override
+     * @return bool
      */
-    protected function expectValueTypeToBe(array|string $expected): void
+    protected function propertTypeIs(array|string $expected): bool
     {
-        if ($this->isTypeValid($this->getType($this->propertyValue), $expected) === false) {
-            $types = $this->writeListOfTypes($expected, "and");
-            $attr = $this->getClassName($this::class);
-            throw new InvalidTypeException("$attr only handles $types values.");
-        }
+        return $this->isTypeValid($this->propertyType, $expected);
+    }
+
+
+    /**
+     * Validates if the value type is the expected.
+     *
+     * @param array|string $expected array of type names or a single string type name
+     * @return bool
+     */
+    protected function valueTypeIs(array|string $expected): bool
+    {
+        $propType = $this->getType($this->propertyValue);
+        return $this->isTypeValid($propType, $expected);
     }
 }
