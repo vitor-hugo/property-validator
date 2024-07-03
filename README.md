@@ -218,6 +218,12 @@ class SignInDto
 
 # Validators
 
+Set of attributes that validate the properties of a class, do not change
+its value, only check whether the data respects a certain rule of each validator.
+
+Validators can throw [`ValidationException`](#error-handling)
+and [`InvalidTypeException`](#error-handling).
+
 ## Common
 
 ### IsOptional
