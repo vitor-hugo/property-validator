@@ -54,10 +54,10 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsEmail](#isemail)
     - [IsURL](#isurl)
     - [Length](#length)
+    - [Matches](#matches)
     - [MaxLength](#maxlength)
     - [MinLength](#minlength)
     - [NotContains](#notcontains)
-    - [MatchRegex](#matchregex)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -1431,6 +1431,36 @@ public $password = "9a2f534"; // invalid
 
 ---
 
+### Matches
+
+Performs a regular expression match on property's value
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\Matches;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                                   |
+| :------------- | :----- | :-------------------------------------------- |
+| `pattern`      | string | The regex pattern to search for, as a string. |
+| `errorMessage` | string | Custom error message.                         |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Matches("/^#(?:[0-9a-fA-F]{3}){1,2}$/")]
+public $color = "#0ABAB5";
+
+#[Matches("\d{5}([ \-]\d{4})?")]
+public mixed $zip = "98101";
+
+#[Matches("/<\/?[\w\s]*>|<.+[\W]>/")]
+public $tag = "<h1>Torugo</h2>";
+```
+
+---
+
 ### MaxLength
 
 Validates if the length of a string is lesser than or equal to a maximum parameter.
@@ -1521,9 +1551,6 @@ public $prop = "Bite the bullet"; // throws ValidationException
 ```
 
 ---
-
-### MatchRegex
-
 
 # Contribute
 
