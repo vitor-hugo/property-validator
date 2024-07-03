@@ -61,6 +61,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
 - [Handlers](#handlers)
   - [Strings](#strings-1)
     - [ToLowerCase](#tolowercase)
+    - [ToTitleCase](#totitlecase)
     - [ToUpperCase](#touppercase)
 - [Contribute](#contribute)
 - [License](#license)
@@ -1578,6 +1579,41 @@ public string $email = "MYEMAIL@MYHOST.COM"; // myemail@myhost.com
 
 #[ToLowerCase()]
 public string $arr = ["A", ["B", ["C", "D"]]]; // ["a", ["b", ["c", "d"]]]
+```
+
+---
+
+### ToTitleCase
+
+Converts a string or string elements in an array to title case.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\ToTitleCase;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter                   | Type | Description                                                         |
+| :-------------------------- | :--- | :------------------------------------------------------------------ |
+| `fixRomanNumerals`          | bool | Keep roman numerals uppercased (up to 6 digits). (Default: `false`) |
+| `fixPortuguesePrepositions` | bool | Keep portuguese prepositions in lowercase. (Default: `false`)       |
+
+> To know more [visit](https://github.com/vitor-hugo/string-lib-php?tab=readme-ov-file#totitlecase).
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[ToTitleCase()]
+public string $name = "ADA LOVELACE"; // Ada Lovelace
+
+#[ToTitleCase(true)] // fix roman numerals
+public string $name = "pope benedict xvi"; // Pope Benedict XVI
+
+#[ToTitleCase(false, true)] // fix portuguese prepositions
+public string $name = "NISE DA SILVEIRA"; // Nise da Silveira
+
+#[ToTitleCase(true, true)] // both
+public string $name = "XV DE PIRACICABA"; // XV de Piracicaba
 ```
 
 ---
