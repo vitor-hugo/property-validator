@@ -60,6 +60,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [NotContains](#notcontains)
 - [Handlers](#handlers)
   - [Strings](#strings-1)
+    - [Append](#append)
     - [ToLowerCase](#tolowercase)
     - [ToTitleCase](#totitlecase)
     - [ToUpperCase](#touppercase)
@@ -1574,6 +1575,32 @@ When the type of the value is incorrect, the handlers should do nothing,
 so they normally do not throw any exceptions.
 
 ## Strings
+
+### Append
+
+Adds a string to the end of property's value.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\Append;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter | Type   | Description                     |
+| :-------- | :----- | :------------------------------ |
+| `append`  | string | String to be placed at the end. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[ToLowerCase()]
+public string $email = "MYEMAIL@MYHOST.COM"; // myemail@myhost.com
+
+#[ToLowerCase()]
+public string $arr = ["A", ["B", ["C", "D"]]]; // ["a", ["b", ["c", "d"]]]
+```
+
+---
 
 ### ToLowerCase
 
