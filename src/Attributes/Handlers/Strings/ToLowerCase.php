@@ -16,21 +16,21 @@ class ToLowerCase extends Handler
 
     public function handler(mixed $value): void
     {
-        $this->expectValueTypeToBe(["string", "array"]);
-
         $valueType = $this->getType($value);
 
         if ($valueType == 'string') {
             $this->setValue(self::toLowerCase($value));
             return;
+        } else if ($valueType == 'array') {
+            array_walk_recursive($value, function (&$v) {
+                if (gettype($v) === 'string') {
+                    $v = self::toLowerCase($v);
+                }
+            });
+
+            $this->setValue($value);
         }
 
-        array_walk_recursive($value, function (&$v) {
-            if (gettype($v) === 'string') {
-                $v = self::toLowerCase($v);
-            }
-        });
 
-        $this->setValue($value);
     }
 }
