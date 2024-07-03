@@ -61,6 +61,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
 - [Handlers](#handlers)
   - [Strings](#strings-1)
     - [ToLowerCase](#tolowercase)
+    - [ToUpperCase](#touppercase)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -1569,12 +1570,34 @@ Converts a string or string elements in an array to lower case.
 use Torugo\PropertyValidator\Attributes\Handlers\Strings\ToLowerCase;
 ```
 
+#### Examples <!-- omit in toc -->
+
 ```php
 #[ToLowerCase()]
 public string $email = "MYEMAIL@MYHOST.COM"; // myemail@myhost.com
 
 #[ToLowerCase()]
 public string $arr = ["A", ["B", ["C", "D"]]]; // ["a", ["b", ["c", "d"]]]
+```
+
+---
+
+### ToUpperCase
+
+Converts a string or string elements in an array to upper case.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\ToUpperCase;
+```
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[ToUpperCase()]
+public string $title = "lord of the rings"; // LORD OF THE RINGS
+
+#[ToUpperCase()]
+public string $arr = ["a", ["b", ["c", "d"]]]; // ["A", ["B", ["C", "D"]]]
 ```
 
 ---
