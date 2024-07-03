@@ -6,13 +6,13 @@ use Attribute;
 use Torugo\PropertyValidator\Abstract\Handler;
 
 /**
- * Adds a string to the end of another.
+ * Concatenates a string at the end of the property value.
  */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 class Append extends Handler
 {
     /**
-     * @param string $append String to be placed at the end
+     * @param string $append String to be added
      */
     public function __construct(private string $append)
     {
