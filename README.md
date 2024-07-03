@@ -61,6 +61,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
 - [Handlers](#handlers)
   - [Strings](#strings-1)
     - [Append](#append)
+    - [Prepend](#prepend)
     - [ToLowerCase](#tolowercase)
     - [ToTitleCase](#totitlecase)
     - [ToUpperCase](#touppercase)
@@ -1600,12 +1601,32 @@ public $phrase = "My phrase"; // "My phrase."
 #[Append("?")]
 public $str = "My String"; // "My String!?"
 ```
-```php
-#[ToLowerCase()]
-public string $email = "MYEMAIL@MYHOST.COM"; // myemail@myhost.com
 
-#[ToLowerCase()]
-public string $arr = ["A", ["B", ["C", "D"]]]; // ["a", ["b", ["c", "d"]]]
+---
+
+### Prepend
+
+Concatenates a string at the beginning of the property value.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\Prepend;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter | Type   | Description                     |
+| :-------- | :----- | :------------------------------ |
+| `prepend` | string | String to be placed at the end. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Append(".")]
+public $phrase = "My phrase"; // "My phrase."
+
+#[Append("!")]
+#[Append("?")]
+public $str = "My String"; // "My String!?"
 ```
 
 ---
