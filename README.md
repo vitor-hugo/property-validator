@@ -1593,6 +1593,14 @@ use Torugo\PropertyValidator\Attributes\Handlers\Strings\Append;
 #### Examples <!-- omit in toc -->
 
 ```php
+#[Append(".")]
+public $phrase = "My phrase"; // "My phrase."
+
+#[Append("!")]
+#[Append("?")]
+public $str = "My String"; // "My String!?"
+```
+```php
 #[ToLowerCase()]
 public string $email = "MYEMAIL@MYHOST.COM"; // myemail@myhost.com
 
