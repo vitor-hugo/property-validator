@@ -62,12 +62,11 @@ class ToLowerCaseTest extends TestCase
     }
 
 
-    #[TestDox("Should throw InvalidTypeException on non strings")]
+    #[TestDox("Should do nothing on non strings")]
     public function testShouldThrowOnNonStrings()
     {
-        $this->expectException(InvalidTypeException::class);
-        $this->expectExceptionMessage("ToLowerCase only handles string and array values.");
         $this->stub->item = 1000;
-        $this->stub->validate();
+        $this->assertTrue($this->stub->validate());
+        $this->assertEquals(1000, $this->stub->item);
     }
 }
