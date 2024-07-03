@@ -176,11 +176,11 @@ trait PropertyTrait
     }
 
 
-    private function writeListOfTypes(array|string $types): string
+    private function writeListOfTypes(array|string $types, string $conjuction = "or"): string
     {
         if ($this->getType($types) === "array") {
             $interpolation = implode(", ", $types);
-            $interpolation = strrev(implode(strrev(" or"), explode(strrev(","), strrev($interpolation), 2)));
+            $interpolation = strrev(implode(strrev(" $conjuction"), explode(strrev(","), strrev($interpolation), 2)));
         } else {
             $interpolation = $types;
         }
