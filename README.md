@@ -58,6 +58,9 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [MaxLength](#maxlength)
     - [MinLength](#minlength)
     - [NotContains](#notcontains)
+- [Handlers](#handlers)
+  - [Strings](#strings-1)
+    - [ToLowerCase](#tolowercase)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -1548,6 +1551,30 @@ public mixed $prop = "To cut corners"; // not throws, case sensitiveness enabled
 
 #[NotContains("BULLET", false)] // Case sensitiveness enabled
 public $prop = "Bite the bullet"; // throws ValidationException
+```
+
+---
+
+<!-- MARK: Handlers -->
+
+# Handlers
+
+## Strings
+
+### ToLowerCase
+
+Converts a string or string elements in an array to lower case.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\ToLowerCase;
+```
+
+```php
+#[ToLowerCase()]
+public string $email = "MYEMAIL@MYHOST.COM"; // myemail@myhost.com
+
+#[ToLowerCase()]
+public string $arr = ["A", ["B", ["C", "D"]]]; // ["a", ["b", ["c", "d"]]]
 ```
 
 ---
