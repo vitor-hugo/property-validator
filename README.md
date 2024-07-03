@@ -1567,6 +1567,12 @@ public $prop = "Bite the bullet"; // throws ValidationException
 
 # Handlers
 
+Set of attributes that modify the value of a property and do not validate
+the value, the objective is to transform/manipulate them in some way.
+
+When the type of the value is incorrect, the handlers should do nothing,
+so they normally do not throw any exceptions.
+
 ## Strings
 
 ### ToLowerCase
