@@ -51,6 +51,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsCnpj](#iscnpj)
     - [IsCpf](#iscpf)
     - [IsEmail](#isemail)
+    - [IsSemVer](#issemver)
     - [IsURL](#isurl)
     - [Length](#length)
     - [Matches](#matches)
@@ -1399,6 +1400,44 @@ public mixed $email = "wrong()[],:;<>@@gmail.com"; // invalid
 
 > [!TIP]
 > Take a look at the [tests](./tests/Integration/Validators/Strings/IsEmailTest.php) to see more of valid or invalid emails.
+
+---
+
+### IsSemVer
+
+Validates whether a version number follow the rules of semantic versioning [(SemVer)](https://semver.org).
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsSemVer;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsSemVer()]
+public $version = "1.0.0"; // valid
+
+#[IsSemVer()]
+public $version = "1.0.0-beta.1"; // valid
+
+#[IsSemVer()]
+public $version = "1.0.0+20"; // valid
+
+#[IsSemVer()]
+public $version = "alpha.beta"; // invalid
+
+#[IsSemVer()]
+public $version = "1.0.0-alpha_beta"; // invalid
+
+#[IsSemVer()]
+public $version = "1.01.1"; // invalid
+```
 
 ---
 
