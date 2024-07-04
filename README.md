@@ -1645,7 +1645,10 @@ Set of attributes that modify the value of a property and do not validate
 the value, the objective is to transform/manipulate them in some way.
 
 When the type of the value is incorrect, the handlers should do nothing,
-so they normally do not throw any exceptions.
+so they normally do not throw any exceptions in this cases.
+
+Some handlers require the property to be of a certain type, usually `mixed`,
+therefore they can throw [`InvalidTypeException`](#error-handling).
 
 ## Strings
 
