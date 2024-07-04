@@ -35,6 +35,8 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsString](#isstring)
   - [Arrays](#arrays)
     - [ArrayContains](#arraycontains)
+    - [ArrayMaxSize](#arraymaxsize)
+    - [ArrayMinSize](#arrayminsize)
     - [ArrayKeyExists](#arraykeyexists)
     - [ArrayNotContains](#arraynotcontains)
   - [Numbers](#numbers)
@@ -739,6 +741,72 @@ public $arr = ["10", "20", ["30", "40"]];
 
 > **TODO:**  
 > Implements case insensitive string search.
+
+### ArrayMaxSize
+
+Checks whether the number of elements in an array
+is less than or equal to a specified number.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Arrays\ArrayMaxSize;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                              |
+| :------------- | :----- | :--------------------------------------- |
+| `max`          | int    | Maximum accepted elements. Must be >= 1. |
+| `errorMessage` | string | Custom error message.                    |
+
+#### Examples <!-- omit in toc -->
+
+```php
+// Valid
+#[ArrayMaxSize(4)]
+public $arr = ["apple", "banana", "grapes", "orange"];
+
+// Valid
+#[ArrayMaxSize(2)]
+public $arr = ["firstName" => "Bilbo", "lastName" => "Baggins"];
+
+// Invalid, throws ValidationException when overflows
+#[ArrayMaxSize(4)]
+public $arr = ["apple", "banana", "grapes", "orange", "pear"];
+```
+
+---
+
+### ArrayMinSize
+
+Checks whether the number of elements in an array
+is greater than or equal to a specified number.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Arrays\ArrayMinSize;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                              |
+| :------------- | :----- | :--------------------------------------- |
+| `min`          | int    | Minimum accepted elements. Must be >= 1. |
+| `errorMessage` | string | Custom error message.                    |
+
+#### Examples <!-- omit in toc -->
+
+```php
+// Valid
+#[ArrayMinSize(2)]
+public $arr = ["apple", "banana", "grapes", "orange"];
+
+// Valid
+#[ArrayMinSize(2)]
+public $arr = ["firstName" => "Bilbo", "lastName" => "Baggins"];
+
+// Invalid, throws ValidationException when the number of elements is lesser
+#[ArrayMinSize(3)]
+public $arr = ["apple", "banana"];
+```
 
 ---
 
