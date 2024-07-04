@@ -64,6 +64,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [Strings](#strings-1)
     - [Append](#append)
     - [Prepend](#prepend)
+    - [Replace](#replace)
     - [ToLowerCase](#tolowercase)
     - [ToTitleCase](#totitlecase)
     - [ToUpperCase](#touppercase)
@@ -1698,6 +1699,50 @@ public $phrase = "My phrase"; // "My phrase."
 #[Append("!")]
 #[Append("?")]
 public $str = "My String"; // "My String!?"
+```
+
+---
+
+### Replace
+
+Replace all occurrences of the search string with the replacement string.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\Replace;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter | Type            | Description                                                                                                       |
+| :-------- | :-------------- | :---------------------------------------------------------------------------------------------------------------- |
+| `search`  | string or array | The value being searched for. An array may be used to designate multiple values.                                  |
+| `replace` | string or array | The replacement value that replaces found search values. An array may be used to designate multiple replacements. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Replace(" ", "_")]
+public $under = "Underscore on spaces";
+// "Underscore_on_spaces"
+
+#[Replace(["+", "/", "="], ["-", "_", ""])]
+public $b64 = "Vh9yB+XNo0cXfyfATY/bmw==";
+// "Vh9yB-XNo0cXfyfATY_bmw"
+
+#[Replace(" ", "")]
+public $ipv6 = "2001 : 0000 : 130F : 0000 : 0000 : 09C0 : 876A : 130B";
+// "2001:0000:130F:0000:0000:09C0:876A:130B"
+
+#[Replace("A", "B")]
+#[Replace("B", "C")]
+#[Replace("C", "D")]
+#[Replace("D", "E")]
+public $cascade = "A";
+// "E"
+
+#[Replace(["<", ">"], [""])]
+public $array = ["<A>", "<B>", "<C>", "<D>"];
+// ["A", "B", "C", "D"];
 ```
 
 ---
