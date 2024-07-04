@@ -63,6 +63,8 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
 - [Handlers](#handlers)
   - [Convertions](#convertions)
     - [Explode](#explode)
+    - [Implode](#implode)
+    - [Join](#join)
     - [Split](#split)
   - [Strings](#strings-1)
     - [Append](#append)
@@ -1661,6 +1663,60 @@ therefore they can throw [`InvalidTypeException`](#error-handling).
 
 ```php
 use Torugo\PropertyValidator\Attributes\Handlers\Convertions\Explode;
+```
+
+---
+
+### Implode
+
+`Implode` is an alias to [`Join`](#join) handler.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Convertions\Implode;
+```
+
+---
+
+### Join
+
+Converts an array to a string by recursively joining the values
+​​by placing a separator between them.
+
+> [!NOTE]
+> This handler requires the property to be declared as `mixed`,
+> otherwise `InvalidTypeException` will be thrown.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Convertions\Join;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description                                            |
+| :------------- | :----- | :----------------------------------------------------- |
+| `separator`    | string | To be placed between each array value. (Default `''`)  |
+| `includeKeys`  | bool   | Include key before each array value. (Default `false`) |
+| `keySeparator` | string | To be placed between the key and value. (Default `: `) |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Join()]
+public $alpha = ["A", "B", "C", ["D", "E", "F"]];
+// "ABCDEF" -> Is recursively
+// Using the native PHP implode function the result would be "ABCArray"
+
+#[Join(".")]
+public $ip = ["123", "456", "789", "001"];
+// "123.456.789.001"
+
+#[Implode(" ")]
+public $name = ["firstName" => "Conceição", "lastName" => "Evaristo"];
+// "Conceição Evaristo"
+
+#[Join(" - ", true, ": ")]
+public $form = ["firstName" => "José", "lastName" => "Alencar"];
+// "firstName: José - lastName: Alencar"
 ```
 
 ---
