@@ -67,6 +67,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [ToLowerCase](#tolowercase)
     - [ToTitleCase](#totitlecase)
     - [ToUpperCase](#touppercase)
+    - [Trim](#trim)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -1772,6 +1773,35 @@ public string $title = "lord of the rings"; // LORD OF THE RINGS
 
 #[ToUpperCase()]
 public string $arr = ["a", ["b", ["c", "d"]]]; // ["A", ["B", ["C", "D"]]]
+```
+
+---
+
+### Trim
+
+Strip whitespace (or other characters) from the beginning and end of a string.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\Trim;
+```
+
+#### Characters parameter <!-- omit in toc -->
+
+The stripped `characters` can be specified using the characters parameter.
+Simply list all characters that you want to be stripped.
+With `..` you can specify a range of characters.
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Trim()]
+public $default = "    String    "; // => "String"
+
+#[Trim(" -=")]
+public $especific = "--- String ==="; // => "String"
+
+#[Trim("A..E")]
+public $range = "ABCDEFGFEDCBA"; // => "FGF"
 ```
 
 ---
