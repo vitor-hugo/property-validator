@@ -1,6 +1,3 @@
-> [!NOTE]
-> THIS PACKAGE IS UNDER DEVELOPMENT.
-
 # Property Validator <!-- omit in toc -->
 
 *Validators* and *Handlers* for class properties.  
