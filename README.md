@@ -1694,20 +1694,24 @@ use Torugo\PropertyValidator\Attributes\Handlers\Convertions\Split;
 
 ```php
 #[Split(" ")]
-public $lipsum = "Ut rutrum mauris eget pulvinar";
+public mixed $lipsum = "Ut rutrum mauris eget pulvinar";
 // ["Ut", "rutrum", "mauris", "eget", "pulvinar"]
 
 #[Split(".")]
-public $ip = "123.456.789.001";
+public mixed $ip = "123.456.789.001";
 // ["123", "456", "789", "001"]
 
 #[Split("-", 4)]
-public $serial = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
+public mixed $serial = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
 // ["lvnr", "MHba", "hb6G", "Mezq-8I55-eyZv"]
 
-#[Explode("-", -2)]
-public $str = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
+#[Split("-", -2)]
+public mixed $str = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
 // ["lvnr", "MHba", "hb6G", "Mezq"]
+
+#[Split("-", -2)]
+public string $str = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
+// throws InvalidTypeException, property must be mixed
 ```
 
 ---
