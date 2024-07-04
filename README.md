@@ -61,6 +61,9 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [MinLength](#minlength)
     - [NotContains](#notcontains)
 - [Handlers](#handlers)
+  - [Convertions](#convertions)
+    - [Explode](#explode)
+    - [Split](#split)
   - [Strings](#strings-1)
     - [Append](#append)
     - [Prepend](#prepend)
@@ -1649,6 +1652,56 @@ so they normally do not throw any exceptions in this cases.
 
 Some handlers require the property to be of a certain type, usually `mixed`,
 therefore they can throw [`InvalidTypeException`](#error-handling).
+
+## Convertions
+
+### Explode
+
+`Explode` is an alias to [`Split`](#split) handler.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Convertions\Explode;
+```
+
+---
+
+### Split
+
+Converts a string to an array of strings each of which is a substring of
+it on boundaries formed by the string separator.
+
+> [!NOTE]
+> This handler requires the property to be declared as `mixed`,
+> otherwise `InvalidTypeException` will be thrown.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Convertions\Split;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter   | Type   | Description              |
+| :---------- | :----- | :----------------------- |
+| `separator` | string | The boundary string.     |
+| `limit`     | int*   | (Default: `PHP_INT_MAX`) |
+
+> \* If limit is set and positive, the returned array will contain a maximum
+> of limit elements with the last element containing the rest of string.
+> If the limit parameter is negative, all components except the last - limit
+> are returned. If the limit parameter is zero, then this is treated as 1.
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[Append(".")]
+public $phrase = "My phrase"; // "My phrase."
+
+#[Append("!")]
+#[Append("?")]
+public $str = "My String"; // "My String!?"
+```
+
+---
 
 ## Strings
 
