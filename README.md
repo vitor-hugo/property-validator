@@ -70,7 +70,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [ToLowerCase](#tolowercase)
     - [ToTitleCase](#totitlecase)
     - [ToUpperCase](#touppercase)
-    - [Trim](#trim)
+    - [Trim, LTrim and RTrim](#trim-ltrim-and-rtrim)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -1944,7 +1944,7 @@ public string $arr = ["a", ["b", ["c", "d"]]]; // ["A", ["B", ["C", "D"]]]
 
 ---
 
-### Trim
+### Trim, LTrim and RTrim
 
 Strip whitespace (or other characters) from the beginning and end of a string.
 
@@ -1970,6 +1970,9 @@ public $especific = "--- String ==="; // => "String"
 #[Trim("A..E")]
 public $range = "ABCDEFGFEDCBA"; // => "FGF"
 ```
+
+> [!NOTE]
+> `LTrim` and `RTrim` works exactly in the same way.
 
 ---
 
