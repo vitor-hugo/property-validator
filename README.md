@@ -1693,12 +1693,21 @@ use Torugo\PropertyValidator\Attributes\Handlers\Convertions\Split;
 #### Examples <!-- omit in toc -->
 
 ```php
-#[Append(".")]
-public $phrase = "My phrase"; // "My phrase."
+#[Split(" ")]
+public $lipsum = "Ut rutrum mauris eget pulvinar";
+// ["Ut", "rutrum", "mauris", "eget", "pulvinar"]
 
-#[Append("!")]
-#[Append("?")]
-public $str = "My String"; // "My String!?"
+#[Split(".")]
+public $ip = "123.456.789.001";
+// ["123", "456", "789", "001"]
+
+#[Split("-", 4)]
+public $serial = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
+// ["lvnr", "MHba", "hb6G", "Mezq-8I55-eyZv"]
+
+#[Explode("-", -2)]
+public $str = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
+// ["lvnr", "MHba", "hb6G", "Mezq"]
 ```
 
 ---
