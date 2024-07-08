@@ -35,9 +35,9 @@ trait TypeTrait
     }
 
 
-    protected function normalizeTypeName(?string $type): string
+    protected function normalizeTypeName(?string $sourceType): string
     {
-        $type = strtolower($type);
+        $type = strtolower($sourceType);
 
         $types = [
             "array",
@@ -54,7 +54,11 @@ trait TypeTrait
         ];
 
         if (!in_array($type, $types)) {
-            return "unknown";
+            if (class_exists($sourceType, false)) {
+                return $sourceType;
+            } else {
+                return "unknown";
+            }
         }
 
         // According to PHP documentation of gettype() function:
