@@ -29,11 +29,7 @@ trait TypeTrait
             return "mixed";
         }
 
-        if (method_exists($propType, "getName")) {
-            $type = $propType->getName();
-        } else {
-            $type = is_string($propType) ? $propType : "unknown";
-        }
+        $type = $propType->getName() ?? (string) $propType;
 
         return $this->normalizeTypeName($type);
     }
