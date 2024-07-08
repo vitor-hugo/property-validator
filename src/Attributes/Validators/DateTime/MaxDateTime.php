@@ -5,7 +5,6 @@ namespace Torugo\PropertyValidator\Attributes\Validators\DateTime;
 use Attribute;
 use DateTimeZone;
 use Torugo\PropertyValidator\Abstract\Validator;
-use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsDateTime;
 
 /**
  * Validates whether a DateTime instance is greater than a defined limit.
