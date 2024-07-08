@@ -5,6 +5,10 @@ namespace Tests\Unit\Traits;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsEmail;
+use Torugo\PropertyValidator\Attributes\Validators\Strings\MaxLength;
+use Torugo\PropertyValidator\Attributes\Validators\Strings\MinLength;
+use Torugo\PropertyValidator\Attributes\Validators\TypeCheckers\IsString;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 use Torugo\PropertyValidator\Traits\PropertyTrait;
 
@@ -18,6 +22,11 @@ class PropertyTraitTest extends TestCase
     private string $string = "My Name";
     private ?int $integer = 40;
     private mixed $mixed = ['array'];
+
+    #[IsString()]
+    #[MinLength(10)]
+    #[MaxLength(100)]
+    private $withAttr = "Testing property attributes";
 
     #[TestDox("Should throw Exception when the property was not initialized")]
     public function testShouldThrowExceptionWhenNotInitialized()
@@ -124,5 +133,24 @@ class PropertyTraitTest extends TestCase
 
         $msg = $this->writeListOfTypes(["int", "float", "string", "bool"]);
         $this->assertEquals("int, float, string or bool", $msg);
+    }
+
+
+    #[TestDox("Method hasAttribute() should return TRUE when prop has the attribute")]
+    public function testHasAttributeMethodShouldReturnTrue()
+    {
+        $property = new \ReflectionProperty($this, "withAttr");
+        $this->initProperty($property, $this);
+        $this->assertTrue($this->hasAttribute(IsString::class));
+        $this->assertTrue($this->hasAttribute(MinLength::class));
+        $this->assertTrue($this->hasAttribute(MaxLength::class));
+    }
+
+    #[TestDox("Method hasAttribute() should return FALSE when prop has the attribute")]
+    public function testHasAttributeMethodShouldReturnFalse()
+    {
+        $property = new \ReflectionProperty($this, "withAttr");
+        $this->initProperty($property, $this);
+        $this->assertFalse($this->hasAttribute(IsEmail::class));
     }
 }
