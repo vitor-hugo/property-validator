@@ -36,6 +36,8 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [ArrayMinSize](#arrayminsize)
     - [ArrayKeyExists](#arraykeyexists)
     - [ArrayNotContains](#arraynotcontains)
+  - [Date/Time](#datetime)
+    - [MaxDateTime](#maxdatetime)
   - [Numbers](#numbers)
     - [IsDivisibleBy](#isdivisibleby)
     - [IsNegative](#isnegative)
@@ -908,6 +910,43 @@ public $arr = ["10", "20", ["30", "40"]];
 
 > **TODO:**  
 > Implements case insensitive string search.
+
+---
+
+## Date/Time
+
+### MaxDateTime
+
+Validates whether a DateTime instance is greater than a defined limit.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\DateTime\MaxDateTime;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type     | Description                   |
+| :------------- | :------- | :---------------------------- |
+| `max`          | DateTime | Maximum acceptable Date/Time. |
+| `errorMessage` | string   | Custom error message.         |
+
+#### Examples <!-- omit in toc -->
+
+> [!IMPORTANT]
+> If you intend to validate date/time in strings, you must first use
+> the [IsDateTime attribute](#isdatetime), and set the 'toDateTime'
+> argument to `true`, in these cases it is mandatory to set the property
+> type to `mixed`. See the examples below.
+
+```php
+#[MaxDateTime(new DateTime("now + 10 days"))]
+public DateTime $date = new DateTime("now");
+
+// Here you can receive a date/time string
+#[IsDateTime("Y-m-d H:i:s", true)] // set 'toDateTime' to true
+#[MaxDateTime(new DateTime("now + 10 days"))]
+public mixed $dtString = "2024-13-03 12:30:45";
+```
 
 ---
 
