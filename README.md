@@ -38,6 +38,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [ArrayNotContains](#arraynotcontains)
   - [Date/Time](#datetime)
     - [MaxDateTime](#maxdatetime)
+    - [MinDateTime](#mindatetime)
   - [Numbers](#numbers)
     - [IsDivisibleBy](#isdivisibleby)
     - [IsNegative](#isnegative)
@@ -946,6 +947,41 @@ public DateTime $date = new DateTime("now");
 #[IsDateTime("Y-m-d H:i:s", true)] // set 'toDateTime' to true
 #[MaxDateTime(new DateTime("now + 10 days"))]
 public mixed $dtString = "2024-13-03 12:30:45";
+```
+
+---
+
+### MinDateTime
+
+Validates whether a DateTime instance is before than a defined minimum date/time.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\DateTime\MinDateTime;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type     | Description                   |
+| :------------- | :------- | :---------------------------- |
+| `min`          | DateTime | Minimum acceptable Date/Time. |
+| `errorMessage` | string   | Custom error message.         |
+
+#### Examples <!-- omit in toc -->
+
+> [!IMPORTANT]
+> If you intend to validate date/time in strings, you must first use
+> the [IsDateTime attribute](#isdatetime), and set the 'toDateTime'
+> argument to `true`, in these cases it is mandatory to set the property
+> type to `mixed`. See the examples below.
+
+```php
+#[MinDateTime(new DateTime("now"))]
+public DateTime $date = new DateTime("now +1 day");
+
+// Here you can receive a date/time string
+#[IsDateTime("Y-m-d H:i:s", true)] // set 'toDateTime' to true
+#[MinDateTime(new DateTime("2024-13-03 12:30:45"))]
+public mixed $dtString = "2024-13-03 12:30:46";
 ```
 
 ---
