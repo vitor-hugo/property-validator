@@ -222,9 +222,7 @@ trait PropertyTrait
      */
     public function throwInvalidTypeException(string $message, int $code = 0): never
     {
-        if (empty($this->errorMessage)) {
-            $message = "$message";
-        } else {
+        if (!empty($this->errorMessage)) {
             $message = $this->errorMessage;
         }
 
@@ -233,5 +231,21 @@ trait PropertyTrait
         $message .= substr($message, -1) == "." ? "" : ".";
 
         throw new InvalidTypeException($message);
+    }
+
+
+    /**
+     * Check if property has a specified attribute
+     * @param string $attrClass Attribute class namespace
+     * @return bool
+     */
+    public function hasAttribute(string $attrClass): bool
+    {
+        $attrs = $this->property->getAttributes($attrClass, \ReflectionAttribute::IS_INSTANCEOF);
+        if ($attrs) {
+            return true;
+        }
+
+        return false;
     }
 }
