@@ -100,7 +100,6 @@ trait PropertyTrait
         }
 
         return $propType->allowsNull();
-        }
     }
 
 
