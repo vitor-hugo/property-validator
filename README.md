@@ -76,6 +76,9 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [ToTitleCase](#totitlecase)
     - [ToUpperCase](#touppercase)
     - [Trim, LTrim and RTrim](#trim-ltrim-and-rtrim)
+- [Custom Validators](#custom-validators)
+  - [Templates](#templates)
+  - [Validator class](#validator-class)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -2114,6 +2117,84 @@ public $range = "ABCDEFGFEDCBA"; // => "FGF"
 
 > [!NOTE]
 > `LTrim` and `RTrim` works exactly in the same way.
+
+---
+
+# Custom Validators
+
+To create a custom validator is required:
+
+1. The validator must extends `Torugo\PropertyValidator\Abstract\Validator`;
+2. Add the attribute `#[Attribute(Attribute::TARGET_PROPERTY)]` to the class;
+3. Implement the method `public function validation(mixed $value): void`;
+
+## Templates
+
+### Simple validator <!-- omit in toc -->
+
+```php
+use Attribute;
+use Torugo\PropertyValidator\Abstract\Validator;
+
+#[Attribute(Attribute::TARGET_PROPERTY)]
+class MyValidator extends Validator
+{
+    public function validation(mixed $value): void
+    {
+        // Validate the data
+    }
+}
+```
+
+### Validator with arguments <!-- omit in toc -->
+
+```php
+use Attribute;
+use Torugo\PropertyValidator\Abstract\Validator;
+
+#[Attribute(Attribute::TARGET_PROPERTY)]
+class MyValidator extends Validator
+{
+    public function __construct(
+        private $arg1,
+        private $arg2,
+        private ?string $errorMessage = null
+    ) {
+        parent::__construct($errorMessage);
+    }
+
+    public function validation(mixed $value): void
+    {
+        // Validate the data
+    }
+}
+```
+
+## Validator class
+
+The `Validator` class gives to you:
+
+**Properties**
+
+| Property        | Type     | Description                                                             |
+| --------------- | -------- | ----------------------------------------------------------------------- |
+| `propertyName`  | `string` | The name of the property                                                |
+| `propertyType`  | `string` | The type of the property, if not declared it will be considered "mixed" |
+| `propertyValue` | `mixed`  | The value of the property                                               |
+
+**Methods**
+
+
+| Method                                                             | Description                                                                                                             |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `expectPropertyTypeToBe(array\|string $expected): void`            | Validates if the property type is the expected. (throws `InvalidTypeException`)                                         |
+| `expectValueTypeToBe(array\|string $expected): void`               | Validates if the property value type is the expected. (throws `InvalidTypeException`)                                   |
+| `hasAttribute(string $attrClass): bool`                            | Checks if the property has a specified attribute.                                                                       |
+| `isNullable(): bool`                                               | Checks if the property is nullable.                                                                                     |
+| `isUsingIsOptionalAttribute(): bool`                               | Checks if the property is using the `#[IsOptional()]` attribute.                                                        |
+| `isUsingRequiredAttribute(): bool`                                 | Checks if the property is using the `#[IsRequired()]` attribute.                                                        |
+| `throwInvalidTypeException(string $message, int $code = 0): never` | Throws `InvalidTypeException` using the validator's default message or the custom error message defined on constructor. |
+| `throwValidationException(string $message, int $code = 0): never`  | Throws `ValidationException` using the validator's default message or the custom error message defined on constructor.  |
 
 ---
 
