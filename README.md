@@ -16,6 +16,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [Custom error message](#custom-error-message)
 - [Validators](#validators)
   - [Common](#common)
+    - [IsEqualTo](#isequalto)
     - [IsOptional](#isoptional)
     - [IsRequired](#isrequired)
     - [SameAs](#sameas)
@@ -237,6 +238,32 @@ Validators can throw [`ValidationException`](#error-handling)
 and [`InvalidTypeException`](#error-handling).
 
 ## Common
+
+### IsEqualTo
+
+Validates whether the value of a property exactly equals to a given value.
+
+```php
+use Torugo\PropertyValidator\Attributes\Common\IsEqualTo;
+```
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsEqualTo("A")]
+public string $status = "A"; // valid
+
+#[IsEqualTo("A")]
+public string $status = "B"; // invalid
+
+#[IsEqualTo(512)]
+public $var = 512; // valid
+
+#[IsEqualTo(512)]
+public $var = 1024; // invalid
+```
+
+---
 
 ### IsOptional
 
