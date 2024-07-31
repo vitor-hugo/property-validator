@@ -11,12 +11,6 @@ abstract class Validator implements ValidatorInterface
 {
     use PropertyTrait;
 
-    /** Indicates wheter a property is optional */
-    protected bool $isOptional = false;
-
-    /** Indicates wheter a property can be null */
-    protected bool $isNullable = false;
-
     /**
      * Performs property value validation
      *
