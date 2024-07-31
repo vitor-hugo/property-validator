@@ -97,8 +97,9 @@ trait PropertyTrait
 
         if ($propType == null) {
             return true;
-        } else {
-            return $propType->allowsNull();
+        }
+
+        return $propType->allowsNull();
         }
     }
 
