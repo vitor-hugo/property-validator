@@ -150,6 +150,7 @@ trait PropertyTrait
      * Validates if the property type is the expected.
      * @param array|string $expected array of type names or a single string type name
      * @return void
+     * @throws InvalidTypeException
      */
     protected function expectPropertyTypeToBe(array|string $expected): void
     {
@@ -164,6 +165,7 @@ trait PropertyTrait
      * Validates if the property value type is the expected.
      * @param array|string $expected array of type names or a single string type name
      * @return void
+     * @throws InvalidTypeException
      */
     protected function expectValueTypeToBe(array|string $expected): void
     {
@@ -190,8 +192,7 @@ trait PropertyTrait
 
 
     /**
-     * Throws ValidationException using the validator's default message or
-     * the custom error message defined on constructor.
+     * Throws ValidationException using the validator's default message or the custom error message defined on constructor.
      * @param string $message Message to be thrown
      * @param int $code Optional error code
      * @throws \Torugo\PropertyValidator\Exceptions\ValidationException
@@ -213,8 +214,7 @@ trait PropertyTrait
 
 
     /**
-     * Throws InvalidTypeException using the validator's default message or
-     * the custom error message defined on constructor.
+     * Throws InvalidTypeException using the validator's default message or the custom error message defined on constructor.
      * @param string $message Message to be thrown
      * @param int $code Optional error code
      * @throws \Torugo\PropertyValidator\Exceptions\ValidationException
