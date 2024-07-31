@@ -28,7 +28,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsFloat](#isfloat)
     - [IsInt](#isint)
     - [IsInteger](#isinteger)
-    - [IsNumberic](#isnumberic)
+    - [IsNumeric](#isnumeric)
     - [IsString](#isstring)
   - [Arrays](#arrays)
     - [ArrayContains](#arraycontains)
@@ -627,7 +627,7 @@ public mixed $num = "512"; // Invalid
 
 ---
 
-### IsNumberic
+### IsNumeric
 
 Validates whether the value of a property is numeric.
 Only float, int or numeric string types are allowed.
