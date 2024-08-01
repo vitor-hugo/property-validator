@@ -1,13 +1,15 @@
 # Release History <!-- omit in toc -->
 
-- [1.2.0](#120)
+- [1.2.0 (Jul 31 2024)](#120-jul-31-2024)
 - [1.1.0 (Jul 08 2024)](#110-jul-08-2024)
 - [1.0.0 (Jul 04 2024)](#100-jul-04-2024)
 
-# 1.2.0
+# 1.2.0 (Jul 31 2024)
 
 - Adding **IsEqualTo** validator.
 - Some code refactoring. 
+
+---
 
 # 1.1.0 (Jul 08 2024)
 
