@@ -2,6 +2,7 @@
 
 namespace Torugo\PropertyValidator;
 
+use DateTime;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
@@ -20,8 +21,11 @@ class PropertyValidator
         $properties = self::getProperties($class);
 
         foreach ($properties as $property) {
+            // If not initialized gives the property an empty value
             if ($property->isInitialized($class) == false) {
-                continue;
+                $type = $property->getType();
+                $value = self::getEmptyValueForType($type->getName());
+                $property->setValue($class, $type->allowsNull() ? null : $value);
             }
 
             self::resolve($property, $class);
@@ -61,5 +65,29 @@ class PropertyValidator
                 $instance->handle($property, $class);
             }
         }
+    }
+
+    /**
+     * Returns an empty value for a specific type
+     * @param string $type
+     * @return mixed Empty value
+     */
+    private static function getEmptyValueForType(string $type): mixed
+    {
+        $type = strtolower($type);
+
+        $type = explode("\\", $type);
+        $type = end($type);
+
+        return match ($type) {
+            "array" => [],
+            "boolean", "bool" => false,
+            "double", "float" => 0.0,
+            "integer", "int" => 0,
+            "object" => new class {},
+            "string" => "",
+            "datetime" => new DateTime("now"),
+            default => null
+        };
     }
 }
