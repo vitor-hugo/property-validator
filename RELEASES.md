@@ -1,8 +1,15 @@
 # Release History <!-- omit in toc -->
 
+- [1.2.1 (Aug 01 2024)](#121-aug-01-2024)
 - [1.2.0 (Jul 31 2024)](#120-jul-31-2024)
 - [1.1.0 (Jul 08 2024)](#110-jul-08-2024)
 - [1.0.0 (Jul 04 2024)](#100-jul-04-2024)
+
+# 1.2.1 (Aug 01 2024)
+
+- Setting a null/empty value for non initialized properties.
+
+---
 
 # 1.2.0 (Jul 31 2024)
 
