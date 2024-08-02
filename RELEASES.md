@@ -1,5 +1,6 @@
 # Release History <!-- omit in toc -->
 
+- [1.4.1 (Aug 02 2024)](#141-aug-02-2024)
 - [1.4.0 (Aug 02 2024)](#140-aug-02-2024)
 - [1.3.0 (Aug 02 2024)](#130-aug-02-2024)
 - [1.2.1 (Aug 01 2024)](#121-aug-01-2024)
@@ -7,14 +8,24 @@
 - [1.1.0 (Jul 08 2024)](#110-jul-08-2024)
 - [1.0.0 (Jul 04 2024)](#100-jul-04-2024)
 
+# 1.4.1 (Aug 02 2024)
+
+- Fixing `Trim()`, `LTrim()` and `RTrim()` default charaters to trim.
+
+---
+
 # 1.4.0 (Aug 02 2024)
 
 - Adding **CopyFrom** handler.
 - Adding **SetDateTime** handler.
 
+---
+
 # 1.3.0 (Aug 02 2024)
 
 - Adding **PasswordHash** validator.
+
+---
 
 # 1.2.1 (Aug 01 2024)
 
