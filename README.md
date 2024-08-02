@@ -70,6 +70,8 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [Implode](#implode)
     - [Join](#join)
     - [Split](#split)
+  - [Setters](#setters)
+    - [SetDateTime](#setdatetime)
   - [Strings](#strings-1)
     - [Append](#append)
     - [PasswordHash](#passwordhash)
@@ -1942,6 +1944,39 @@ public mixed $str = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
 #[Split("-", -2)]
 public string $str = "lvnr-MHba-hb6G-Mezq-8I55-eyZv";
 // throws InvalidTypeException, property must be mixed
+```
+
+---
+
+## Setters
+
+### SetDateTime
+
+Sets the property's value as DateTime object or formatted string.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Setters\SetDateTime;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter  | Type               | Description                                                                                                                       |
+| :--------- | :----------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `datetime` | string             | A date/time string. Valid formats are explained in Date and Time Formats.                                                         |
+| `format`   | string\|null       | If provided, the value will be setted as a formatted string.                                                                      |
+| `timezone` | DateTimeZone\|null | A DateTimeZone object representing the timezone of $datetime. If $timezone is omitted or null, the current timezone will be used. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[SetDateTime()]
+public DateTime $dt1; // PHP DateTime object
+
+#[SetDateTime("now", null, new DateTimeZone("America/Sao_Paulo"))]
+public mixed $dt2; // PHP DateTime object
+
+#[SetDateTime("now", "Y-m-d H:i:s", new DateTimeZone("America/Sao_Paulo"))]
+public mixed $dt3; // String with custom date/time format
 ```
 
 ---
