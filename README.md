@@ -70,6 +70,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [Split](#split)
   - [Strings](#strings-1)
     - [Append](#append)
+    - [PasswordHash](#passwordhash)
     - [Prepend](#prepend)
     - [Replace](#replace)
     - [ToLowerCase](#tolowercase)
@@ -1938,6 +1939,40 @@ public $phrase = "My phrase"; // "My phrase."
 #[Append("!")]
 #[Append("?")]
 public $str = "My String"; // "My String!?"
+```
+
+---
+
+### PasswordHash
+
+Generates a new password hash using a strong one-way hashing algorithm.  
+Uses PHP [`password_hash()`](https://www.php.net/manual/en/function.password-hash.php) function.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\PasswordHash;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter | Type              | Description                                                                                                                                                                                                               |
+| :-------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `algo`    | int\|string\|null | A password algorithm constant denoting the algorithm to use when hashing the password.                                                                                                                                    |
+| `options` | string            | An associative array containing options. See the password algorithm constants for documentation on the supported options for each algorithm. If omitted, a random salt will be created and the default cost will be used. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[PasswordHash()]
+public mixed $pass1 = "5up3rStr0ngP4ssw0rd!";
+// $2y$10$SliJ/ky9gIr0XyAJmnjtM.tG94h6wXUy0BSeMsuMMxXs9aHjWW5HO
+
+#[PasswordHash(PASSWORD_ARGON2I)]
+public mixed $pass2 = "tKxSYVBH+Te2rb5nUWN87&";
+// $argon2i$v=19$m=65536,t=4,p=1$NWNzR3JwSmlyYktQVTBELw$uCfkmLa7EJTzNzKySOxjGeN44RyQmJn8hFyNBF1nW7A
+
+#[PasswordHash(PASSWORD_BCRYPT, ["cost" => 10])]
+public mixed $pass3 = "LzM#KFSqk9Uwb7TQsYA3JW";
+// $2y$10$qsByI6OVsNgPS6TdKUs.Ve9hYml27ZRVdQV2WB1iZjhWSDhSbpVZS
 ```
 
 ---
