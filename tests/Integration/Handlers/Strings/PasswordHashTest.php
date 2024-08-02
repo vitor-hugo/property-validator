@@ -31,11 +31,6 @@ class PasswordHashTest extends TestCase
 
         $this->stub->validate();
 
-        var_dump($this->stub->pass1);
-        var_dump($this->stub->pass2);
-        var_dump($this->stub->pass3);
-
-
         $this->assertTrue(password_verify($pw1, $this->stub->pass1));
         $this->assertTrue(password_verify($pw2, $this->stub->pass2));
         $this->assertTrue(password_verify($pw3, $this->stub->pass3));
