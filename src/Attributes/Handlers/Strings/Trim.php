@@ -16,7 +16,7 @@ class Trim extends Handler
      * the characters parameter. Simply list all characters that you want to be stripped.
      * With `..` you can specify a range of characters.
      */
-    public function __construct(private string $characters = ' \n\r\t\v\x00')
+    public function __construct(private string $characters = " \n\r\t\v\x00")
     {
     }
 
