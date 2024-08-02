@@ -63,6 +63,8 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [MinLength](#minlength)
     - [NotContains](#notcontains)
 - [Handlers](#handlers)
+  - [Common](#common-1)
+    - [CopyFrom](#copyfrom)
   - [Convertions](#convertions)
     - [Explode](#explode)
     - [Implode](#implode)
@@ -1796,6 +1798,36 @@ so they normally do not throw any exceptions in this cases.
 
 Some handlers require the property to be of a certain type, usually `mixed`,
 therefore they can throw [`InvalidTypeException`](#error-handling).
+
+## Common
+
+### CopyFrom
+
+Copies the value of another property in the same class.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Common\CopyFrom;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter | Type   | Description                                                         |
+| :-------- | :----- | :------------------------------------------------------------------ |
+| `target`  | string | Name of the property in the same class, whose value will be copied. |
+
+> [!IMPORTANT]
+> Throws `InvalidArgumentException` if the target properthy does not exists.
+
+#### Example <!-- omit in toc -->
+
+```php
+public $target = "My String";
+
+#[CopyFrom("target")]
+public $copy; // "My String"
+```
+
+---
 
 ## Convertions
 
