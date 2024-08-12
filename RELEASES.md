@@ -1,5 +1,6 @@
 # Release History <!-- omit in toc -->
 
+- [1.4.2 (Aug 12 2024)](#142-aug-12-2024)
 - [1.4.1 (Aug 02 2024)](#141-aug-02-2024)
 - [1.4.0 (Aug 02 2024)](#140-aug-02-2024)
 - [1.3.0 (Aug 02 2024)](#130-aug-02-2024)
@@ -7,6 +8,13 @@
 - [1.2.0 (Jul 31 2024)](#120-jul-31-2024)
 - [1.1.0 (Jul 08 2024)](#110-jul-08-2024)
 - [1.0.0 (Jul 04 2024)](#100-jul-04-2024)
+
+# 1.4.2 (Aug 12 2024)
+
+- Creating a new attributes category called 'Setters'.
+- Moving attribute 'SetDateTime' to the new 'Setters' category.
+
+---
 
 # 1.4.1 (Aug 02 2024)
 
