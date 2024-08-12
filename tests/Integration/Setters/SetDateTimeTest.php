@@ -1,9 +1,11 @@
 <?php declare(strict_types=1);
 
+namespace Tests\Integration\Setters;
+
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use Tests\Integration\Handlers\Setters\Contracts\ValidSetDateTimeContract;
+use Tests\Integration\Setters\Contracts\ValidSetDateTimeContract;
 
 #[Group("Setters")]
 #[Group("SetDateTime")]

@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Torugo\PropertyValidator\Attributes\Handlers\Setters;
+namespace Torugo\PropertyValidator\Attributes\Setters;
 
 use Attribute;
 use DateTime;
 use DateTimeZone;
-use Torugo\PropertyValidator\Abstract\Handler;
+use Torugo\PropertyValidator\Abstract\Setter;
 
 /**
  * Sets the property value as DateTime object or formatted string,
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class SetDateTime extends Handler
+class SetDateTime extends Setter
 {
     /**
      * @param string $datetime DateTime object constructor option (default 'now').
@@ -29,7 +29,7 @@ class SetDateTime extends Handler
     }
 
 
-    public function handler(mixed $_): void
+    public function setter(): void
     {
         $datetime = new DateTime($this->datetime, $this->timezone);
 

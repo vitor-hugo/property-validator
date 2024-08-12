@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Integration\Handlers\Setters\Contracts;
+namespace Tests\Integration\Setters\Contracts;
 
 use DateTime;
 use DateTimeZone;
 use Tests\Common\BaseValidationTestClass;
-use Torugo\PropertyValidator\Attributes\Handlers\Setters\SetDateTime;
+use Torugo\PropertyValidator\Attributes\Setters\SetDateTime;
 
 class ValidSetDateTimeContract extends BaseValidationTestClass
 {
