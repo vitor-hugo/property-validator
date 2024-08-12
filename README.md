@@ -80,7 +80,10 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [ToUpperCase](#touppercase)
     - [Trim, LTrim and RTrim](#trim-ltrim-and-rtrim)
 - [Setters](#setters)
-    - [SetDateTime](#setdatetime)
+  - [SetDateTime](#setdatetime)
+  - [SetFromCallback](#setfromcallback)
+    - [Parameters](#parameters)
+    - [Examples](#examples)
 - [Custom Validators](#custom-validators)
   - [Templates](#templates)
   - [Validator class](#validator-class)
@@ -2191,15 +2194,15 @@ public $range = "ABCDEFGFEDCBA"; // => "FGF"
 
 # Setters
 
-### SetDateTime
+## SetDateTime
 
 Sets the property's value as DateTime object or formatted string.
 
 ```php
-use Torugo\PropertyValidator\Attributes\Handlers\Setters\SetDateTime;
+use Torugo\PropertyValidator\Attributes\Setters\SetDateTime;
 ```
 
-#### Parameters <!-- omit in toc -->
+### Parameters <!-- omit in toc -->
 
 | Parameter  | Type               | Description                                                                                                                       |
 | :--------- | :----------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
@@ -2207,7 +2210,7 @@ use Torugo\PropertyValidator\Attributes\Handlers\Setters\SetDateTime;
 | `format`   | string\|null       | If provided, the value will be setted as a formatted string.                                                                      |
 | `timezone` | DateTimeZone\|null | A DateTimeZone object representing the timezone of $datetime. If $timezone is omitted or null, the current timezone will be used. |
 
-#### Examples <!-- omit in toc -->
+### Examples <!-- omit in toc -->
 
 ```php
 #[SetDateTime()]
@@ -2218,6 +2221,72 @@ public mixed $dt2; // PHP DateTime object
 
 #[SetDateTime("now", "Y-m-d H:i:s", new DateTimeZone("America/Sao_Paulo"))]
 public mixed $dt3; // String with custom date/time format
+```
+
+---
+
+## SetFromCallback
+
+Sets the property's value from a returned value of a function or class method.
+This attribute wraps the PHP [`call_user_func_array`](https://www.php.net/manual/en/function.call-user-func-array.php) function.
+
+```php
+use Torugo\PropertyValidator\Attributes\Setters\SetFromCallback;
+```
+
+### Parameters
+
+| Parameter  | Type          | Description                                               |
+| :--------- | :------------ | :-------------------------------------------------------- |
+| `callback` | string\|array | The callable to be called.                                |
+| `args`     | array         | The parameters to be passed to the callback, as an array. |
+
+> [!NOTE]
+> If you want to call a method from a class, the method must be static.
+
+### Examples
+
+```php
+
+function sum(int $n1, int $n2): int
+{
+    return $n1 + $n2;
+}
+
+class MathClass {
+    // The method MUST be static
+    public static function multiply(int $n1, int $n2): int
+    {
+        return $n1 * $n2;
+    }
+}
+
+class MyDto
+{
+    // Call the native PHP 'rand' function, and pass the arguments 10 and 50
+    #[SetFromCallback("rand", [10, 50])]
+    public int $random;
+
+    // Call the sum function declared above, passing 1 and 2 as arguments
+    #[SetFromCallback("sum", [1, 2])]
+    public int $sum;
+    
+    // Call the multiply method from the MathClass declared above,
+    // passing 5 and 5 as arguments
+    #[SetFromCallback([MathClass::class, "multiply"], [5, 5])]
+    public int $mult;
+
+    // Call a method from a class, in this case call the 'str' method
+    // from the class itself.
+    #[SetFromCallback([self::class, "str"])]
+    public string $str = "";
+
+    public static function str(): string
+    {
+        return "my string";
+    }
+}
+
 ```
 
 ---
