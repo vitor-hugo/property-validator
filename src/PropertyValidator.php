@@ -7,6 +7,7 @@ use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionProperty;
 use Torugo\PropertyValidator\Interfaces\HandlerInterface;
+use Torugo\PropertyValidator\Interfaces\SetterInterface;
 use Torugo\PropertyValidator\Interfaces\ValidatorInterface;
 
 class PropertyValidator
@@ -63,6 +64,8 @@ class PropertyValidator
                 $instance->validate($property, $class);
             } else if ($instance instanceof HandlerInterface) {
                 $instance->handle($property, $class);
+            } else if ($instance instanceof SetterInterface) {
+                $instance->set($property, $class);
             }
         }
     }
