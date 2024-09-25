@@ -84,6 +84,9 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [SetFromCallback](#setfromcallback)
     - [Parameters](#parameters)
     - [Examples](#examples)
+  - [SetValueWhenNull](#setvaluewhennull)
+    - [Parameters](#parameters-1)
+    - [Examples](#examples-1)
 - [Custom Validators](#custom-validators)
   - [Templates](#templates)
   - [Validator class](#validator-class)
@@ -2288,6 +2291,36 @@ class MyDto
 }
 
 ```
+
+---
+
+## SetValueWhenNull
+
+Sets a custom value when property receives a null value.
+
+```php
+use Torugo\PropertyValidator\Attributes\Setters\SetValueWhenNull;
+```
+
+### Parameters
+
+| Parameter | Type  | Description                                          |
+| :-------- | :---- | :--------------------------------------------------- |
+| `value`   | mixed | The value to be setted when property receives null.. |
+
+### Examples
+
+```php
+#[SetValueWhenNull("")]
+public ?string $str = null; // Will be setted to `""`
+
+#[SetValueWhenNull(0)]
+public ?int $int = null; // Will be setted to `0`
+
+#[SetValueWhenNull([])]
+public ?array $arr = null; // Will be setted to `[]`
+```
+
 
 ---
 
