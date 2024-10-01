@@ -3,6 +3,7 @@
 namespace Torugo\PropertyValidator\Attributes\Validators\TypeCheckers;
 
 use Attribute;
+use DateTime;
 use Torugo\PropertyValidator\Abstract\Validator;
 use Torugo\PropertyValidator\Exceptions\InvalidTypeException;
 
@@ -28,6 +29,10 @@ class IsDateTime extends Validator
 
     public function validation(mixed $value): void
     {
+        if ($value instanceof DateTime) {
+            return;
+        }
+
         $this->expectPropertyTypeToBe(["string", "mixed"]);
         $this->validateReceivedValue($value);
 
@@ -52,9 +57,9 @@ class IsDateTime extends Validator
     }
 
 
-    private function validateDateTimeString(string $dateTimeString): \DateTime
+    private function validateDateTimeString(string $dateTimeString): DateTime
     {
-        $dt = \DateTime::createFromFormat($this->format, $dateTimeString);
+        $dt = DateTime::createFromFormat($this->format, $dateTimeString);
 
         if ($dt == false || $dt->format($this->format) !== $dateTimeString) {
             $this->throwValidationException("The Date/Time '{$dateTimeString}' on '{$this->propertyName}' is not valid or doesn't match to the format '{$this->format}'.", 1);
