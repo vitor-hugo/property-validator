@@ -35,7 +35,14 @@ class IsDateTimeTest extends TestCase
     public function testShouldtoDateTime()
     {
         $this->assertTrue($this->stub->validate());
-        $this->assertTrue(is_a($this->stub->dt3, "DateTime"));
+        $this->assertTrue($this->stub->dt3 instanceof \DateTime);
+    }
+
+    #[TestDox("Should be valid when property receives a PHP DateTime object")]
+    public function testShouldBeValidOnDateTimeObject()
+    {
+        $this->stub->dt3 = new \DateTime("now");
+        $this->assertTrue($this->stub->validate());
     }
 
 
