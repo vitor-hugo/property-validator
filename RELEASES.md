@@ -1,5 +1,6 @@
 # Release History <!-- omit in toc -->
 
+- [1.6.1 (Oct 01 2024)](#161-oct-01-2024)
 - [1.6.0 (Sep 25 2024)](#160-sep-25-2024)
 - [1.5.0 (Aug 12 2024)](#150-aug-12-2024)
 - [1.4.2 (Aug 12 2024)](#142-aug-12-2024)
@@ -10,6 +11,11 @@
 - [1.2.0 (Jul 31 2024)](#120-jul-31-2024)
 - [1.1.0 (Jul 08 2024)](#110-jul-08-2024)
 - [1.0.0 (Jul 04 2024)](#100-jul-04-2024)
+
+# 1.6.1 (Oct 01 2024)
+
+- Fixing a bug in the 'IsDateTime' validator, where an exception was thrown
+  when the property received a PHP DateTime object.
 
 # 1.6.0 (Sep 25 2024)
 
