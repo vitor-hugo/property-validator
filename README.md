@@ -56,6 +56,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsCpf](#iscpf)
     - [IsEmail](#isemail)
     - [IsSemVer](#issemver)
+    - [IsTUID](#istuid)
     - [IsURL](#isurl)
     - [Length](#length)
     - [Matches](#matches)
@@ -1554,6 +1555,38 @@ public $version = "1.0.0-alpha_beta"; // invalid
 
 #[IsSemVer()]
 public $version = "1.01.1"; // invalid
+```
+
+---
+
+### IsTUID
+
+Validates whether a string is a valid [TUID](https://github.com/vitor-hugo/util-php?tab=readme-ov-file#tuid-torugo-unique-id).
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsTUID;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter      | Type   | Description           |
+| :------------- | :----- | :-------------------- |
+| `errorMessage` | string | Custom error message. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsTUID()]
+public $short = "UU5IM7L-TS0SQK0Y3101"; // valid
+
+#[IsTUID()]
+public $medium = "V6ZS389O-SMXM-TM0SQK0Y3116"; // valid
+
+#[IsTUID()]
+public $long = "VPD1QAMA-XBFK-AVF7SSP67-TL0SQK0Y311B"; // valid
+
+#[IsTUID()]
+public $uuid = "E8ABFEBA-C1FE-4491-8DFA-609C5EEF825B"; // invalid
 ```
 
 ---
