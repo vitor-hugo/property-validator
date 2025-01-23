@@ -74,6 +74,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [Append](#append)
     - [PasswordHash](#passwordhash)
     - [Prepend](#prepend)
+    - [SubString](#substring)
     - [Replace](#replace)
     - [ToLowerCase](#tolowercase)
     - [ToTitleCase](#totitlecase)
@@ -2040,6 +2041,43 @@ public $phrase = "My phrase"; // "My phrase."
 #[Append("!")]
 #[Append("?")]
 public $str = "My String"; // "My String!?"
+```
+
+---
+
+### SubString
+
+Returns the portion of string specified by the offset and length parameters.  
+Uses PHP [`substr()`](https://www.php.net/manual/en/function.substr.php) function.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\SubString;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter | Type        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| :-------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `offset`  | int         | If `offset` is non-negative, the returned string will start at the `offset`'th position in `string`, counting from zero. For instance, in the string ' `abcdef`', the character at position `0` is ' `a`', the character at position `2` is ' `c`', and so forth. If `offset` is negative, the returned string will start at the `offset`'th character from the end of `string`. If `string` is less than `offset` characters long, an empty string will be returned. Example #1 Using a negative `offset`                                                                                                                                      |
+| `length`  | int or null | If `length` is given and is positive, the string returned will contain at most `length` characters beginning from `offset` (depending on the length of `string`). If `length` is given and is negative, then that many characters will be omitted from the end of `string` (after the start position has been calculated when a `offset` is negative). If `offset` denotes the position of this truncation or beyond, an empty string will be returned. If `length` is given and is `0`, an empty string will be returned. If `length` is omitted or `null`, the substring starting from `offset` until the end of the string will be returned. |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[SubString(0, 3)]
+public $var1 = "abcdef"; // returns "abc"
+
+#[SubString(-1)]
+public $var2 = "abcdef"; // returns "f"
+
+#[SubString(0, -1)]
+public $var3 = "abcdef"; // returns "abcde"
+
+#[SubString(4, -4)]
+public $var4 = "abcdef"; // returns an empty string 
+
+#[SubString(2, -1)]
+public $var4 = "abcdef"; // returns "cde"
 ```
 
 ---
