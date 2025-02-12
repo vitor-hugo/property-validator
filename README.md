@@ -2375,9 +2375,9 @@ use Torugo\PropertyValidator\Attributes\Setters\SetValueWhenNull;
 
 ### Parameters
 
-| Parameter | Type  | Description                                          |
-| :-------- | :---- | :--------------------------------------------------- |
-| `value`   | mixed | The value to be setted when property receives null.. |
+| Parameter | Type  | Description                                         |
+| :-------- | :---- | :-------------------------------------------------- |
+| `value`   | mixed | The value to be setted when property receives null. |
 
 ### Examples
 
