@@ -5,7 +5,7 @@ namespace Tests\Integration\Setters\Contracts;
 use Tests\Common\BaseValidationTestClass;
 use Torugo\PropertyValidator\Attributes\Setters\SetValueWhenNull;
 
-class ValidSetValuesContract extends BaseValidationTestClass
+class ValidSetValueWhenNullContract extends BaseValidationTestClass
 {
     #[SetValueWhenNull("string")]
     public ?string $var1 = null;
