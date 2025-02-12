@@ -86,9 +86,12 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
   - [SetFromCallback](#setfromcallback)
     - [Parameters](#parameters)
     - [Examples](#examples)
-  - [SetValueWhenNull](#setvaluewhennull)
+  - [SetValueWhenEmpty](#setvaluewhenempty)
     - [Parameters](#parameters-1)
     - [Examples](#examples-1)
+  - [SetValueWhenNull](#setvaluewhennull)
+    - [Parameters](#parameters-2)
+    - [Examples](#examples-2)
 - [Custom Validators](#custom-validators)
   - [Templates](#templates)
   - [Validator class](#validator-class)
@@ -2361,6 +2364,38 @@ class MyDto
     }
 }
 
+```
+
+---
+
+## SetValueWhenEmpty
+
+Sets a custom string value when property receives an empty string or a null value.
+
+```php
+use Torugo\PropertyValidator\Attributes\Setters\SetValueWhenNull;
+```
+
+### Parameters
+
+| Parameter | Type   | Description                                                            |
+| :-------- | :----- | :--------------------------------------------------------------------- |
+| `value`   | String | The value to be setted when property receives an empty string or null. |
+
+### Examples
+
+```php
+#[SetValueWhenEmpty("Default")]
+public string $var1 = ""; // => "Default"
+
+#[SetValueWhenEmpty("Custom")]
+public ?string $var2 = null; // => "Custom"
+
+#[SetValueWhenEmpty("Mixed")] 
+public mixed $var3 = null; // => "Mixed"
+
+#[SetValueWhenEmpty("Custom")] 
+public string $var4 = "Value"; // => Nothing happens
 ```
 
 ---
