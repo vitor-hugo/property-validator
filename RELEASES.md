@@ -1,5 +1,6 @@
 # Release History <!-- omit in toc -->
 
+- [1.10.0 (Feb 20 2025)](#1100-feb-20-2025)
 - [1.9.0 (Feb 12 2025)](#190-feb-12-2025)
 - [1.8.0 (Jan 23 2025)](#180-jan-23-2025)
 - [1.7.0 (Jan 23 2025)](#170-jan-23-2025)
@@ -15,30 +16,48 @@
 - [1.1.0 (Jul 08 2024)](#110-jul-08-2024)
 - [1.0.0 (Jul 04 2024)](#100-jul-04-2024)
 
+# 1.10.0 (Feb 20 2025)
+
+- Adding the validator 'IsIP'
+
+---
+
 # 1.9.0 (Feb 12 2025)
 
 - Adding the setter 'SetValueWhenEmpty'
+
+---
 
 # 1.8.0 (Jan 23 2025)
 
 - Adding the validator 'IsTUID'
 
+---
+
 # 1.7.0 (Jan 23 2025)
 
 - Adding the handler 'SubString'
+
+---
 
 # 1.6.1 (Oct 01 2024)
 
 - Fixing a bug in the 'IsDateTime' validator, where an exception was thrown
   when the property received a PHP DateTime object.
 
+---
+
 # 1.6.0 (Sep 25 2024)
 
 - Adding the setter 'SetValueWhenNull'
 
+---
+
 # 1.5.0 (Aug 12 2024)
 
 - Adding the setter 'SetFromCallback'.
+
+---
 
 # 1.4.2 (Aug 12 2024)
 
