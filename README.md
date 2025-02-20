@@ -55,7 +55,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsCnpj](#iscnpj)
     - [IsCpf](#iscpf)
     - [IsEmail](#isemail)
-- [IsIP](#isip)
+    - [IsIP](#isip)
       - [Parameters](#parameters)
     - [IsSemVer](#issemver)
     - [IsTUID](#istuid)
@@ -1526,7 +1526,7 @@ public mixed $email = "wrong()[],:;<>@@gmail.com"; // invalid
 
 ---
 
-# IsIP
+### IsIP
 
 Validates whether a string is a valid IP address for both V4 and V6.
 
