@@ -56,7 +56,6 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsCpf](#iscpf)
     - [IsEmail](#isemail)
     - [IsIP](#isip)
-      - [Parameters](#parameters)
     - [IsSemVer](#issemver)
     - [IsTUID](#istuid)
     - [IsURL](#isurl)
@@ -86,13 +85,13 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
 - [Setters](#setters)
   - [SetDateTime](#setdatetime)
   - [SetFromCallback](#setfromcallback)
-    - [Parameters](#parameters-1)
+    - [Parameters](#parameters)
     - [Examples](#examples)
   - [SetValueWhenEmpty](#setvaluewhenempty)
-    - [Parameters](#parameters-2)
+    - [Parameters](#parameters-1)
     - [Examples](#examples-1)
   - [SetValueWhenNull](#setvaluewhennull)
-    - [Parameters](#parameters-3)
+    - [Parameters](#parameters-2)
     - [Examples](#examples-2)
 - [Custom Validators](#custom-validators)
   - [Templates](#templates)
@@ -1534,7 +1533,7 @@ Validates whether a string is a valid IP address for both V4 and V6.
 use Torugo\PropertyValidator\Attributes\Validators\Strings\IsIP;
 ```
 
-#### Parameters
+#### Parameters <!-- omit in toc -->
 
 | Parameter      | Type   | Description                                                       |
 | :------------- | :----- | :---------------------------------------------------------------- |
