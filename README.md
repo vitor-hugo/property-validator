@@ -55,6 +55,8 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [IsCnpj](#iscnpj)
     - [IsCpf](#iscpf)
     - [IsEmail](#isemail)
+- [IsIP](#isip)
+      - [Parameters](#parameters)
     - [IsSemVer](#issemver)
     - [IsTUID](#istuid)
     - [IsURL](#isurl)
@@ -84,13 +86,13 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
 - [Setters](#setters)
   - [SetDateTime](#setdatetime)
   - [SetFromCallback](#setfromcallback)
-    - [Parameters](#parameters)
+    - [Parameters](#parameters-1)
     - [Examples](#examples)
   - [SetValueWhenEmpty](#setvaluewhenempty)
-    - [Parameters](#parameters-1)
+    - [Parameters](#parameters-2)
     - [Examples](#examples-1)
   - [SetValueWhenNull](#setvaluewhennull)
-    - [Parameters](#parameters-2)
+    - [Parameters](#parameters-3)
     - [Examples](#examples-2)
 - [Custom Validators](#custom-validators)
   - [Templates](#templates)
@@ -1521,6 +1523,36 @@ public mixed $email = "wrong()[],:;<>@@gmail.com"; // invalid
 
 > [!TIP]
 > Take a look at the [tests](./tests/Integration/Validators/Strings/IsEmailTest.php) to see more of valid or invalid emails.
+
+---
+
+# IsIP
+
+Validates whether a string is a valid IP address for both V4 and V6.
+
+```php
+use Torugo\PropertyValidator\Attributes\Validators\Strings\IsIP;
+```
+
+#### Parameters
+
+| Parameter      | Type   | Description                                                       |
+| :------------- | :----- | :---------------------------------------------------------------- |
+| `version`      | int    | 4 for IPv4 or 6 for IPv6, any other value tries to validate both. |
+| `errorMessage` | string | Custom error message.                                             |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[IsIP(4)] // Only IPv4
+public $ip1 = "127.0.0.1";
+
+#[IsIP(6)] // Only IPv6
+public $ip2 = "fe80::a6db:30ff:fe98:e946";
+
+#[IsIP()] // Both
+public $ip3 = "185.85.0.29";
+```
 
 ---
 
