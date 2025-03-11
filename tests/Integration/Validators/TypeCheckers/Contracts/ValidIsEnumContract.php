@@ -20,4 +20,7 @@ class ValidIsEnumContract extends BaseValidationTestClass
 
     #[IsEnum(ValidIntEnum::class, "Invalid Database ID")]
     public mixed $var4 = 1;
+
+    #[IsEnum(ValidStringEnum::class)]
+    public ValidStringEnum $var5 = ValidStringEnum::MacOS;
 }

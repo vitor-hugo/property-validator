@@ -24,7 +24,7 @@ class IsEnum extends Validator
 
     public function validation(mixed $value): void
     {
-        $this->expectPropertyTypeToBe(["string", "int", "mixed"]);
+        $this->expectPropertyTypeToBe(["string", "int", "mixed", $this->enum]);
         $this->validateIfEnumExists();
         $this->validateIfEnumIsBacked();
         $this->validateReceivedValueType($value);
@@ -56,7 +56,7 @@ class IsEnum extends Validator
     private function validateReceivedValueType(mixed $value): void
     {
         $type = $this->getType($value);
-        $expected = ["string", "int"];
+        $expected = ["string", "int", "object"];
 
         if (!in_array($type, $expected, true)) {
             $this->throwValidationException("Property '{$this->propertyName}' expects to receive a string or an int value, received $type.");
@@ -66,6 +66,10 @@ class IsEnum extends Validator
 
     private function validateIfValueIsAMemberOfEnum(mixed $value): void
     {
+        if ($value instanceof $this->enum) {
+            return;
+        }
+
         try {
             $check = $this->enum::tryFrom($value);
         } catch (\Throwable $th) {
