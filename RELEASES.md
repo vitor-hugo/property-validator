@@ -1,6 +1,7 @@
 # Release History <!-- omit in toc -->
 
-- [1.10.1](#1101)
+- [1.10.2 (Mar 11 2025)](#1102-mar-11-2025)
+- [1.10.1 (Feb 20 2025)](#1101-feb-20-2025)
 - [1.10.0 (Feb 20 2025)](#1100-feb-20-2025)
 - [1.9.0 (Feb 12 2025)](#190-feb-12-2025)
 - [1.8.0 (Jan 23 2025)](#180-jan-23-2025)
@@ -17,10 +18,11 @@
 - [1.1.0 (Jul 08 2024)](#110-jul-08-2024)
 - [1.0.0 (Jul 04 2024)](#100-jul-04-2024)
 
-# 1.10.1
+# 1.10.2 (Mar 11 2025)
 
 - Fix 'IsEnum' validation when the value is actualy an instance of the especified enum.
 
+# 1.10.1 (Feb 20 2025)
 # 1.10.0 (Feb 20 2025)
 
 - Adding the validator 'IsIP'
