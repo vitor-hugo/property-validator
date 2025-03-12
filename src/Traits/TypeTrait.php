@@ -2,6 +2,8 @@
 
 namespace Torugo\PropertyValidator\Traits;
 
+use ReflectionUnionType;
+
 trait TypeTrait
 {
     /**
@@ -17,7 +19,8 @@ trait TypeTrait
 
 
     /**
-     * Returns the type of a property, if is not setted returns "mixed"
+     * Returns the type of a property.
+     * If is not setted or more than one type is definded, it will return "mixed".
      * @param \ReflectionProperty $property
      * @return string "array", "boolean", "float", "int", "mixed", "object", "string" or "unknown"
      */
@@ -25,7 +28,12 @@ trait TypeTrait
     {
         $propType = $property->getType();
 
-        if ($propType === null) {
+        // More than one type defined, i.e. `public int|string $x = "";`
+        if ($propType instanceof ReflectionUnionType) {
+            return "mixed";
+        }
+
+        if (empty($propType)) {
             return "mixed";
         }
 
