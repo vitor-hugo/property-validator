@@ -77,6 +77,7 @@ Inspired by [*class-validator*](https://github.com/typestack/class-validator) fo
     - [PasswordHash](#passwordhash)
     - [Prepend](#prepend)
     - [SubString](#substring)
+    - [RegexReplace](#regexreplace)
     - [Replace](#replace)
     - [ToLowerCase](#tolowercase)
     - [ToTitleCase](#totitlecase)
@@ -2145,6 +2146,47 @@ public $var4 = "abcdef"; // returns an empty string
 
 #[SubString(2, -1)]
 public $var4 = "abcdef"; // returns "cde"
+```
+
+---
+
+### RegexReplace
+
+Replace regular expression with multibyte support.
+
+Scans the property string value for matches to `$pattern`,
+then replaces the matched text with `$replacement`.
+
+Under the hood uses [`mb_ereg_replace()`](https://www.php.net/manual/en/function.mb-ereg-replace)
+
+Unlike `preg_replace`, on `mb_ereg_replace` you can't surround the `pattern` with slashes (`/`),
+if surrounded this method removes them.
+
+```php
+use Torugo\PropertyValidator\Attributes\Handlers\Strings\RegexReplace;
+```
+
+#### Parameters <!-- omit in toc -->
+
+| Parameter     | Type   | Description                                                       |
+| :------------ | :----- | :---------------------------------------------------------------- |
+| `pattern`     | string | The regular expression pattern. Multibyte characters can be used. |
+| `replacement` | string | The replacement text.                                             |
+
+#### Examples <!-- omit in toc -->
+
+```php
+#[RegexReplace("[\s{1,}]", " ")]
+public $spaces = "My   strange     string.";
+// "My strange string."
+
+#[RegexReplace("[^0-9]", "")]
+public $onlyNumbers = "CPF: 123.456.789-10";
+// 12345678910
+
+#[RegexReplace("([0-9]+)-([A-Z]+)", "\\2-\\1")]
+public string $groups = "123-ABC";
+// "ABC-123"
 ```
 
 ---
