@@ -1,5 +1,6 @@
 # Release History <!-- omit in toc -->
 
+- [1.11.0 (Jul 17 2025)](#1110-jul-17-2025)
 - [1.10.3 (Mar 12 2025)](#1103-mar-12-2025)
 - [1.10.2 (Mar 11 2025)](#1102-mar-11-2025)
 - [1.10.1 (Feb 20 2025)](#1101-feb-20-2025)
@@ -19,6 +20,12 @@
 - [1.1.0 (Jul 08 2024)](#110-jul-08-2024)
 - [1.0.0 (Jul 04 2024)](#100-jul-04-2024)
 
+# 1.11.0 (Jul 17 2025)
+
+- Adding the Handler 'RegexReplace'
+
+---
+
 # 1.10.3 (Mar 12 2025)
 
 Fixes a bug when a property is defined using more than one type.
@@ -28,6 +35,8 @@ Fixes a bug when a property is defined using more than one type.
 ```php
 property int|string $myProp = ""; // An exception would be throwed
 ```
+
+---
 
 # 1.10.2 (Mar 11 2025)
 
